@@ -16,6 +16,13 @@ Universal, deterministic **6-layer Comic-Bust SVG Avatar Generator**, **Compact 
 
 > Save your own custom presets and export as SVG, PNG, or WebP in any resolution.
 
+| <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/17413dc9-70a3-402a-a3e0-9442f38be723" /> | <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/176a951a-4482-43be-ac10-aa68d8cafcbc" /> | <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/82882931-f879-4748-9e7f-7ff8c4305822" /> |
+
+> generate agents, humans, creatures...
+
+
+
+
 ---
 
 ## Key Features
