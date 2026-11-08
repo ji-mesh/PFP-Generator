@@ -25,6 +25,8 @@ export const {
   renderPfpSvg,
   toDataUri,
   mountResponsiveAvatar,
+  exportAvatar,
+  openExportModal,
   openBuilderModal,
   forAgent,
   forExpert,

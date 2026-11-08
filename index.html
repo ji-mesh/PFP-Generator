@@ -264,7 +264,7 @@
     </div>
     <div class="btn-row">
       <button type="button" id="btn-open-modal">Open Embeddable Builder Modal</button>
-      <button type="button" class="primary" id="btn-download-svg">⬇ Download .SVG</button>
+      <button type="button" class="primary" id="btn-download-svg">⬇ Export / Download (SVG &amp; PNG)</button>
     </div>
   </header>
 
@@ -283,18 +283,25 @@
             <div id="persona-role-tag" style="font-size:12px;color:var(--accent);font-weight:600;">CORE SYNTH // PR SYNTH</div>
           </div>
 
+          <button type="button" class="primary" id="btn-export-hero" style="width:100%;padding:10px 14px;font-size:13px;">
+            ⬇ Download as PNG / SVG (Select Size &amp; Format)
+          </button>
+
           <div class="lod-strip">
             <div class="lod-item">
               <div id="lod-full" style="width:96px;height:96px;border-radius:999px;overflow:hidden;"></div>
               <span>Full (≥96px)</span>
+              <button type="button" class="btn-lod-export" data-size="512" style="padding:3px 8px;font-size:10px;">⬇ SVG / PNG</button>
             </div>
             <div class="lod-item">
               <div id="lod-compact" style="width:52px;height:52px;border-radius:999px;overflow:hidden;"></div>
               <span>Compact (52px)</span>
+              <button type="button" class="btn-lod-export" data-size="64" style="padding:3px 8px;font-size:10px;">⬇ SVG / PNG</button>
             </div>
             <div class="lod-item">
               <div id="lod-micro" style="width:28px;height:28px;border-radius:999px;overflow:hidden;"></div>
               <span>Micro (28px)</span>
+              <button type="button" class="btn-lod-export" data-size="32" style="padding:3px 8px;font-size:10px;">⬇ SVG / PNG</button>
             </div>
           </div>
         </div>
@@ -562,12 +569,18 @@
       });
 
       document.getElementById('btn-download-svg').addEventListener('click', function () {
-        var svg = PFP.renderPfpSvg(currentSpec, { size: 400, fixedPx: true, lod: 'full' });
-        var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-        var a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = (currentSpec.compactId || 'jimesh-pfp') + '.svg';
-        a.click();
+        PFP.openExportModal(currentSpec, { defaultFormat: 'png', defaultSize: 512 });
+      });
+
+      document.getElementById('btn-export-hero').addEventListener('click', function () {
+        PFP.openExportModal(currentSpec, { defaultFormat: 'png', defaultSize: 512 });
+      });
+
+      Array.prototype.forEach.call(document.querySelectorAll('.btn-lod-export'), function (btn) {
+        btn.addEventListener('click', function () {
+          var sz = Number(btn.getAttribute('data-size')) || 512;
+          PFP.openExportModal(currentSpec, { defaultFormat: 'png', defaultSize: sz });
+        });
       });
 
       document.getElementById('btn-open-modal').addEventListener('click', function () {
@@ -613,8 +626,15 @@
         card.className = 'preset-card';
         card.innerHTML =
           '<div class="preset-svg">' + PFP.renderPfpSvg(presetKey, { fluid: true, lod: 'compact' }) + '</div>' +
-          '<span>' + presetKey.replace(/_/g, ' ') + '</span>';
-        card.addEventListener('click', function () {
+          '<span>' + presetKey.replace(/_/g, ' ') + '</span>' +
+          '<button type="button" class="preset-dl-btn" style="padding:3px 8px;font-size:10px;width:100%;margin-top:2px;">⬇ SVG / PNG</button>';
+        card.addEventListener('click', function (ev) {
+          if (ev.target && ev.target.classList && ev.target.classList.contains('preset-dl-btn')) {
+            ev.stopPropagation();
+            var presetSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
+            PFP.openExportModal(presetSpec, { defaultFormat: 'png', defaultSize: 512 });
+            return;
+          }
           currentSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
           inpSeed.value = presetKey;
           inpCallsign.value = item.title;
