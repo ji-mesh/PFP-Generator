@@ -25,7 +25,7 @@
     },
     "entityKind": {
       "type": "string",
-      "enum": ["agent", "expert", "human"]
+      "enum": ["agent", "creature", "human"]
     },
     "headwear": {
       "type": "string",

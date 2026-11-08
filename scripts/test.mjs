@@ -43,9 +43,14 @@ const svgMicro = PFP.renderPfpSvg(compactId, { size: 24 });
 assert.ok(svgMicro.includes('data-pfp-lod="micro"'), 'Size < 36px must automatically select micro LOD');
 assert.ok(svgMicro.length < svgFull.length, 'Micro LOD must strip heavy details for crisp rendering');
 
-// 5. Curated Preset resolution test
+// 5. Curated Preset & Creature Mascot resolution test
 const ninjaSpec = PFP.resolvePfpSpec('ninja_agent', 'agent');
 assert.equal(ninjaSpec.headwear, 'cyber_helmet');
 assert.equal(ninjaSpec.chest, 'reactor_core');
+
+const creaturePersona = PFP.generatePersonaName('kitsune-seed-01', { entityKind: 'creature' });
+assert.ok(creaturePersona.compactId.startsWith('pfp1-cr-'), 'Creature compactId must use cr entity code');
+const creatureSvg = PFP.renderPfpSvg(creaturePersona.compactId);
+assert.ok(creatureSvg.includes('viewBox="0 0 400 400"'), 'Creature SVG must render valid 400x400 comic bust');
 
 console.log('✓ All @jimesh/pfp-generator tests passed! Example compactId:', compactId);

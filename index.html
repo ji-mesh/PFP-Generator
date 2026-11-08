@@ -351,7 +351,7 @@
             <span>1. Procedural Name + Trait Generator (Feature #2)</span>
             <div class="btn-row">
               <button type="button" class="primary" id="btn-roll-agent">🎲 Roll Agent + Name</button>
-              <button type="button" id="btn-roll-expert">👑 Roll Expert + Name</button>
+              <button type="button" id="btn-roll-creature">🐾 Roll Creature / Mascot</button>
               <button type="button" id="btn-roll-human">🧑 Roll Human Operator</button>
             </div>
           </div>
@@ -374,7 +374,7 @@
             <label class="ctrl">Entity Kind
               <select id="sel-kind">
                 <option value="agent">Agent (Robot / Synth)</option>
-                <option value="expert">Expert (Sovereign Persona)</option>
+                <option value="creature">Creature / Mascot (Fox / Cat / Wyrm)</option>
                 <option value="human">Human (Team Operator)</option>
               </select>
             </label>
@@ -628,7 +628,7 @@
       }
 
       document.getElementById('btn-roll-agent').addEventListener('click', function () { rollEntity('agent'); });
-      document.getElementById('btn-roll-expert').addEventListener('click', function () { rollEntity('expert'); });
+      document.getElementById('btn-roll-creature').addEventListener('click', function () { rollEntity('creature'); });
       document.getElementById('btn-roll-human').addEventListener('click', function () { rollEntity('human'); });
 
       document.getElementById('btn-copy-id').addEventListener('click', function () {

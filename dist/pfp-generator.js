@@ -50,8 +50,8 @@
     'devops_gear', 'security_lock', 'ai_spark', 'nango_sync_badge', 'composio_connector'
   ];
 
-  var ENTITY_CODE_TO_KIND = { ag: 'agent', ex: 'expert', hu: 'human' };
-  var ENTITY_KIND_TO_CODE = { agent: 'ag', expert: 'ex', human: 'hu' };
+  var ENTITY_CODE_TO_KIND = { ag: 'agent', cr: 'creature', ex: 'creature', hu: 'human' };
+  var ENTITY_KIND_TO_CODE = { agent: 'ag', creature: 'cr', expert: 'cr', human: 'hu' };
 
   var ALL_PALETTES = [
     { id: 'coding_cyan', name: 'Coding Cyan', primary: '#0ea5e9', secondary: '#0369a1', accent: '#7dd3fc', background: '#071926', skinOrChassis: '#0ea5e9' },
@@ -76,6 +76,7 @@
 
   var PALETTES = {
     agent: ALL_PALETTES.slice(0, 12),
+    creature: ALL_PALETTES.slice(0, 12),
     expert: ALL_PALETTES.slice(0, 12),
     human: ALL_PALETTES.slice(12).concat(ALL_PALETTES.slice(0, 6)),
     all: ALL_PALETTES
@@ -420,6 +421,42 @@
       headwear: 'beret',
       accessoryBadge: 'crm_shield',
       palette: ALL_PALETTES[12]
+    },
+    kitsune_mascot: {
+      presetId: 'kitsune_mascot',
+      entityKind: 'creature',
+      title: 'KITSUNE-09 // CYBER FOX',
+      background: 'deep_space',
+      body: 'cyber_armor',
+      chest: 'mesh_emblem',
+      eyes: 'cyber_optic',
+      headwear: 'halo',
+      accessoryBadge: 'ai_spark',
+      palette: ALL_PALETTES[6]
+    },
+    neko_creature: {
+      presetId: 'neko_creature',
+      entityKind: 'creature',
+      title: 'NEKO-42 // SHADOW CAT',
+      background: 'matrix_rain',
+      body: 'hoodie',
+      chest: 'reactor_core',
+      eyes: 'focused',
+      headwear: 'cyber_helmet',
+      accessoryBadge: 'security_lock',
+      palette: ALL_PALETTES[1]
+    },
+    drake_mascot: {
+      presetId: 'drake_mascot',
+      entityKind: 'creature',
+      title: 'DRAKE-01 // WYRM GUARD',
+      background: 'geometric',
+      body: 'suit',
+      chest: 'tie',
+      eyes: 'laser',
+      headwear: 'crown',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[4]
     }
   };
 
@@ -548,6 +585,17 @@
     'Navigator', 'Oracle', 'Guard', 'Spark'
   ];
 
+  var CREATURE_PREFIXES = [
+    'Kitsune', 'Fenrir', 'Neko', 'Draco', 'Tanuki', 'Raptor',
+    'Kodiak', 'Gryphon', 'Baku', 'Raiju', 'Sphinx', 'Lynx',
+    'Vulpix', 'Chimera', 'Cerberus', 'Manta'
+  ];
+
+  var CREATURE_CORES = [
+    'Cyber Fox', 'Void Wolf', 'Shadow Cat', 'Wyrm Guard', 'Spark Badger', 'Neon Hawk',
+    'Iron Bear', 'Storm Tiger', 'Pulse Hound', 'Prism Lynx', 'Venom Drake', 'Night Owl'
+  ];
+
   var HUMAN_FIRST_NAMES = [
     'Kira', 'Siddharth', 'Elena', 'Marcus', 'Aria', 'Kushal',
     'Lukas', 'Sora', 'Nadia', 'Devon', 'Talia', 'Viktor',
@@ -612,6 +660,12 @@
       last = last.charAt(0).toUpperCase() + last.slice(1);
       displayName = first + ' ' + last;
       callsign = first.toUpperCase() + '_' + last.slice(0, 3).toUpperCase();
+    } else if (kind === 'creature') {
+      var cPrefix = pick(rng, CREATURE_PREFIXES);
+      var cCore = pick(rng, CREATURE_CORES);
+      var cNum = String(Math.floor(rng() * 90) + 10);
+      displayName = cPrefix + '-' + cNum + ' // ' + cCore;
+      callsign = cPrefix + '-' + cNum;
     } else {
       var prefix = pick(rng, NAME_PREFIXES_AGENT);
       var core = pick(rng, NAME_CORES_AGENT);
@@ -819,7 +873,7 @@
       }
     }
 
-    var kind = entityKind === 'human' || entityKind === 'expert' ? entityKind : 'agent';
+    var kind = entityKind === 'human' || entityKind === 'creature' ? entityKind : (entityKind === 'expert' ? 'creature' : 'agent');
     var seedStr = String(idOrSeed || 'jimesh-entity').trim() || 'jimesh-entity';
     var hash = fnv1aHash(kind + '::' + seedStr);
     var rng = createMulberry32(hash);
@@ -837,8 +891,8 @@
 
     var headwearPool = kind === 'human'
       ? ['none', 'cap', 'headset', 'beanie', 'fedora', 'beret']
-      : kind === 'expert'
-        ? ['crown', 'halo', 'cyber_visor', 'cyber_helmet', 'headset', 'fedora']
+      : kind === 'creature'
+        ? ['none', 'crown', 'halo', 'cyber_visor', 'cyber_helmet', 'headset', 'fedora']
         : ['none', 'cyber_visor', 'cyber_helmet', 'headset', 'halo', 'crown', 'beret'];
 
     var chestPool = kind === 'human'
@@ -1414,6 +1468,136 @@
     return parts.join('');
   }
 
+  function renderCreatureBust(spec, uid, lod) {
+    var p = spec.palette;
+    var parts = [];
+
+    parts.push('<g transform="translate(250, 244) scale(0.95)">');
+    // Ground hover shadow
+    parts.push('<ellipse cx="0" cy="185" rx="92" ry="18" fill="#000000" opacity="0.55"/>');
+
+    // Fluffy Mascot / Kitsune / Wyrm Tail curving up behind the right shoulder
+    if (lod !== 'micro') {
+      parts.push(
+        '<g>' +
+          '<path d="M 38,118 C 118,118 156,42 126,-24 C 112,-54 78,-26 84,18 C 88,52 64,84 34,94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+          '<path d="M 126,-24 C 114,-48 86,-28 88,2 C 102,-4 116,-8 126,-24 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round" filter="url(#' + uid + '-glow)"/>' +
+        '</g>'
+      );
+    }
+
+    // Mascot Torso & Paws
+    parts.push('<path d="M -54,22 C -68,62 -56,120 0,146 C 56,120 68,62 54,22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>');
+    // Fluffy chest fur tuft or collar
+    parts.push('<polygon points="-26,22 0,48 26,22 12,58 0,46 -12,58" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>');
+
+    if (lod !== 'micro') {
+      // Raised Mascot Paws with toe beans / claws
+      parts.push(
+        '<g>' +
+          '<ellipse cx="-78" cy="48" rx="22" ry="18" transform="rotate(-20 -78 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
+          '<circle cx="-78" cy="50" r="6" fill="' + escapeXml(p.accent) + '"/>' +
+          '<circle cx="-86" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="-78" cy="37" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="-70" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/>' +
+          '<ellipse cx="78" cy="48" rx="22" ry="18" transform="rotate(20 78 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
+          '<circle cx="78" cy="50" r="6" fill="' + escapeXml(p.accent) + '"/>' +
+          '<circle cx="70" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="78" cy="37" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="86" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/>' +
+        '</g>'
+      );
+      parts.push(renderChestEmblem(spec, uid, false));
+    }
+
+    // Tall Pointed Fox / Cat / Dragon Mascot Ears
+    parts.push(
+      '<g stroke="#000000" stroke-linejoin="round">' +
+        '<polygon points="-78,-62 -106,-164 -22,-92" fill="url(#' + uid + '-body)" stroke-width="11"/>' +
+        '<polygon points="-70,-72 -92,-142 -36,-90" fill="' + escapeXml(p.accent) + '" stroke-width="6" filter="url(#' + uid + '-glow)"/>' +
+        '<polygon points="78,-62 106,-164 22,-92" fill="url(#' + uid + '-body)" stroke-width="11"/>' +
+        '<polygon points="70,-72 92,-142 36,-90" fill="' + escapeXml(p.accent) + '" stroke-width="6" filter="url(#' + uid + '-glow)"/>' +
+      '</g>'
+    );
+
+    // Cheek Fur Tufts + Creature Head
+    parts.push(
+      '<path d="M -82,-32 L -114,-38 L -92,-14 L -116,2 L -74,18 L 74,18 L 116,2 L 92,-14 L 114,-38 L 82,-32 C 78,-82 48,-98 0,-98 C -48,-98 -78,-82 -82,-32 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
+    );
+
+    // Forehead diamond / crest marking
+    parts.push('<polygon points="0,-88 14,-70 0,-52 -14,-70" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5" filter="url(#' + uid + '-glow)"/>');
+
+    // Dark Visor / Eye Mask + Whiskers
+    parts.push('<rect x="-66" y="-56" width="132" height="54" rx="22" fill="#04151f" stroke="#000000" stroke-width="7.5"/>');
+    parts.push(
+      '<g stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linecap="round" opacity="0.85">' +
+        '<line x1="-68" y1="-12" x2="-96" y2="-18"/><line x1="-68" y1="-4" x2="-98" y2="-2"/>' +
+        '<line x1="68" y1="-12" x2="96" y2="-18"/><line x1="68" y1="-4" x2="98" y2="-2"/>' +
+      '</g>'
+    );
+
+    // Eyes inside mask
+    var eyes = spec.eyes;
+    if (eyes === 'laser') {
+      parts.push(
+        '<rect x="-52" y="-36" width="104" height="14" rx="7" fill="#ef4444" filter="url(#' + uid + '-glow)"/>' +
+        '<rect x="-44" y="-32" width="88" height="6" rx="3" fill="#ffffff"/>'
+      );
+    } else if (eyes === 'happy') {
+      parts.push(
+        '<path d="M -44,-24 Q -30,-42 -16,-24" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>' +
+        '<path d="M 16,-24 Q 30,-42 44,-24" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>'
+      );
+    } else if (eyes === 'focused') {
+      parts.push(
+        '<polygon points="-48,-36 -14,-24 -20,-14 -48,-24" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<polygon points="48,-36 14,-24 20,-14 48,-24" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
+      );
+    } else {
+      // Slit-pupil Cat/Fox/Dragon glowing eyes
+      parts.push(
+        '<ellipse cx="-30" cy="-28" rx="14" ry="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<ellipse cx="30" cy="-28" rx="14" ry="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<ellipse cx="-30" cy="-28" rx="3.5" ry="9" fill="#04151f"/>' +
+        '<ellipse cx="30" cy="-28" rx="3.5" ry="9" fill="#04151f"/>' +
+        '<circle cx="-34" cy="-32" r="3.5" fill="#ffffff"/><circle cx="26" cy="-32" r="3.5" fill="#ffffff"/>'
+      );
+    }
+
+    // Animal Muzzle / Snout + Nose + W-Mouth + Little Fangs
+    parts.push(
+      '<ellipse cx="0" cy="4" rx="28" ry="16" fill="#0b1528" stroke="#000000" stroke-width="6"/>' +
+      '<polygon points="-9,-4 9,-4 0,4" fill="' + escapeXml(p.accent) + '"/>' +
+      '<path d="M -12,9 Q -6,16 0,9 Q 6,16 12,9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<polygon points="-10,11 -7,17 -4,11" fill="#ffffff"/>' +
+      '<polygon points="4,11 7,17 10,11" fill="#ffffff"/>'
+    );
+
+    // Optional Headwear on Creature (Crown, Halo, Ninja Headband, Headset)
+    var hw = spec.headwear;
+    if (hw === 'crown') {
+      parts.push(
+        '<polygon points="-44,-92 -32,-136 -12,-108 0,-144 12,-108 32,-136 44,-92" fill="#fbbf24" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>' +
+        '<circle cx="0" cy="-114" r="6" fill="#ef4444" stroke="#000000" stroke-width="3"/>'
+      );
+    } else if (hw === 'halo') {
+      parts.push(
+        '<ellipse cx="0" cy="-148" rx="58" ry="14" fill="none" stroke="#000000" stroke-width="10"/>' +
+        '<ellipse cx="0" cy="-148" rx="58" ry="14" fill="none" stroke="#fde047" stroke-width="5.5" filter="url(#' + uid + '-glow)"/>'
+      );
+    } else if (hw === 'cyber_helmet') {
+      parts.push(
+        '<path d="M -78,-74 Q 0,-88 78,-74 L 78,-56 Q 0,-70 -78,-56 Z" fill="#6d28d9" stroke="#000000" stroke-width="6.5"/>' +
+        '<rect x="-26" y="-80" width="52" height="18" rx="4" fill="#cbd5e1" stroke="#000000" stroke-width="4.5"/>'
+      );
+    } else if (hw === 'headset') {
+      parts.push(
+        '<path d="M 78,-24 L 38,10 L 16,10" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>' +
+        '<circle cx="14" cy="10" r="6.5" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="3"/>'
+      );
+    }
+
+    parts.push('</g>');
+    return parts.join('');
+  }
+
   function renderCornerBadgeAndSparkles(spec, uid, lod) {
     if (lod === 'micro') return '';
     var p = spec.palette;
@@ -1471,7 +1655,9 @@
 
     var bustContent = spec.entityKind === 'human'
       ? renderHumanBust(spec, uid, lod)
-      : renderAgentBust(spec, uid, lod);
+      : spec.entityKind === 'creature'
+        ? renderCreatureBust(spec, uid, lod)
+        : renderAgentBust(spec, uid, lod);
 
     var shape = opts.shape || 'circle';
     var clipShapeSvg = shape === 'square'
@@ -2012,8 +2198,11 @@
     forAgent: function (idOrSeed, overrides) {
       return renderPfpSvg(resolvePfpSpec(idOrSeed, 'agent', overrides), { fluid: true });
     },
+    forCreature: function (idOrSeed, overrides) {
+      return renderPfpSvg(resolvePfpSpec(idOrSeed, 'creature', overrides), { fluid: true });
+    },
     forExpert: function (idOrSeed, overrides) {
-      return renderPfpSvg(resolvePfpSpec(idOrSeed, 'expert', overrides), { fluid: true });
+      return renderPfpSvg(resolvePfpSpec(idOrSeed, 'creature', overrides), { fluid: true });
     },
     forHuman: function (idOrSeed, overrides) {
       return renderPfpSvg(resolvePfpSpec(idOrSeed, 'human', overrides), { fluid: true });

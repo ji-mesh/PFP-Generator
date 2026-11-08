@@ -9,7 +9,7 @@
  * 5. SVG / PNG / WebP Export Options (`PfpExportOptions`).
  */
 
-export type PfpEntityKind = 'agent' | 'expert' | 'human';
+export type PfpEntityKind = 'agent' | 'creature' | 'human';
 
 export type PfpHeadwear =
   | 'none'
