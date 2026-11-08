@@ -2,11 +2,7 @@
 
 Universal, deterministic **6-layer Comic-Bust SVG Avatar Generator**, **Compact String/ID Attribute Codec (`pfp1-...`)**, **Procedural Name Generator**, and **Backend Persistence Server** for Autonomous Agents, Cyber Creatures/Mascots, and Human Operators.
 
-| Agents | Humans | Creatures |
-| :---: | :---: | :---: |
-| <img width="280" alt="Agents PFP Preview" src="https://github.com/user-attachments/assets/17413dc9-70a3-402a-a3e0-9442f38be723" /> | <img width="280" alt="Humans PFP Preview" src="https://github.com/user-attachments/assets/176a951a-4482-43be-ac10-aa68d8cafcbc" /> | <img width="280" alt="Creatures PFP Preview" src="https://github.com/user-attachments/assets/82882931-f879-4748-9e7f-7ff8c4305822" /> |
 
-> Generate deterministic Agents, Humans, and Creatures/Mascots from any seed or compact string ID.
 
 <img width="1457" height="1073" alt="Interactive Studio" src="https://github.com/user-attachments/assets/10873bbc-b3c6-4145-bc8a-4abfb86c7355" />
 
@@ -16,10 +12,11 @@ Universal, deterministic **6-layer Comic-Bust SVG Avatar Generator**, **Compact 
 
 > Save your own custom presets and export as SVG, PNG, or WebP in any resolution.
 
-| <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/17413dc9-70a3-402a-a3e0-9442f38be723" /> | <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/176a951a-4482-43be-ac10-aa68d8cafcbc" /> | <img width="388" height="627" alt="image" src="https://github.com/user-attachments/assets/82882931-f879-4748-9e7f-7ff8c4305822" /> |
+| Agents | Humans | Creatures |
+| :---: | :---: | :---: |
+| <img width="280" alt="Agents PFP Preview" src="https://github.com/user-attachments/assets/17413dc9-70a3-402a-a3e0-9442f38be723" /> | <img width="280" alt="Creatures PFP Preview" src="https://github.com/user-attachments/assets/82882931-f879-4748-9e7f-7ff8c4305822" /> | <img width="280" alt="Humans PFP Preview" src="https://github.com/user-attachments/assets/176a951a-4482-43be-ac10-aa68d8cafcbc" /> |
 
-> generate agents, humans, creatures...
-
+> Generate deterministic Agents, Humans, and Creatures/Mascots from any seed or compact string ID.
 
 
 
