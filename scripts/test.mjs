@@ -53,4 +53,22 @@ assert.ok(creaturePersona.compactId.startsWith('pfp1-cr-'), 'Creature compactId 
 const creatureSvg = PFP.renderPfpSvg(creaturePersona.compactId);
 assert.ok(creatureSvg.includes('viewBox="0 0 400 400"'), 'Creature SVG must render valid 400x400 comic bust');
 
+// 6. Verify all Body outfits (including lab_coat, suit, cyber_armor, robot_chassis) & Creature species
+for (const body of PFP.BODY_VALUES) {
+  const spec = PFP.resolvePfpSpec('test-body-' + body, 'agent', { body, chest: 'pocket' });
+  assert.equal(spec.body, body);
+  const svg = PFP.renderPfpSvg(spec, { lod: 'full' });
+  assert.ok(svg.length > 1200, 'Body outfit ' + body + ' must render rich SVG geometry');
+}
+
+for (const species of PFP.CREATURE_SPECIES_VALUES) {
+  const spec = PFP.resolvePfpSpec('test-species-' + species, 'creature', { species, body: 'lab_coat' });
+  assert.equal(spec.species, species);
+  assert.equal(spec.body, 'lab_coat');
+  const cid = PFP.encodePfpId(spec, 'CreatureTest');
+  const dec = PFP.decodePfpId(cid);
+  assert.equal(dec.species, species, 'Decoded creature species must match');
+  assert.equal(dec.body, 'lab_coat', 'Creature must keep independent body outfit (lab_coat)');
+}
+
 console.log('✓ All @jimesh/pfp-generator tests passed! Example compactId:', compactId);

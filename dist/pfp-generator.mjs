@@ -6,6 +6,7 @@ export const BODY_VALUES = cjsModule.BODY_VALUES;
 export const CHEST_VALUES = cjsModule.CHEST_VALUES;
 export const BACKGROUND_VALUES = cjsModule.BACKGROUND_VALUES;
 export const ACCESSORY_VALUES = cjsModule.ACCESSORY_VALUES;
+export const CREATURE_SPECIES_VALUES = cjsModule.CREATURE_SPECIES_VALUES;
 export const PALETTES = cjsModule.PALETTES;
 export const PRESET_CATALOG = cjsModule.PRESET_CATALOG;
 

@@ -27,6 +27,10 @@
       "type": "string",
       "enum": ["agent", "creature", "human"]
     },
+    "species": {
+      "type": "string",
+      "enum": ["fox", "dragon", "wolf", "bear", "owl", "kraken", "bull"]
+    },
     "headwear": {
       "type": "string",
       "enum": [
@@ -39,7 +43,15 @@
         "halo",
         "cyber_visor",
         "cyber_helmet",
-        "beret"
+        "beret",
+        "ninja_headband",
+        "cyber_horns",
+        "browser_header",
+        "ponytail",
+        "braid_flower",
+        "afro",
+        "man_bun",
+        "curly_hair"
       ]
     },
     "eyes": {
@@ -53,7 +65,10 @@
         "sunglasses",
         "laser",
         "wink",
-        "terminal_glow"
+        "terminal_glow",
+        "hud_visor",
+        "evil_slits",
+        "cursor_arrows"
       ]
     },
     "body": {
@@ -65,7 +80,9 @@
         "casual_tee",
         "cyber_armor",
         "lab_coat",
-        "turtleneck"
+        "turtleneck",
+        "trench_coat",
+        "plaid_shirt"
       ]
     },
     "chest": {
@@ -77,7 +94,14 @@
         "necklace",
         "pocket",
         "harness",
-        "mesh_emblem"
+        "mesh_emblem",
+        "bow_tie",
+        "laptop",
+        "tablet_chart",
+        "vault_coin",
+        "rocket_badge",
+        "shield_check",
+        "neck_headphones"
       ]
     },
     "background": {

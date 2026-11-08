@@ -374,20 +374,23 @@
             <label class="ctrl">Entity Kind
               <select id="sel-kind">
                 <option value="agent">Agent (Robot / Synth)</option>
-                <option value="creature">Creature / Mascot (Fox / Cat / Wyrm)</option>
+                <option value="creature">Creature / Mascot (Fox / Dragon / Wolf)</option>
                 <option value="human">Human (Team Operator)</option>
               </select>
             </label>
-            <label class="ctrl">Headwear / Beacons
+            <label class="ctrl" id="wrap-species" style="display:none;">Creature Species
+              <select id="sel-species"></select>
+            </label>
+            <label class="ctrl">Headwear / Hair / Beacons
               <select id="sel-headwear"></select>
             </label>
-            <label class="ctrl">Visor / Eyes
+            <label class="ctrl">Visor / Eyes / Glasses
               <select id="sel-eyes"></select>
             </label>
-            <label class="ctrl">Body / Chassis
+            <label class="ctrl">Body / Outfit / Chassis
               <select id="sel-body"></select>
             </label>
-            <label class="ctrl">Chest Emblem
+            <label class="ctrl">Chest Emblem / Props
               <select id="sel-chest"></select>
             </label>
             <label class="ctrl">Background Pattern
@@ -474,6 +477,8 @@
     (function () {
       var currentSpec = PFP.resolvePfpSpec('coding_agent', 'agent');
       var selKind = document.getElementById('sel-kind');
+      var wrapSpecies = document.getElementById('wrap-species');
+      var selSpecies = document.getElementById('sel-species');
       var selHeadwear = document.getElementById('sel-headwear');
       var selEyes = document.getElementById('sel-eyes');
       var selBody = document.getElementById('sel-body');
@@ -498,28 +503,28 @@
       }
 
       var CREATURE_SPECIES_LABELS = {
-        cyber_armor: '🐉 DRAGON / WYRM (cyber_armor)',
-        robot_chassis: '🐺 DIRE WOLF / FENRIR (robot_chassis)',
-        hoodie: '🐻 GRIZZLY BEAR / KODIAK (hoodie)',
-        suit: '🦉 NIGHT OWL / RAPTOR (suit)',
-        turtleneck: '🐙 KRAKEN / CTHULHU OCTO (turtleneck)',
-        casual_tee: '🐂 MINOTAUR / CYBER BULL (casual_tee)',
-        lab_coat: '🦊 KITSUNE / CYBER FOX (lab_coat)'
+        fox: '🦊 KITSUNE / CYBER FOX',
+        dragon: '🐉 DRAGON / WYRM',
+        wolf: '🐺 DIRE WOLF / FENRIR',
+        bear: '🐻 GRIZZLY BEAR / KODIAK',
+        owl: '🦉 NIGHT OWL / RAPTOR',
+        kraken: '🐙 KRAKEN / CTHULHU OCTO',
+        bull: '🐂 MINOTAUR / CYBER BULL'
       };
 
-      function populateBodySelect(kind, selectedVal) {
-        selBody.innerHTML = PFP.BODY_VALUES.map(function (item) {
-          var label = kind === 'creature' && CREATURE_SPECIES_LABELS[item]
-            ? CREATURE_SPECIES_LABELS[item]
-            : item.replace(/_/g, ' ').toUpperCase();
+      function populateSpeciesSelect(selectedVal) {
+        var speciesList = PFP.CREATURE_SPECIES_VALUES || ['fox', 'dragon', 'wolf', 'bear', 'owl', 'kraken', 'bull'];
+        selSpecies.innerHTML = speciesList.map(function (item) {
+          var label = CREATURE_SPECIES_LABELS[item] || item.toUpperCase();
           return '<option value="' + item + '">' + label + '</option>';
         }).join('');
-        if (selectedVal) selBody.value = selectedVal;
+        if (selectedVal) selSpecies.value = selectedVal;
       }
 
+      populateSpeciesSelect(currentSpec.species || 'fox');
       populateSelect(selHeadwear, PFP.HEADWEAR_VALUES);
       populateSelect(selEyes, PFP.EYES_VALUES);
-      populateBodySelect('agent', currentSpec.body);
+      populateSelect(selBody, PFP.BODY_VALUES);
       populateSelect(selChest, PFP.CHEST_VALUES);
       populateSelect(selBackground, PFP.BACKGROUND_VALUES);
       populateSelect(selAccessory, PFP.ACCESSORY_VALUES);
@@ -554,7 +559,13 @@
 
       function syncUiFromSpec() {
         selKind.value = currentSpec.entityKind || 'agent';
-        populateBodySelect(currentSpec.entityKind || 'agent', currentSpec.body);
+        if (currentSpec.entityKind === 'creature') {
+          wrapSpecies.style.display = 'flex';
+          if (!currentSpec.species) currentSpec.species = 'fox';
+          selSpecies.value = currentSpec.species;
+        } else {
+          wrapSpecies.style.display = 'none';
+        }
         selHeadwear.value = currentSpec.headwear;
         selEyes.value = currentSpec.eyes;
         selBody.value = currentSpec.body;
@@ -606,6 +617,7 @@
       // Wire select changes
       [
         [selKind, 'entityKind'],
+        [selSpecies, 'species'],
         [selHeadwear, 'headwear'],
         [selEyes, 'eyes'],
         [selBody, 'body'],
@@ -618,6 +630,9 @@
           if (pair[1] === 'entityKind') {
             var pool = PFP.PALETTES[currentSpec.entityKind] || PFP.PALETTES.agent;
             currentSpec.palette = Object.assign({}, pool[0]);
+            if (currentSpec.entityKind === 'creature' && !currentSpec.species) {
+              currentSpec.species = 'fox';
+            }
             renderPaletteButtons();
           }
           syncUiFromSpec();

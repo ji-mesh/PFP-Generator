@@ -1,5 +1,6 @@
 import type {
   PfpEntityKind,
+  CreatureSpecies,
   PfpHeadwear,
   PfpEyes,
   PfpBody,
@@ -12,6 +13,7 @@ import type {
 
 export type {
   PfpEntityKind,
+  CreatureSpecies,
   PfpHeadwear,
   PfpEyes,
   PfpBody,
@@ -25,7 +27,8 @@ export type {
 export type PfpLodMode = 'micro' | 'compact' | 'full';
 
 export interface PfpSpec extends BasePfpProps {
-  entityKind: 'agent' | 'expert' | 'human';
+  entityKind: 'agent' | 'creature' | 'expert' | 'human';
+  species?: CreatureSpecies;
   compactId?: string;
   displayName?: string;
   presetId?: string;

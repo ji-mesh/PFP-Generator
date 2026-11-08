@@ -11,6 +11,15 @@
 
 export type PfpEntityKind = 'agent' | 'creature' | 'human';
 
+export type CreatureSpecies =
+  | 'fox'
+  | 'dragon'
+  | 'wolf'
+  | 'bear'
+  | 'owl'
+  | 'kraken'
+  | 'bull';
+
 export type PfpHeadwear =
   | 'none'
   | 'cap'
@@ -21,7 +30,15 @@ export type PfpHeadwear =
   | 'halo'
   | 'cyber_visor'
   | 'cyber_helmet'
-  | 'beret';
+  | 'beret'
+  | 'ninja_headband'
+  | 'cyber_horns'
+  | 'browser_header'
+  | 'ponytail'
+  | 'braid_flower'
+  | 'afro'
+  | 'man_bun'
+  | 'curly_hair';
 
 export type PfpEyes =
   | 'normal'
@@ -32,7 +49,10 @@ export type PfpEyes =
   | 'sunglasses'
   | 'laser'
   | 'wink'
-  | 'terminal_glow';
+  | 'terminal_glow'
+  | 'hud_visor'
+  | 'evil_slits'
+  | 'cursor_arrows';
 
 export type PfpBody =
   | 'hoodie'
@@ -41,7 +61,9 @@ export type PfpBody =
   | 'casual_tee'
   | 'cyber_armor'
   | 'lab_coat'
-  | 'turtleneck';
+  | 'turtleneck'
+  | 'trench_coat'
+  | 'plaid_shirt';
 
 export type PfpChest =
   | 'none'
@@ -50,7 +72,14 @@ export type PfpChest =
   | 'necklace'
   | 'pocket'
   | 'harness'
-  | 'mesh_emblem';
+  | 'mesh_emblem'
+  | 'bow_tie'
+  | 'laptop'
+  | 'tablet_chart'
+  | 'vault_coin'
+  | 'rocket_badge'
+  | 'shield_check'
+  | 'neck_headphones';
 
 export type PfpBackground =
   | 'mesh_gradient'
@@ -91,6 +120,7 @@ export interface BasePfpProps {
   seed: string;
   compactId?: string;
   entityKind: PfpEntityKind;
+  species?: CreatureSpecies;
   displayName?: string;
   description?: string;
   tags?: string[];

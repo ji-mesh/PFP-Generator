@@ -22,22 +22,28 @@
 
   var HEADWEAR_VALUES = [
     'none', 'cap', 'fedora', 'headset', 'beanie',
-    'crown', 'halo', 'cyber_visor', 'cyber_helmet', 'beret'
+    'crown', 'halo', 'cyber_visor', 'cyber_helmet', 'beret',
+    'ninja_headband', 'cyber_horns', 'browser_header',
+    'ponytail', 'braid_flower', 'afro', 'man_bun', 'curly_hair'
   ];
 
   var EYES_VALUES = [
     'normal', 'focused', 'cyber_optic', 'happy', 'glasses',
-    'sunglasses', 'laser', 'wink', 'terminal_glow'
+    'sunglasses', 'laser', 'wink', 'terminal_glow',
+    'hud_visor', 'evil_slits', 'cursor_arrows'
   ];
 
   var BODY_VALUES = [
     'hoodie', 'suit', 'robot_chassis', 'casual_tee',
-    'cyber_armor', 'lab_coat', 'turtleneck'
+    'cyber_armor', 'lab_coat', 'turtleneck',
+    'trench_coat', 'plaid_shirt'
   ];
 
   var CHEST_VALUES = [
     'none', 'tie', 'reactor_core', 'necklace',
-    'pocket', 'harness', 'mesh_emblem'
+    'pocket', 'harness', 'mesh_emblem',
+    'bow_tie', 'laptop', 'tablet_chart', 'vault_coin',
+    'rocket_badge', 'shield_check', 'neck_headphones'
   ];
 
   var BACKGROUND_VALUES = [
@@ -50,28 +56,44 @@
     'devops_gear', 'security_lock', 'ai_spark', 'nango_sync_badge', 'composio_connector'
   ];
 
-  var ENTITY_CODE_TO_KIND = { ag: 'agent', cr: 'creature', ex: 'creature', hu: 'human' };
+  var CREATURE_SPECIES_VALUES = [
+    'fox', 'dragon', 'wolf', 'bear', 'owl', 'kraken', 'bull'
+  ];
+
+  var ENTITY_CODE_TO_KIND = {
+    ag: 'agent',
+    cr: 'creature',
+    cr0: 'creature',
+    cr1: 'creature',
+    cr2: 'creature',
+    cr3: 'creature',
+    cr4: 'creature',
+    cr5: 'creature',
+    cr6: 'creature',
+    ex: 'creature',
+    hu: 'human'
+  };
   var ENTITY_KIND_TO_CODE = { agent: 'ag', creature: 'cr', expert: 'cr', human: 'hu' };
 
   var ALL_PALETTES = [
-    { id: 'coding_cyan', name: 'Coding Cyan', primary: '#0ea5e9', secondary: '#0369a1', accent: '#7dd3fc', background: '#071926', skinOrChassis: '#0ea5e9' },
-    { id: 'lila_toxic', name: 'Lila Toxic', primary: '#9333ea', secondary: '#581c87', accent: '#a3e635', background: '#170926', skinOrChassis: '#9333ea' },
-    { id: 'ninja_stealth', name: 'Ninja Stealth', primary: '#334155', secondary: '#0f172a', accent: '#c084fc', background: '#0d0b18', skinOrChassis: '#1e293b' },
-    { id: 'orch_violet', name: 'Orchestrator Violet', primary: '#8b5cf6', secondary: '#4c1d95', accent: '#e9d5ff', background: '#110926', skinOrChassis: '#7c3aed' },
-    { id: 'red_adversary', name: 'Red Team Crimson', primary: '#ef4444', secondary: '#991b1b', accent: '#fca5a5', background: '#210709', skinOrChassis: '#dc2626' },
-    { id: 'figma_emerald', name: 'Design Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#041a12', skinOrChassis: '#10b981' },
-    { id: 'voice_amber', name: 'Voice Amber', primary: '#f59e0b', secondary: '#b45309', accent: '#fef08a', background: '#241204', skinOrChassis: '#f59e0b' },
-    { id: 'happy_pink', name: 'Joy Magenta', primary: '#ec4899', secondary: '#9d174d', accent: '#fbcfe8', background: '#26081c', skinOrChassis: '#ec4899' },
-    { id: 'exp_sovereign', name: 'Sovereign Gold', primary: '#7c3aed', secondary: '#4c1d95', accent: '#fbbf24', background: '#120924', skinOrChassis: '#8b5cf6' },
-    { id: 'exp_cyber', name: 'SecOps Emerald', primary: '#059669', secondary: '#065f46', accent: '#38bdf8', background: '#041a14', skinOrChassis: '#10b981' },
-    { id: 'exp_crimson', name: 'Adversary Ruby', primary: '#e11d48', secondary: '#881337', accent: '#fde047', background: '#1f0610', skinOrChassis: '#f43f5e' },
-    { id: 'exp_cobalt', name: 'Architect Cobalt', primary: '#2563eb', secondary: '#1e3a8a', accent: '#67e8f9', background: '#07132b', skinOrChassis: '#3b82f6' },
-    { id: 'hum_founder', name: 'Founder Violet', primary: '#7c3aed', secondary: '#4c1d95', accent: '#c084fc', background: '#160d29', skinOrChassis: '#f3c6a5' },
-    { id: 'hum_ops', name: 'Ops Cyan', primary: '#0284c7', secondary: '#0369a1', accent: '#38bdf8', background: '#081c29', skinOrChassis: '#eab68c' },
-    { id: 'hum_product', name: 'Product Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#071f18', skinOrChassis: '#c68b59' },
-    { id: 'hum_analyst', name: 'Analyst Amber', primary: '#d97706', secondary: '#92400e', accent: '#fcd34d', background: '#211305', skinOrChassis: '#f5d0b5' },
-    { id: 'hum_qa', name: 'QA Rose', primary: '#e11d48', secondary: '#9f1239', accent: '#fda4af', background: '#240812', skinOrChassis: '#8d5524' },
-    { id: 'hum_sales', name: 'Sales Indigo', primary: '#4f46e5', secondary: '#312e81', accent: '#818cf8', background: '#0c0a24', skinOrChassis: '#f1c27d' }
+    { id: 'coding_cyan', name: 'Coding Cyan', primary: '#0284c7', secondary: '#22d3ee', accent: '#f59e0b', background: '#071524', skinOrChassis: '#38bdf8' },
+    { id: 'lila_toxic', name: 'Lila Toxic', primary: '#6d28d9', secondary: '#c084fc', accent: '#baff29', background: '#110622', skinOrChassis: '#7c3aed' },
+    { id: 'ninja_stealth', name: 'Ninja Stealth', primary: '#334155', secondary: '#94a3b8', accent: '#c084fc', background: '#0d0b18', skinOrChassis: '#475569' },
+    { id: 'orch_violet', name: 'Orchestrator Violet', primary: '#6d28d9', secondary: '#c084fc', accent: '#e879f9', background: '#110926', skinOrChassis: '#8b5cf6' },
+    { id: 'red_adversary', name: 'Red Team Crimson', primary: '#dc2626', secondary: '#f87171', accent: '#fbbf24', background: '#1c080a', skinOrChassis: '#ef4444' },
+    { id: 'figma_emerald', name: 'Emerald Matrix', primary: '#059669', secondary: '#34d399', accent: '#38bdf8', background: '#051812', skinOrChassis: '#10b981' },
+    { id: 'voice_amber', name: 'Solar Gold', primary: '#d97706', secondary: '#fbbf24', accent: '#a855f7', background: '#191105', skinOrChassis: '#f59e0b' },
+    { id: 'happy_pink', name: 'Joy Magenta', primary: '#db2777', secondary: '#f472b6', accent: '#fef08a', background: '#26081c', skinOrChassis: '#ec4899' },
+    { id: 'exp_sovereign', name: 'Sovereign Gold', primary: '#7c3aed', secondary: '#c084fc', accent: '#fbbf24', background: '#120924', skinOrChassis: '#8b5cf6' },
+    { id: 'exp_cyber', name: 'SecOps Emerald', primary: '#059669', secondary: '#34d399', accent: '#38bdf8', background: '#041a14', skinOrChassis: '#10b981' },
+    { id: 'exp_crimson', name: 'Adversary Ruby', primary: '#e11d48', secondary: '#fb7185', accent: '#fde047', background: '#1f0610', skinOrChassis: '#f43f5e' },
+    { id: 'exp_cobalt', name: 'Obsidian Indigo', primary: '#4f46e5', secondary: '#818cf8', accent: '#ec4899', background: '#090d1c', skinOrChassis: '#6366f1' },
+    { id: 'hum_founder', name: 'Founder Violet', primary: '#7c3aed', secondary: '#38bdf8', accent: '#c084fc', background: '#160d29', skinOrChassis: '#f3c6a5' },
+    { id: 'hum_ops', name: 'Ops Cyan', primary: '#2563eb', secondary: '#22d3ee', accent: '#38bdf8', background: '#081c29', skinOrChassis: '#eab68c' },
+    { id: 'hum_product', name: 'Product Emerald', primary: '#059669', secondary: '#34d399', accent: '#6ee7b7', background: '#071f18', skinOrChassis: '#c68b59' },
+    { id: 'hum_analyst', name: 'Analyst Amber', primary: '#d97706', secondary: '#fbbf24', accent: '#38bdf8', background: '#211305', skinOrChassis: '#f5d0b5' },
+    { id: 'hum_qa', name: 'QA Rose', primary: '#e11d48', secondary: '#fb7185', accent: '#fda4af', background: '#240812', skinOrChassis: '#8d5524' },
+    { id: 'hum_sales', name: 'Sales Indigo', primary: '#4f46e5', secondary: '#818cf8', accent: '#f59e0b', background: '#0c0a24', skinOrChassis: '#f1c27d' }
   ];
 
   var PALETTES = {
@@ -422,9 +444,153 @@
       accessoryBadge: 'crm_shield',
       palette: ALL_PALETTES[12]
     },
+    lila_agent2: {
+      presetId: 'lila_agent2',
+      svgFile: '/pfp/lila_agent2.svg',
+      entityKind: 'agent',
+      title: 'LILA PRIME // HEX CORE',
+      background: 'deep_space',
+      body: 'robot_chassis',
+      chest: 'mesh_emblem',
+      eyes: 'cyber_optic',
+      headwear: 'cyber_horns',
+      accessoryBadge: 'ai_spark',
+      palette: ALL_PALETTES[1]
+    },
+    man1: {
+      presetId: 'man1',
+      svgFile: '/pfp/man1.svg',
+      entityKind: 'human',
+      title: 'FULLSTACK ENGINEER // LAPTOP',
+      background: 'cyber_grid',
+      body: 'hoodie',
+      chest: 'laptop',
+      eyes: 'normal',
+      headwear: 'headset',
+      accessoryBadge: 'code_brackets',
+      palette: ALL_PALETTES[13]
+    },
+    man2: {
+      presetId: 'man2',
+      svgFile: '/pfp/man2.svg',
+      entityKind: 'human',
+      title: 'SYSTEMS ARCHITECT // TABLET',
+      background: 'geometric',
+      body: 'turtleneck',
+      chest: 'tablet_chart',
+      eyes: 'glasses',
+      headwear: 'curly_hair',
+      accessoryBadge: 'devops_gear',
+      palette: ALL_PALETTES[15]
+    },
+    man3: {
+      presetId: 'man3',
+      svgFile: '/pfp/man3.svg',
+      entityKind: 'human',
+      title: 'RED TEAM OPERATOR // EXPLOIT',
+      background: 'matrix_rain',
+      body: 'trench_coat',
+      chest: 'laptop',
+      eyes: 'evil_slits',
+      headwear: 'fedora',
+      accessoryBadge: 'security_lock',
+      palette: ALL_PALETTES[4]
+    },
+    man4: {
+      presetId: 'man4',
+      svgFile: '/pfp/man4.svg',
+      entityKind: 'human',
+      title: 'NETRUNNER // CYBER VISOR',
+      background: 'deep_space',
+      body: 'trench_coat',
+      chest: 'reactor_core',
+      eyes: 'hud_visor',
+      headwear: 'fedora',
+      accessoryBadge: 'ai_spark',
+      palette: ALL_PALETTES[0]
+    },
+    man6: {
+      presetId: 'man6',
+      svgFile: '/pfp/man6.svg',
+      entityKind: 'human',
+      title: 'STAFF SRE // INFRA FORGE',
+      background: 'solid_mesh',
+      body: 'plaid_shirt',
+      chest: 'pocket',
+      eyes: 'focused',
+      headwear: 'man_bun',
+      accessoryBadge: 'devops_gear',
+      palette: ALL_PALETTES[14]
+    },
+    man7: {
+      presetId: 'man7',
+      svgFile: '/pfp/man7.svg',
+      entityKind: 'human',
+      title: 'AUDIO / ML ENGINEER',
+      background: 'pastel_dots',
+      body: 'hoodie',
+      chest: 'neck_headphones',
+      eyes: 'sunglasses',
+      headwear: 'beanie',
+      accessoryBadge: 'ai_spark',
+      palette: ALL_PALETTES[17]
+    },
+    woman1: {
+      presetId: 'woman1',
+      svgFile: '/pfp/woman1.svg',
+      entityKind: 'human',
+      title: 'LEAD FRONTEND // DESIGN SYS',
+      background: 'mesh_gradient',
+      body: 'lab_coat',
+      chest: 'laptop',
+      eyes: 'happy',
+      headwear: 'ponytail',
+      accessoryBadge: 'code_brackets',
+      palette: ALL_PALETTES[12]
+    },
+    woman5: {
+      presetId: 'woman5',
+      svgFile: '/pfp/woman5.svg',
+      entityKind: 'human',
+      title: 'GROWTH DIRECTOR // DEMAND',
+      background: 'pastel_dots',
+      body: 'suit',
+      chest: 'rocket_badge',
+      eyes: 'wink',
+      headwear: 'ponytail',
+      accessoryBadge: 'marketing_megaphone',
+      palette: ALL_PALETTES[16]
+    },
+    woman6: {
+      presetId: 'woman6',
+      svgFile: '/pfp/woman6.svg',
+      entityKind: 'human',
+      title: 'PRINCIPAL RESEARCHER // AI',
+      background: 'deep_space',
+      body: 'lab_coat',
+      chest: 'pocket',
+      eyes: 'glasses',
+      headwear: 'braid_flower',
+      accessoryBadge: 'ai_spark',
+      palette: ALL_PALETTES[14]
+    },
+    sales2: {
+      presetId: 'sales2',
+      svgFile: '/pfp/sales2.svg',
+      entityKind: 'human',
+      title: 'VP REVENUE // CLOSER',
+      background: 'geometric',
+      body: 'suit',
+      chest: 'vault_coin',
+      eyes: 'sunglasses',
+      headwear: 'afro',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[15]
+    },
     kitsune_mascot: {
       presetId: 'kitsune_mascot',
       entityKind: 'creature',
+      species: 'fox',
       title: 'KITSUNE-09 // CYBER FOX',
       background: 'deep_space',
       body: 'lab_coat',
@@ -437,6 +603,7 @@
     drake_mascot: {
       presetId: 'drake_mascot',
       entityKind: 'creature',
+      species: 'dragon',
       title: 'DRAKE-01 // WYRM DRAGON',
       background: 'geometric',
       body: 'cyber_armor',
@@ -449,6 +616,7 @@
     fenrir_wolf: {
       presetId: 'fenrir_wolf',
       entityKind: 'creature',
+      species: 'wolf',
       title: 'FENRIR-7 // DIRE WOLF',
       background: 'cyber_grid',
       body: 'robot_chassis',
@@ -461,6 +629,7 @@
     kodiak_bear: {
       presetId: 'kodiak_bear',
       entityKind: 'creature',
+      species: 'bear',
       title: 'KODIAK-88 // IRON GRIZZLY',
       background: 'solid_mesh',
       body: 'hoodie',
@@ -473,6 +642,7 @@
     chronos_owl: {
       presetId: 'chronos_owl',
       entityKind: 'creature',
+      species: 'owl',
       title: 'ATHENA-12 // NIGHT OWL',
       background: 'pastel_dots',
       body: 'suit',
@@ -485,6 +655,7 @@
     kraken_octo: {
       presetId: 'kraken_octo',
       entityKind: 'creature',
+      species: 'kraken',
       title: 'KRAKEN-99 // DEEP CTHULHU',
       background: 'matrix_rain',
       body: 'turtleneck',
@@ -497,6 +668,7 @@
     minotaur_bull: {
       presetId: 'minotaur_bull',
       entityKind: 'creature',
+      species: 'bull',
       title: 'TAURUS-04 // BULL BREAKER',
       background: 'mesh_gradient',
       body: 'casual_tee',
@@ -536,6 +708,7 @@
       presetId: presetId,
       title: rawTitle.toUpperCase(),
       entityKind: spec.entityKind || 'agent',
+      species: spec.species || undefined,
       background: spec.background,
       body: spec.body,
       chest: spec.chest,
@@ -791,7 +964,7 @@
       ].join('_');
     }
 
-    var baseId = [
+    var parts = [
       'pfp1',
       kindCode,
       'c' + bgIdx,
@@ -801,7 +974,14 @@
       'h' + headIdx,
       'a' + accIdx,
       palToken
-    ].join('-');
+    ];
+
+    if (s.entityKind === 'creature' && s.species) {
+      var spIdx = Math.max(0, CREATURE_SPECIES_VALUES.indexOf(s.species));
+      parts.push('s' + spIdx);
+    }
+
+    var baseId = parts.join('-');
 
     var nameTag = optionalNameSlug || s.displayName || '';
     if (nameTag) {
@@ -821,14 +1001,15 @@
     if (!idString || typeof idString !== 'string') return null;
     var raw = decodeURIComponent(idString.trim()).replace(/\.svg$/i, '');
 
-    // Check if it matches a named preset in PRESET_CATALOG
-    if (PRESET_CATALOG[raw]) {
-      var preset = PRESET_CATALOG[raw];
+    var allPresets = getAllPresets();
+    if (allPresets[raw]) {
+      var preset = allPresets[raw];
       return {
         avatarId: preset.presetId,
         seed: preset.presetId,
         presetId: preset.presetId,
         entityKind: preset.entityKind,
+        species: preset.species || undefined,
         displayName: preset.title,
         background: preset.background,
         body: preset.body,
@@ -860,7 +1041,8 @@
     var eyesIdx = parseInt(tokens[5].replace('e', ''), 10) || 0;
     var headIdx = parseInt(tokens[6].replace('h', ''), 10) || 0;
     var accIdx = parseInt(tokens[7].replace('a', ''), 10) || 0;
-    var palToken = tokens.slice(8).join('-');
+    var palToken = tokens[8] || 'p0';
+    var speciesToken = tokens[9] || '';
 
     var pool = PALETTES[entityKind] || PALETTES.agent;
     var palette = Object.assign({}, pool[0]);
@@ -881,11 +1063,25 @@
       palette = Object.assign({}, pool[pIdx % pool.length]);
     }
 
+    var species = undefined;
+    if (entityKind === 'creature') {
+      if (speciesToken && speciesToken.indexOf('s') === 0) {
+        var sIdx = parseInt(speciesToken.slice(1), 10) || 0;
+        species = CREATURE_SPECIES_VALUES[sIdx % CREATURE_SPECIES_VALUES.length];
+      } else if (/^cr[0-6]$/.test(tokens[1])) {
+        var cIdx = parseInt(tokens[1].slice(2), 10) || 0;
+        species = CREATURE_SPECIES_VALUES[cIdx % CREATURE_SPECIES_VALUES.length];
+      } else {
+        species = CREATURE_SPECIES_VALUES[fnv1aHash(raw) % CREATURE_SPECIES_VALUES.length];
+      }
+    }
+
     var spec = {
       avatarId: raw,
       seed: raw,
       compactId: raw,
       entityKind: entityKind,
+      species: species,
       displayName: nameSlug || undefined,
       background: BACKGROUND_VALUES[bgIdx % BACKGROUND_VALUES.length],
       body: BODY_VALUES[bodyIdx % BODY_VALUES.length],
@@ -930,27 +1126,28 @@
     var basePalette = palettePool[Math.floor(rng() * palettePool.length) % palettePool.length];
 
     var bodyPool = kind === 'human'
-      ? ['hoodie', 'suit', 'casual_tee', 'lab_coat', 'turtleneck']
-      : ['robot_chassis', 'cyber_armor', 'suit', 'hoodie', 'lab_coat', 'casual_tee'];
+      ? ['hoodie', 'suit', 'casual_tee', 'lab_coat', 'turtleneck', 'trench_coat', 'plaid_shirt']
+      : ['cyber_armor', 'robot_chassis', 'suit', 'hoodie', 'lab_coat', 'turtleneck', 'casual_tee', 'trench_coat'];
 
     var eyePool = kind === 'human'
-      ? ['normal', 'focused', 'happy', 'glasses', 'sunglasses', 'wink']
-      : ['cyber_optic', 'terminal_glow', 'laser', 'focused', 'normal', 'happy'];
+      ? ['normal', 'focused', 'happy', 'glasses', 'sunglasses', 'wink', 'hud_visor']
+      : ['cyber_optic', 'terminal_glow', 'laser', 'focused', 'sunglasses', 'glasses', 'normal', 'happy', 'wink', 'hud_visor', 'cursor_arrows'];
 
     var headwearPool = kind === 'human'
-      ? ['none', 'cap', 'headset', 'beanie', 'fedora', 'beret']
+      ? ['none', 'cap', 'headset', 'beanie', 'fedora', 'beret', 'ponytail', 'braid_flower', 'afro', 'man_bun', 'curly_hair']
       : kind === 'creature'
-        ? ['none', 'crown', 'halo', 'cyber_visor', 'cyber_helmet', 'headset', 'fedora']
-        : ['none', 'cyber_visor', 'cyber_helmet', 'headset', 'halo', 'crown', 'beret'];
+        ? ['none', 'crown', 'halo', 'cyber_visor', 'cyber_helmet', 'headset', 'fedora', 'cap', 'beanie']
+        : ['crown', 'halo', 'cyber_visor', 'cyber_helmet', 'headset', 'fedora', 'cap', 'beanie', 'beret', 'ninja_headband', 'cyber_horns', 'browser_header', 'none'];
 
     var chestPool = kind === 'human'
-      ? ['none', 'tie', 'necklace', 'pocket', 'mesh_emblem', 'harness']
-      : ['mesh_emblem', 'reactor_core', 'harness', 'tie', 'pocket'];
+      ? ['none', 'tie', 'necklace', 'pocket', 'mesh_emblem', 'harness', 'laptop', 'tablet_chart', 'rocket_badge', 'shield_check', 'neck_headphones']
+      : ['mesh_emblem', 'reactor_core', 'harness', 'tie', 'pocket', 'necklace', 'bow_tie', 'laptop', 'vault_coin', 'shield_check'];
 
     var spec = {
       avatarId: 'pfp-' + seedStr.replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 48),
       seed: seedStr,
       entityKind: kind,
+      species: kind === 'creature' ? pick(rng, CREATURE_SPECIES_VALUES) : undefined,
       headwear: pick(rng, headwearPool),
       eyes: pick(rng, eyePool),
       body: pick(rng, bodyPool),
@@ -975,6 +1172,7 @@
       if (CHEST_VALUES.indexOf(overrides.chest) !== -1) spec.chest = overrides.chest;
       if (BACKGROUND_VALUES.indexOf(overrides.background) !== -1) spec.background = overrides.background;
       if (ACCESSORY_VALUES.indexOf(overrides.accessoryBadge) !== -1) spec.accessoryBadge = overrides.accessoryBadge;
+      if (CREATURE_SPECIES_VALUES.indexOf(overrides.species) !== -1) spec.species = overrides.species;
       if (overrides.entityKind) spec.entityKind = overrides.entityKind;
       if (overrides.displayName) spec.displayName = overrides.displayName;
       if (overrides.palette && typeof overrides.palette === 'object') {
@@ -987,821 +1185,710 @@
   }
 
   // ---------------------------------------------------------------------------
-  // AUTHENTIC COMIC-BUST SVG LAYER RENDERERS (EXTRACTED FROM public/pfp/*.svg)
+  // AUTHENTIC 400x400 COMIC-BUST SVG LAYER RENDERERS
   // ---------------------------------------------------------------------------
 
   function renderBackgroundLayer(spec, uid, lod) {
     var p = spec.palette;
     var bg = spec.background;
-    var parts = [];
-
-    // Authentic 500x500 inner comic frame + radial glow + halftone dots from coding_agent.svg / lila_agent.svg
-    parts.push('<rect width="500" height="500" rx="40" fill="url(#' + uid + '-bg)" stroke="' + escapeXml(p.primary) + '" stroke-width="2"/>');
-    parts.push('<circle cx="250" cy="230" r="165" fill="' + escapeXml(p.primary) + '" opacity="0.18" filter="url(#' + uid + '-glow)"/>');
+    var parts = [
+      '<rect width="400" height="400" fill="' + escapeXml(p.background) + '"/>',
+      '<circle cx="200" cy="170" r="190" fill="url(#' + uid + '-bgGlow)"/>'
+    ];
 
     if (lod !== 'micro') {
-      // Authentic comic halftone clusters
-      parts.push(
-        '<g opacity="0.52">' +
-          '<circle cx="384" cy="136" r="112" fill="url(#' + uid + '-ht)"/>' +
-          '<circle cx="96" cy="334" r="76" fill="url(#' + uid + '-ht)"/>' +
-        '</g>'
-      );
-
-      if (bg === 'cyber_grid') {
+      if (bg === 'mesh_gradient') {
         parts.push(
-          '<g stroke="' + escapeXml(p.accent) + '" stroke-width="1.5" opacity="0.22">' +
-            '<line x1="0" y1="120" x2="500" y2="120"/><line x1="0" y1="200" x2="500" y2="200"/>' +
-            '<line x1="0" y1="280" x2="500" y2="280"/><line x1="0" y1="360" x2="500" y2="360"/>' +
-            '<line x1="120" y1="0" x2="60" y2="500"/><line x1="250" y1="0" x2="250" y2="500"/>' +
-            '<line x1="380" y1="0" x2="440" y2="500"/>' +
-          '</g>'
+          '<circle cx="320" cy="110" r="82" fill="url(#' + uid + '-dots)" opacity="0.55"/>' +
+          '<circle cx="80" cy="310" r="64" fill="url(#' + uid + '-dots)" opacity="0.45"/>'
+        );
+      } else if (bg === 'cyber_grid') {
+        parts.push(
+          '<g stroke="' + escapeXml(p.secondary) + '" stroke-opacity="0.22" stroke-width="2">' +
+            '<line x1="0" y1="80" x2="400" y2="80"/><line x1="0" y1="160" x2="400" y2="160"/>' +
+            '<line x1="0" y1="240" x2="400" y2="240"/><line x1="0" y1="320" x2="400" y2="320"/>' +
+            '<line x1="80" y1="0" x2="80" y2="400"/><line x1="160" y1="0" x2="160" y2="400"/>' +
+            '<line x1="240" y1="0" x2="240" y2="400"/><line x1="320" y1="0" x2="320" y2="400"/>' +
+          '</g>' +
+          '<circle cx="200" cy="200" r="172" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-opacity="0.42" stroke-width="3" stroke-dasharray="14 10"/>'
         );
       } else if (bg === 'matrix_rain') {
         parts.push(
-          '<g stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-linecap="round" opacity="0.35">' +
-            '<line x1="92" y1="45" x2="92" y2="135" stroke-dasharray="10 14"/>' +
-            '<line x1="154" y1="20" x2="154" y2="110" stroke-dasharray="6 12"/>' +
-            '<line x1="354" y1="35" x2="354" y2="145" stroke-dasharray="12 14"/>' +
-            '<line x1="412" y1="70" x2="412" y2="180" stroke-dasharray="8 12"/>' +
+          '<g fill="' + escapeXml(p.secondary) + '" fill-opacity="0.32" font-family="monospace" font-size="22" font-weight="900">' +
+            '<text x="42" y="75">01</text><text x="42" y="105">10</text><text x="42" y="135">11</text>' +
+            '<text x="95" y="60">1</text><text x="95" y="90">0</text><text x="95" y="120">1</text>' +
+            '<text x="295" y="75">10</text><text x="295" y="105">01</text><text x="295" y="135">11</text>' +
+            '<text x="335" y="65">0</text><text x="335" y="95">1</text>' +
           '</g>'
-        );
-      } else if (bg === 'geometric') {
-        parts.push(
-          '<polygon points="250,36 436,140 436,340 250,444 64,340 64,140" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="2.5" stroke-dasharray="12 8" opacity="0.3"/>'
         );
       } else if (bg === 'deep_space') {
         parts.push(
-          '<ellipse cx="250" cy="240" rx="195" ry="72" transform="rotate(-22 250 240)" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="2.5" opacity="0.32"/>'
+          '<circle cx="70" cy="86" r="4" fill="#ffffff" opacity="0.85"/>' +
+          '<circle cx="330" cy="74" r="5.5" fill="' + escapeXml(p.accent) + '" opacity="0.9"/>' +
+          '<circle cx="345" cy="160" r="3.5" fill="#ffffff" opacity="0.75"/>' +
+          '<circle cx="55" cy="220" r="4" fill="' + escapeXml(p.secondary) + '" opacity="0.8"/>' +
+          '<ellipse cx="200" cy="200" rx="168" ry="68" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-opacity="0.32" stroke-width="3" transform="rotate(-22 200 200)"/>'
+        );
+      } else if (bg === 'geometric') {
+        parts.push(
+          '<polygon points="200,22 366,118 366,282 200,378 34,282 34,118" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-opacity="0.38" stroke-width="4"/>' +
+          '<polygon points="200,46 340,300 60,300" fill="' + escapeXml(p.secondary) + '" fill-opacity="0.1"/>'
+        );
+      } else if (bg === 'pastel_dots') {
+        parts.push(
+          '<circle cx="310" cy="115" r="95" fill="url(#' + uid + '-dots)" opacity="0.75"/>' +
+          '<circle cx="88" cy="295" r="78" fill="url(#' + uid + '-dots)" opacity="0.65"/>'
         );
       } else if (bg === 'solid_mesh') {
-        // Broadcast pulse waves from orchestrator_agent.svg
         parts.push(
-          '<g fill="none" stroke="' + escapeXml(p.accent) + '" stroke-linecap="round" opacity="0.4">' +
-            '<path d="M 92,155 A 170,170 0 0,1 408,155" stroke-width="4" stroke-dasharray="10 12"/>' +
-            '<path d="M 68,125 A 205,205 0 0,1 432,125" stroke-width="3" stroke-dasharray="6 14"/>' +
+          '<g fill="none" stroke="' + escapeXml(p.accent) + '" stroke-linecap="round" opacity="0.38">' +
+            '<path d="M 64,130 A 150,150 0 0,1 336,130" stroke-width="4" stroke-dasharray="10 12"/>' +
+            '<path d="M 44,104 A 180,180 0 0,1 356,104" stroke-width="3" stroke-dasharray="6 14"/>' +
           '</g>'
         );
       }
-
-      // Authentic comic speed lines (top-right, from coding_agent.svg)
-      parts.push(
-        '<g stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-linecap="round" opacity="0.5">' +
-          '<line x1="292" y1="70" x2="316" y2="52"/>' +
-          '<line x1="300" y1="86" x2="326" y2="72"/>' +
-          '<line x1="304" y1="104" x2="330" y2="94"/>' +
-        '</g>'
-      );
     }
-
     return parts.join('');
   }
 
-  function renderChestEmblem(spec, uid, isHuman) {
+  function renderBodyOutfitLayer(spec, uid, lod) {
+    var p = spec.palette;
+    var b = spec.body;
+    var parts = ['<ellipse cx="200" cy="374" rx="105" ry="16" fill="#000000" opacity="0.45"/>'];
+
+    // Optional Katana behind right shoulder for ninja_headband or ninja_agent
+    if (lod !== 'micro' && (spec.headwear === 'ninja_headband' || spec.presetId === 'ninja_agent')) {
+      parts.push(
+        '<g transform="rotate(26, 255, 220)">' +
+          '<rect x="250" y="96" width="16" height="72" rx="4" fill="#0f172a" stroke="#000000" stroke-width="7"/>' +
+          '<path d="M 252,112 L 264,120 M 252,130 L 264,138 M 252,148 L 264,156" stroke="' + escapeXml(p.accent) + '" stroke-width="3"/>' +
+          '<rect x="240" y="164" width="36" height="9" rx="3" fill="#eab308" stroke="#000000" stroke-width="5"/>' +
+        '</g>'
+      );
+    }
+
+    if (b === 'cyber_armor') {
+      parts.push(
+        '<path d="M 84,395 C 92,295 132,256 200,256 C 268,256 308,295 316,395 Z" fill="url(#' + uid + '-bodyGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<path d="M 68,385 L 104,274 L 154,292 L 132,395 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<path d="M 332,385 L 296,274 L 246,292 L 268,395 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<path d="M 140,262 L 200,312 L 260,262" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+      );
+    } else if (b === 'robot_chassis') {
+      parts.push(
+        '<path d="M 112,262 C 92,304 106,368 200,392 C 294,368 308,304 288,262 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<path d="M 108,278 C 86,292 80,322 92,338 C 106,352 118,330 118,312" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linecap="round"/>' +
+        '<path d="M 292,278 C 314,292 320,322 308,338 C 294,352 282,330 282,312" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="232" y1="305" x2="268" y2="305" stroke="#081b2e" stroke-width="5" stroke-linecap="round"/>' +
+        '<line x1="226" y1="322" x2="268" y2="322" stroke="#081b2e" stroke-width="5" stroke-linecap="round"/>'
+      );
+    } else if (b === 'suit') {
+      parts.push(
+        '<path d="M 92,395 C 102,298 138,262 172,254 L 228,254 C 262,262 298,298 308,395 Z" fill="#131c2e" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<polygon points="172,254 200,324 228,254" fill="#f8fafc" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+        '<path d="M 168,254 L 194,322 L 166,348 L 138,284 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+        '<path d="M 232,254 L 206,322 L 234,348 L 262,284 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>'
+      );
+    } else if (b === 'lab_coat') {
+      parts.push(
+        '<path d="M 92,395 C 102,298 138,262 172,254 L 228,254 C 262,262 298,298 308,395 Z" fill="#e2e8f0" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<polygon points="168,254 200,368 232,254" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="6"/>' +
+        '<path d="M 164,254 L 188,332 L 146,332 Z" fill="#ffffff" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+        '<path d="M 236,254 L 212,332 L 254,332 Z" fill="#ffffff" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>'
+      );
+    } else if (b === 'hoodie') {
+      parts.push(
+        '<path d="M 90,395 C 100,296 138,260 172,254 L 228,254 C 262,260 300,296 310,395 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<path d="M 156,254 C 172,284 228,284 244,254 Z" fill="#1e293b" stroke="#000000" stroke-width="7"/>' +
+        '<line x1="184" y1="274" x2="184" y2="328" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<line x1="216" y1="274" x2="216" y2="328" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<circle cx="184" cy="332" r="5" fill="' + escapeXml(p.accent) + '"/>' +
+        '<circle cx="216" cy="332" r="5" fill="' + escapeXml(p.accent) + '"/>'
+      );
+    } else if (b === 'turtleneck') {
+      parts.push(
+        '<path d="M 94,395 C 104,298 140,262 174,254 L 226,254 C 260,262 296,298 306,395 Z" fill="#151b2e" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<rect x="166" y="238" width="68" height="28" rx="10" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="7"/>'
+      );
+    } else if (b === 'trench_coat') {
+      parts.push(
+        '<path d="M 86,395 C 96,292 134,254 168,248 L 232,248 C 266,254 304,292 314,395 Z" fill="#0f172a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<polygon points="170,250 200,350 230,250" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="6"/>' +
+        '<path d="M 152,236 L 188,332 L 132,338 L 128,266 Z" fill="#1e293b" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<path d="M 248,236 L 212,332 L 268,338 L 272,266 Z" fill="#1e293b" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<line x1="142" y1="274" x2="174" y2="322" stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-linecap="round"/>' +
+        '<line x1="258" y1="274" x2="226" y2="322" stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-linecap="round"/>'
+      );
+    } else if (b === 'plaid_shirt') {
+      parts.push(
+        '<path d="M 92,395 C 102,298 138,262 172,254 L 228,254 C 262,262 298,298 308,395 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<g stroke="' + escapeXml(p.secondary) + '" stroke-width="4" opacity="0.45">' +
+          '<line x1="140" y1="270" x2="140" y2="390"/><line x1="175" y1="260" x2="175" y2="390"/>' +
+          '<line x1="225" y1="260" x2="225" y2="390"/><line x1="260" y1="270" x2="260" y2="390"/>' +
+          '<line x1="105" y1="305" x2="295" y2="305"/><line x1="98" y1="345" x2="302" y2="345"/>' +
+        '</g>' +
+        '<polygon points="164,250 194,284 152,290" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+        '<polygon points="236,250 206,284 248,290" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>'
+      );
+    } else {
+      parts.push(
+        '<path d="M 94,395 C 104,298 140,262 174,254 L 226,254 C 260,262 296,298 306,395 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<path d="M 168,254 Q 200,284 232,254" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>'
+      );
+    }
+    return parts.join('');
+  }
+
+  function renderChestEmblem(spec) {
     var p = spec.palette;
     var ch = spec.chest;
-    if (ch === 'none') return '';
-
-    var yOffset = isHuman ? 124 : 80;
+    if (!ch || ch === 'none') return '';
 
     if (ch === 'mesh_emblem') {
-      // Authentic 3D Isometric Extruded JiMesh Cube from lila_agent.svg / coding_agent.svg
       return (
-        '<g transform="translate(0, ' + yOffset + ') scale(' + (isHuman ? '0.82' : '0.95') + ')">' +
-          '<circle cx="0" cy="-2" r="34" fill="' + escapeXml(p.accent) + '" opacity="0.22" filter="url(#' + uid + '-glow)"/>' +
-          '<g stroke="#000000" stroke-width="4.5" stroke-linejoin="round">' +
-            '<path d="M 0,-32 L 28,-16 L 0,0 L -28,-16 Z" fill="' + escapeXml(p.accent) + '"/>' +
-            '<path d="M -28,-16 L 0,0 L 0,32 L -28,16 Z" fill="' + escapeXml(p.primary) + '"/>' +
-            '<path d="M 28,-16 L 0,0 L 0,32 L 28,16 Z" fill="' + escapeXml(p.secondary) + '"/>' +
-          '</g>' +
-          '<g stroke="#000000" stroke-width="3" stroke-linejoin="round">' +
-            '<path d="M 0,-17 L 15,-8.5 L 0,0 L -15,-8.5 Z" fill="#ffffff"/>' +
-            '<path d="M -15,-8.5 L 0,0 L 0,17 L -15,8.5 Z" fill="' + escapeXml(p.accent) + '"/>' +
-            '<path d="M 15,-8.5 L 0,0 L 0,17 L 15,8.5 Z" fill="' + escapeXml(p.primary) + '"/>' +
-          '</g>' +
-          '<circle cx="0" cy="-2" r="4" fill="#ffffff"/>' +
+        '<g transform="translate(200, 332) scale(0.24)">' +
+          '<polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.22) translate(0, 6)"/>' +
+          '<polygon points="0,-140 122,-70 0,0 -122,-70" fill="' + escapeXml(p.secondary) + '"/>' +
+          '<polygon points="-122,-70 0,0 0,140 -122,70" fill="' + escapeXml(p.accent) + '"/>' +
+          '<polygon points="0,0 122,-70 122,70 0,140" fill="' + escapeXml(p.primary) + '"/>' +
+          '<polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="16" stroke-linejoin="round"/>' +
         '</g>'
       );
     }
-
     if (ch === 'reactor_core') {
-      // Authentic rotating 4-point Shuriken / Reactor Star from ninja_agent.svg
       return (
-        '<g transform="translate(0, ' + yOffset + ')">' +
-          '<circle cx="0" cy="0" r="26" fill="#090d16" stroke="#000000" stroke-width="6"/>' +
-          '<path d="M 0,-22 L 6,-6 L 22,0 L 6,6 L 0,22 L -6,6 L -22,0 L -6,-6 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4" filter="url(#' + uid + '-glow)">' +
-            '<animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>' +
-          '</path>' +
-          '<circle cx="0" cy="0" r="5" fill="#ffffff"/>' +
-        '</g>'
+        '<circle cx="200" cy="332" r="28" fill="#090d16" stroke="#000000" stroke-width="7"/>' +
+        '<circle cx="200" cy="332" r="20" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-dasharray="8 5"/>' +
+        '<circle cx="200" cy="332" r="12" fill="' + escapeXml(p.secondary) + '"/>' +
+        '<circle cx="200" cy="332" r="5" fill="#ffffff"/>'
       );
     }
-
     if (ch === 'tie') {
-      if (!isHuman) {
-        // Orchestrator Bow-Tie & Dispatch Lines from orchestrator_agent.svg
-        return (
-          '<g transform="translate(0, ' + yOffset + ')">' +
-            '<g stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" opacity="0.85">' +
-              '<line x1="-22" y1="-8" x2="0" y2="28"/><line x1="22" y1="-8" x2="0" y2="28"/><line x1="0" y1="-12" x2="0" y2="28"/>' +
-            '</g>' +
-            '<circle cx="0" cy="28" r="8" fill="#ffffff" stroke="#000000" stroke-width="4"/>' +
-            '<g transform="translate(0, -40)">' +
-              '<polygon points="-24,-12 0,0 -24,12" fill="#e879f9" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>' +
-              '<polygon points="24,-12 0,0 24,12" fill="#e879f9" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>' +
-              '<circle cx="0" cy="0" r="6" fill="#ffffff" stroke="#000000" stroke-width="4"/>' +
-            '</g>' +
-          '</g>'
-        );
-      }
-      // Executive Tie from founder.svg
+      return '<polygon points="192,272 208,272 214,358 200,374 186,358" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>';
+    }
+    if (ch === 'bow_tie') {
       return (
-        '<path d="M -8,72 L 8,72 L 12,150 L 0,166 L -12,150 Z" fill="' + escapeXml(p.accent) + '" stroke="#0a0a0f" stroke-width="4"/>'
+        '<g transform="translate(200, 278)">' +
+          '<polygon points="-26,-12 0,0 -26,12" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>' +
+          '<polygon points="26,-12 0,0 26,12" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>' +
+          '<circle cx="0" cy="0" r="6" fill="#ffffff" stroke="#000000" stroke-width="4"/>' +
+        '</g>'
       );
     }
-
     if (ch === 'harness') {
-      // Tactical Chest Rig + HTTP:200 Status Pill from browser_agent.svg
       return (
-        '<g transform="translate(0, ' + yOffset + ')">' +
-          '<line x1="-36" y1="-48" x2="-18" y2="28" stroke="#000000" stroke-width="9" stroke-linecap="round"/>' +
-          '<line x1="36" y1="-48" x2="18" y2="28" stroke="#000000" stroke-width="9" stroke-linecap="round"/>' +
-          '<rect x="-38" y="-16" width="76" height="32" rx="10" fill="#04151f" stroke="#000000" stroke-width="6"/>' +
-          '<circle cx="-20" cy="0" r="6" fill="#10b981"/>' +
-          '<line x1="-6" y1="-4" x2="24" y2="-4" stroke="' + escapeXml(p.accent) + '" stroke-width="4" stroke-linecap="round"/>' +
-          '<line x1="-6" y1="5" x2="16" y2="5" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>' +
-        '</g>'
+        '<line x1="132" y1="268" x2="262" y2="386" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+        '<line x1="132" y1="268" x2="262" y2="386" stroke="' + escapeXml(p.accent) + '" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="268" y1="268" x2="138" y2="386" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+        '<line x1="268" y1="268" x2="138" y2="386" stroke="' + escapeXml(p.accent) + '" stroke-width="8" stroke-linecap="round"/>' +
+        '<rect x="180" y="316" width="40" height="30" rx="6" fill="#0f172a" stroke="#000000" stroke-width="6"/>'
       );
     }
-
     if (ch === 'pocket') {
-      // Audio Equalizer / Palette Bars from voice_agent.svg
       return (
-        '<g transform="translate(0, ' + yOffset + ')">' +
-          '<rect x="-30" y="-12" width="8" height="24" rx="3" fill="' + escapeXml(p.accent) + '"/>' +
-          '<rect x="-18" y="-20" width="8" height="40" rx="3" fill="' + escapeXml(p.accent) + '"/>' +
-          '<rect x="-6" y="-28" width="8" height="56" rx="3" fill="#ffffff" filter="url(#' + uid + '-glow)"/>' +
-          '<rect x="6" y="-18" width="8" height="36" rx="3" fill="' + escapeXml(p.accent) + '"/>' +
-          '<rect x="18" y="-10" width="8" height="20" rx="3" fill="' + escapeXml(p.accent) + '"/>' +
-        '</g>'
+        '<rect x="222" y="312" width="40" height="42" rx="6" fill="#0f172a" stroke="#000000" stroke-width="6"/>' +
+        '<line x1="234" y1="302" x2="234" y2="320" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<line x1="246" y1="302" x2="246" y2="320" stroke="' + escapeXml(p.secondary) + '" stroke-width="6" stroke-linecap="round"/>'
       );
     }
-
     if (ch === 'necklace') {
       return (
-        '<g transform="translate(0, ' + (isHuman ? 82 : 42) + ')">' +
-          '<path d="M -34,-10 Q 0,24 34,-10" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="5" stroke-linecap="round"/>' +
-          '<polygon points="0,10 12,24 0,38 -12,24" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>' +
+        '<path d="M 158,266 Q 200,328 242,266" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-dasharray="8 6" stroke-linecap="round"/>' +
+        '<circle cx="200" cy="310" r="10" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>'
+      );
+    }
+    if (ch === 'laptop') {
+      return (
+        '<g>' +
+          '<rect x="136" y="302" width="128" height="76" rx="10" fill="#1e293b" stroke="#000000" stroke-width="7"/>' +
+          '<rect x="122" y="372" width="156" height="12" rx="5" fill="#475569" stroke="#000000" stroke-width="6"/>' +
+          '<polygon points="200,322 218,332 218,350 200,360 182,350 182,332" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>' +
         '</g>'
       );
     }
-
+    if (ch === 'tablet_chart') {
+      return (
+        '<g>' +
+          '<rect x="148" y="298" width="104" height="74" rx="10" fill="#090d16" stroke="#000000" stroke-width="7"/>' +
+          '<rect x="164" y="338" width="12" height="20" rx="2" fill="' + escapeXml(p.primary) + '"/>' +
+          '<rect x="184" y="324" width="12" height="34" rx="2" fill="' + escapeXml(p.secondary) + '"/>' +
+          '<rect x="204" y="314" width="12" height="44" rx="2" fill="' + escapeXml(p.accent) + '"/>' +
+          '<polyline points="164,330 190,316 212,324 234,308" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</g>'
+      );
+    }
+    if (ch === 'vault_coin') {
+      return (
+        '<g transform="translate(200, 332)">' +
+          '<circle cx="0" cy="0" r="28" fill="#fbbf24" stroke="#000000" stroke-width="7"/>' +
+          '<circle cx="0" cy="0" r="20" fill="none" stroke="#92400e" stroke-width="3" stroke-dasharray="6 4"/>' +
+          '<text x="0" y="9" fill="#000000" font-family="monospace" font-size="26" font-weight="900" text-anchor="middle">$</text>' +
+        '</g>'
+      );
+    }
+    if (ch === 'rocket_badge') {
+      return (
+        '<g transform="translate(200, 332)">' +
+          '<circle cx="0" cy="0" r="26" fill="#090d16" stroke="#000000" stroke-width="6"/>' +
+          '<path d="M 0,-18 C 10,-8 10,8 0,16 C -10,8 -10,-8 0,-18 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>' +
+          '<polygon points="-8,8 -16,16 -6,14" fill="' + escapeXml(p.primary) + '"/>' +
+          '<polygon points="8,8 16,16 6,14" fill="' + escapeXml(p.primary) + '"/>' +
+          '<circle cx="0" cy="-3" r="4" fill="#ffffff"/>' +
+        '</g>'
+      );
+    }
+    if (ch === 'shield_check') {
+      return (
+        '<g transform="translate(200, 332)">' +
+          '<path d="M 0,-26 L 24,-16 V 4 C 24,18 12,26 0,32 C -12,26 -24,18 -24,4 V -16 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+          '<polyline points="-9,2 -2,10 11,-6" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</g>'
+      );
+    }
+    if (ch === 'neck_headphones') {
+      return (
+        '<g>' +
+          '<path d="M 156,260 C 156,304 244,304 244,260" fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round"/>' +
+          '<ellipse cx="164" cy="278" rx="16" ry="20" transform="rotate(-18 164 278)" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+          '<ellipse cx="236" cy="278" rx="16" ry="20" transform="rotate(18 236 278)" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+        '</g>'
+      );
+    }
     return '';
   }
 
-  function renderAgentBust(spec, uid, lod) {
+  function renderCreatureBackdrop(spec, uid, lod) {
+    if (lod === 'micro' || spec.entityKind !== 'creature') return '';
     var p = spec.palette;
-    var parts = [];
-
-    parts.push('<g transform="translate(250, 240) scale(0.95)">');
-    // Ground hover shadow from coding_agent.svg
-    parts.push('<ellipse cx="0" cy="185" rx="90" ry="18" fill="#000000" opacity="0.55"/>');
-
-    // Katana on back if cyber_armor (from ninja_agent.svg)
-    if (spec.body === 'cyber_armor') {
-      parts.push(
-        '<g transform="rotate(28, 42, -55)">' +
-          '<rect x="44" y="-158" width="14" height="58" rx="4" fill="#0f172a" stroke="#000000" stroke-width="7"/>' +
-          '<path d="M 45,-144 L 57,-136 M 45,-128 L 57,-120 M 45,-112 L 57,-104" stroke="' + escapeXml(p.accent) + '" stroke-width="3"/>' +
-          '<rect x="36" y="-102" width="30" height="8" rx="3" fill="#eab308" stroke="#000000" stroke-width="5"/>' +
+    var sp = spec.species || 'fox';
+    if (sp === 'dragon') {
+      return (
+        '<g stroke="#000000" stroke-width="8" stroke-linejoin="round">' +
+          '<path d="M 155,260 L 42,188 L 68,242 L 48,284 L 92,288 L 148,312 Z" fill="' + escapeXml(p.secondary) + '"/>' +
+          '<path d="M 150,266 L 66,210 L 86,250 L 70,276 L 146,302 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
+          '<path d="M 245,260 L 358,188 L 332,242 L 352,284 L 308,288 L 252,312 Z" fill="' + escapeXml(p.secondary) + '"/>' +
+          '<path d="M 250,266 L 334,210 L 314,250 L 330,276 L 254,302 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
         '</g>'
       );
     }
-
-    // Arms / Grippers / Conductor Baton based on body style
-    if (spec.body === 'suit' && lod !== 'micro') {
-      // Orchestrator Conductor Arms + Glowing Baton from orchestrator_agent.svg
-      parts.push(
-        '<path d="M -52,38 C -92,22 -118,-12 -124,-48" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round"/>' +
-        '<path d="M -52,38 C -92,22 -118,-12 -124,-48" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="8" stroke-linecap="round"/>' +
-        '<circle cx="-124" cy="-52" r="14" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<path d="M 52,38 C 92,22 116,-14 122,-52" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round"/>' +
-        '<path d="M 52,38 C 92,22 116,-14 122,-52" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="8" stroke-linecap="round"/>' +
-        '<circle cx="122" cy="-56" r="14" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<line x1="122" y1="-58" x2="158" y2="-122" stroke="#000000" stroke-width="11" stroke-linecap="round"/>' +
-        '<line x1="122" y1="-58" x2="158" y2="-122" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>' +
-        '<circle cx="160" cy="-125" r="9" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
-      );
-    } else if (spec.body === 'cyber_armor' && lod !== 'micro') {
-      // Armored Claws from lila_agent.svg
-      parts.push(
-        '<path d="M -52,38 C -98,42 -116,4 -112,-28" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round"/>' +
-        '<path d="M -52,38 C -98,42 -116,4 -112,-28" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="8" stroke-linecap="round"/>' +
-        '<circle cx="-112" cy="-32" r="15" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6"/>' +
-        '<path d="M 52,38 C 98,42 116,4 112,-28" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round"/>' +
-        '<path d="M 52,38 C 98,42 116,4 112,-28" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="8" stroke-linecap="round"/>' +
-        '<circle cx="112" cy="-32" r="15" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6"/>'
-      );
-    } else if (spec.body === 'casual_tee' && lod !== 'micro') {
-      // Floating Repulsor Pods from happy_agent.svg
-      parts.push(
-        '<ellipse cx="-102" cy="48" rx="18" ry="12" transform="rotate(-25 -102 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="7"/>' +
-        '<ellipse cx="102" cy="48" rx="18" ry="12" transform="rotate(25 102 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="7"/>'
+    if (sp === 'owl') {
+      return (
+        '<g stroke="#000000" stroke-width="8" stroke-linejoin="round">' +
+          '<path d="M 150,264 C 68,244 48,300 92,344 C 112,328 128,332 148,324 Z" fill="url(#' + uid + '-chassisGrad)"/>' +
+          '<path d="M 250,264 C 332,244 352,300 308,344 C 288,328 272,332 252,324 Z" fill="url(#' + uid + '-chassisGrad)"/>' +
+        '</g>'
       );
     }
-
-    // Authentic Robot Torso & Hover Base from coding_agent.svg
-    parts.push('<path d="M -52,22 C -66,58 -56,118 0,144 C 56,118 66,58 52,22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>');
-    parts.push('<ellipse cx="0" cy="153" rx="56" ry="10" fill="#091526" stroke="#000000" stroke-width="6"/>');
-    parts.push('<ellipse cx="0" cy="153" rx="32" ry="5" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="3"/>');
-
-    // Collar / Outfit accents for hoodie / lab_coat / turtleneck on robot chassis
-    if (spec.body === 'hoodie') {
-      parts.push('<path d="M -38,24 Q 0,48 38,24" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="5" stroke-linecap="round"/>');
-      parts.push('<line x1="-16" y1="34" x2="-16" y2="68" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>');
-      parts.push('<line x1="16" y1="34" x2="16" y2="68" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>');
-    } else if (spec.body === 'lab_coat') {
-      parts.push('<path d="M -28,24 L -10,126 M 28,24 L 10,126" stroke="#ffffff" stroke-width="4" opacity="0.85"/>');
-    }
-
-    // Chest Emblem
-    if (lod !== 'micro') {
-      parts.push(renderChestEmblem(spec, uid, false));
-    }
-
-    // Headwear / Antennas BEHIND or ON TOP of Head
-    var hw = spec.headwear;
-    if (hw === 'none' || hw === 'beret' || hw === 'cap') {
-      // Classic Central Beacon Antenna from coding_agent.svg
-      parts.push(
-        '<line x1="0" y1="-85" x2="0" y2="-140" stroke="#000000" stroke-width="12" stroke-linecap="round"/>' +
-        '<circle cx="0" cy="-155" r="24" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="9" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="-7" cy="-162" r="6" fill="#ffffff" opacity="0.9"/>'
-      );
-    } else if (hw === 'cyber_visor') {
-      // Dual Angled Toxic/Sensor Horn Beacons from lila_agent.svg / browser_agent.svg
-      parts.push(
-        '<line x1="-38" y1="-88" x2="-64" y2="-142" stroke="#000000" stroke-width="11" stroke-linecap="round"/>' +
-        '<circle cx="-68" cy="-150" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="-73" cy="-155" r="5" fill="#ffffff"/>' +
-        '<line x1="38" y1="-88" x2="64" y2="-142" stroke="#000000" stroke-width="11" stroke-linecap="round"/>' +
-        '<circle cx="68" cy="-150" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="63" cy="-155" r="5" fill="#ffffff"/>'
-      );
-    } else if (hw === 'halo') {
-      // Audio Wave / Angelic Halo from voice_agent.svg
-      parts.push(
-        '<ellipse cx="0" cy="-148" rx="62" ry="16" fill="none" stroke="#000000" stroke-width="11"/>' +
-        '<ellipse cx="0" cy="-148" rx="62" ry="16" fill="none" stroke="#fde047" stroke-width="6" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="0" cy="-120" r="16" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7"/>'
+    if (sp === 'kraken') {
+      return (
+        '<g stroke="#000000" stroke-width="8" stroke-linecap="round" fill="none">' +
+          '<path d="M 148,306 C 76,316 52,252 92,216 C 112,200 126,226 108,246" stroke="' + escapeXml(p.primary) + '" stroke-width="16"/>' +
+          '<path d="M 148,306 C 76,316 52,252 92,216" stroke="#000000" stroke-width="7"/>' +
+          '<path d="M 252,306 C 324,316 348,252 308,216 C 288,200 274,226 292,246" stroke="' + escapeXml(p.primary) + '" stroke-width="16"/>' +
+          '<path d="M 252,306 C 324,316 348,252 308,216" stroke="#000000" stroke-width="7"/>' +
+        '</g>'
       );
     }
-
-    // Authentic Lateral Ear Pods from coding_agent.svg (or Headset Cups from voice_agent.svg)
-    if (hw === 'headset') {
-      parts.push(
-        '<rect x="-104" y="-62" width="24" height="50" rx="11" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8"/>' +
-        '<rect x="80" y="-62" width="24" height="50" rx="11" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8"/>' +
-        '<path d="M 85,-35 L 45,5 L 18,5" fill="none" stroke="#000000" stroke-width="7.5" stroke-linecap="round"/>' +
-        '<circle cx="14" cy="5" r="7" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="3" filter="url(#' + uid + '-glow)"/>'
-      );
-    } else {
-      parts.push(
-        '<circle cx="-84" cy="-34" r="15" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8.5"/>' +
-        '<circle cx="-84" cy="-34" r="4" fill="' + escapeXml(p.accent) + '"/>' +
-        '<circle cx="84" cy="-34" r="15" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8.5"/>' +
-        '<circle cx="84" cy="-34" r="4" fill="' + escapeXml(p.accent) + '"/>'
-      );
-    }
-
-    // Authentic Robot Head Chassis & Crest Plate from coding_agent.svg
-    parts.push('<rect x="-86" y="-95" width="172" height="120" rx="60" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>');
-    parts.push('<path d="M -36 -95 L 36 -95 L 36 -55 L -36 -55 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7.5"/>');
-
-    // Authentic Visor Screen from coding_agent.svg
-    parts.push('<rect x="-65" y="-55" width="130" height="62" rx="18" fill="#04151f" stroke="#000000" stroke-width="8"/>');
-
-    // Visor Eyes & Expression
-    var eyes = spec.eyes;
-    if (eyes === 'terminal_glow') {
-      // `< >` Syntax Brackets from coding_agent.svg
-      parts.push(
-        '<path d="M -18,-36 L -38,-24 L -18,-12" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" filter="url(#' + uid + '-glow)"/>' +
-        '<path d="M 18,-36 L 38,-24 L 18,-12" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" filter="url(#' + uid + '-glow)"/>' +
-        '<path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#04151f" stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linejoin="round"/>'
-      );
-    } else if (eyes === 'cyber_optic') {
-      // Glowing Dual Iris + Fangs from lila_agent.svg
-      parts.push(
-        '<circle cx="-28" cy="-24" r="13" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="28" cy="-24" r="13" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="-32" cy="-28" r="4" fill="#ffffff"/><circle cx="24" cy="-28" r="4" fill="#ffffff"/>' +
-        '<path d="M -22,-6 Q 0,6 22,-6" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linecap="round"/>' +
-        '<polygon points="-14,-4 -10,5 -6,-3" fill="#ffffff"/>' +
-        '<polygon points="6,-3 10,5 14,-4" fill="#ffffff"/>'
-      );
-    } else if (eyes === 'focused') {
-      // Angled Shuriken / Browser Focused Eyes from ninja_agent.svg
-      parts.push(
-        '<polygon points="-44,-30 -14,-20 -18,-12 -46,-20" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<polygon points="44,-30 14,-20 18,-12 46,-20" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="-28" cy="-22" r="3" fill="#ffffff"/><circle cx="28" cy="-22" r="3" fill="#ffffff"/>'
-      );
-    } else if (eyes === 'laser') {
-      // Crimson Laser Beam Visor from red_team_agent.svg
-      parts.push(
-        '<rect x="-54" y="-32" width="108" height="14" rx="7" fill="#ef4444" filter="url(#' + uid + '-glow)"/>' +
-        '<rect x="-46" y="-28" width="92" height="6" rx="3" fill="#ffffff"/>' +
-        '<path d="M -18,-6 L 0,-12 L 18,-6" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>'
-      );
-    } else if (eyes === 'happy') {
-      // Joyful Arched Eyes from happy_agent.svg
-      parts.push(
-        '<path d="M -42,-20 Q -28,-38 -14,-20" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round" filter="url(#' + uid + '-glow)"/>' +
-        '<path d="M 14,-20 Q 28,-38 42,-20" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round" filter="url(#' + uid + '-glow)"/>' +
-        '<path d="M -16,-8 Q 0,8 16,-8 Z" fill="' + escapeXml(p.accent) + '"/>'
-      );
-    } else if (eyes === 'wink') {
-      parts.push(
-        '<path d="M -40,-30 L -20,-22 L -40,-14" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<circle cx="28" cy="-24" r="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="24" cy="-28" r="4" fill="#ffffff"/>' +
-        '<path d="M -12,-8 Q 0,3 12,-8" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linecap="round"/>'
-      );
-    } else if (eyes === 'glasses' || eyes === 'sunglasses') {
-      var lensFill = eyes === 'sunglasses' ? '#090d16' : 'rgba(125,211,252,0.22)';
-      parts.push(
-        '<circle cx="-28" cy="-24" r="10" fill="' + escapeXml(p.accent) + '"/>' +
-        '<circle cx="28" cy="-24" r="10" fill="' + escapeXml(p.accent) + '"/>' +
-        '<rect x="-52" y="-42" width="44" height="34" rx="8" fill="' + lensFill + '" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
-        '<rect x="8" y="-42" width="44" height="34" rx="8" fill="' + lensFill + '" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
-        '<line x1="-8" y1="-26" x2="8" y2="-26" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>'
-      );
-    } else {
-      // Classic Glowing Dual Orbs from figma_agent.svg / voice_agent.svg
-      parts.push(
-        '<circle cx="-28" cy="-24" r="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="28" cy="-24" r="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<circle cx="-32" cy="-29" r="3.5" fill="#ffffff"/><circle cx="24" cy="-29" r="3.5" fill="#ffffff"/>' +
-        '<path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#04151f" stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linejoin="round"/>'
-      );
-    }
-
-    // Foreground Headwear Overlays (Ninja Headband, Crown, Fedora, Beanie, Cap, Beret)
-    if (hw === 'cyber_helmet') {
-      // Authentic Fluttering Ninja Headband + Forehead Plate from ninja_agent.svg
-      parts.push(
+    if (sp === 'fox' || sp === 'wolf') {
+      return (
         '<g>' +
-          '<path d="M 74,-82 C 112,-98 144,-72 168,-92 C 148,-58 116,-64 78,-64 Z" fill="#7c3aed" stroke="#000000" stroke-width="6" stroke-linejoin="round">' +
-            '<animateTransform attributeName="transform" type="rotate" values="0 74 -72; -6 74 -72; 0 74 -72" dur="2.6s" repeatCount="indefinite"/>' +
-          '</path>' +
-          '<path d="M -86,-76 Q 0,-90 86,-76 L 86,-56 Q 0,-70 -86,-56 Z" fill="#6d28d9" stroke="#000000" stroke-width="7"/>' +
-          '<rect x="-28" y="-82" width="56" height="20" rx="5" fill="#cbd5e1" stroke="#000000" stroke-width="5"/>' +
-          '<line x1="-14" y1="-72" x2="14" y2="-72" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>' +
+          '<path d="M 238,348 C 318,348 356,272 326,206 C 312,176 278,204 284,248 C 288,282 264,314 234,324 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
+          '<path d="M 326,206 C 314,182 286,202 288,232 C 302,226 316,222 326,206 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>' +
         '</g>'
       );
-    } else if (hw === 'crown') {
-      parts.push(
-        '<polygon points="-58,-90 -44,-138 -18,-108 0,-148 18,-108 44,-138 58,-90" fill="#fbbf24" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
-        '<circle cx="0" cy="-116" r="7" fill="#ef4444" stroke="#000000" stroke-width="3"/>' +
-        '<circle cx="-30" cy="-108" r="5" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="2.5"/>' +
-        '<circle cx="30" cy="-108" r="5" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="2.5"/>'
-      );
-    } else if (hw === 'fedora') {
-      parts.push(
-        '<ellipse cx="0" cy="-88" rx="108" ry="18" fill="#1e293b" stroke="#000000" stroke-width="8"/>' +
-        '<path d="M -64,-88 C -56,-142 56,-142 64,-88 Z" fill="#0f172a" stroke="#000000" stroke-width="8"/>' +
-        '<rect x="-60" y="-100" width="120" height="12" rx="4" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>'
-      );
-    } else if (hw === 'beanie') {
-      parts.push(
-        '<path d="M -82,-76 C -78,-138 78,-138 82,-76 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8"/>' +
-        '<rect x="-86" y="-86" width="172" height="22" rx="10" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7"/>'
-      );
-    } else if (hw === 'cap') {
-      parts.push(
-        '<path d="M -82,-78 C -80,-136 80,-136 82,-78 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8"/>' +
-        '<path d="M -20,-84 L 112,-76 C 112,-62 42,-58 -20,-68 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7"/>'
-      );
-    } else if (hw === 'beret') {
-      parts.push(
-        '<path d="M -78,-84 C -92,-132 48,-148 92,-96 C 64,-78 -40,-76 -78,-84 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8"/>' +
-        '<circle cx="-28" cy="-98" r="7" fill="#ffffff" stroke="#000000" stroke-width="4"/>'
-      );
     }
-
-    parts.push('</g>');
-    return parts.join('');
+    return '';
   }
 
-  function renderHumanBust(spec, uid, lod) {
+  function renderHeadLayer(spec, uid) {
     var p = spec.palette;
-    var skin = p.skinOrChassis || '#f3c6a5';
-    var parts = [];
+    var kind = spec.entityKind;
 
-    // Authentic Human Operator Coordinate Space from founder.svg / ops.svg / woman5.svg
-    parts.push('<g transform="translate(250, 255) scale(1.08)">');
+    if (kind === 'human') {
+      var skin = p.skinOrChassis || '#f1c27d';
+      var hairBase = (
+        '<path d="M 132,148 C 128,74 272,74 268,148 C 254,116 226,108 200,108 C 174,108 146,116 132,148 Z" fill="#2b2140" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>'
+      );
+      if (spec.headwear === 'afro') {
+        hairBase = '<circle cx="200" cy="116" r="76" fill="#1e1b2e" stroke="#000000" stroke-width="9"/>';
+      } else if (spec.headwear === 'ponytail') {
+        hairBase =
+          '<path d="M 254,116 C 308,104 328,154 298,196 C 282,178 276,148 252,138 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+          '<circle cx="262" cy="126" r="9" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>' +
+          hairBase;
+      } else if (spec.headwear === 'braid_flower') {
+        hairBase =
+          '<path d="M 248,162 C 272,192 268,248 248,274 C 234,254 236,204 242,172 Z" fill="#2b2140" stroke="#000000" stroke-width="7"/>' +
+          hairBase +
+          '<circle cx="146" cy="122" r="10" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>';
+      } else if (spec.headwear === 'man_bun') {
+        hairBase =
+          '<circle cx="200" cy="68" r="22" fill="#2b2140" stroke="#000000" stroke-width="8"/>' +
+          hairBase;
+      } else if (spec.headwear === 'curly_hair') {
+        hairBase =
+          '<g fill="#2b2140" stroke="#000000" stroke-width="7">' +
+            '<circle cx="152" cy="102" r="22"/><circle cx="182" cy="90" r="24"/>' +
+            '<circle cx="218" cy="90" r="24"/><circle cx="248" cy="102" r="22"/>' +
+          '</g>';
+      }
 
-    // Torso Outfit
-    if (spec.body === 'suit') {
-      // Blazer + White Dress Shirt from founder.svg
-      parts.push(
-        '<path d="M -82,192 C -80,104 -46,68 0,68 C 46,68 80,104 82,192 Z" fill="url(#' + uid + '-body)" stroke="#0a0a0f" stroke-width="8" stroke-linejoin="round"/>' +
-        '<polygon points="-24,68 24,68 0,142" fill="#f8fafc" stroke="#0a0a0f" stroke-width="5" stroke-linejoin="round"/>'
-      );
-    } else if (spec.body === 'hoodie') {
-      // DevOps Hoodie + Drawstrings from ops.svg
-      parts.push(
-        '<path d="M -84,192 C -82,102 -48,66 0,66 C 48,66 82,102 84,192 Z" fill="url(#' + uid + '-body)" stroke="#0a0a0f" stroke-width="8" stroke-linejoin="round"/>' +
-        '<path d="M -42,66 Q 0,100 42,66" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
-        '<line x1="-16" y1="84" x2="-16" y2="128" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>' +
-        '<line x1="16" y1="84" x2="16" y2="128" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>'
-      );
-    } else if (spec.body === 'lab_coat') {
-      parts.push(
-        '<path d="M -82,192 C -80,104 -46,68 0,68 C 46,68 80,104 82,192 Z" fill="#f1f5f9" stroke="#0a0a0f" stroke-width="8"/>' +
-        '<polygon points="-22,68 22,68 0,152" fill="' + escapeXml(p.primary) + '" stroke="#0a0a0f" stroke-width="5"/>'
-      );
-    } else {
-      // Turtleneck / Crew Tee from product.svg / woman5.svg
-      parts.push(
-        '<path d="M -80,192 C -78,104 -44,68 0,68 C 44,68 78,104 80,192 Z" fill="url(#' + uid + '-body)" stroke="#0a0a0f" stroke-width="8" stroke-linejoin="round"/>' +
-        '<rect x="-22" y="54" width="44" height="24" rx="8" fill="' + escapeXml(p.secondary) + '" stroke="#0a0a0f" stroke-width="6"/>'
+      var beardOverlay = spec.headwear === 'man_bun'
+        ? '<path d="M 140,186 C 144,234 256,234 260,186 C 248,214 226,222 200,222 C 174,222 152,214 140,186 Z" fill="#2b2140" stroke="#000000" stroke-width="6"/>'
+        : '';
+
+      return (
+        '<rect x="178" y="216" width="44" height="52" rx="12" fill="' + escapeXml(skin) + '" stroke="#000000" stroke-width="8"/>' +
+        '<circle cx="128" cy="176" r="16" fill="' + escapeXml(skin) + '" stroke="#000000" stroke-width="8"/>' +
+        '<circle cx="272" cy="176" r="16" fill="' + escapeXml(skin) + '" stroke="#000000" stroke-width="8"/>' +
+        '<rect x="132" y="96" width="136" height="142" rx="46" fill="' + escapeXml(skin) + '" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<ellipse cx="158" cy="186" rx="10" ry="5" fill="#f43f5e" opacity="0.26"/>' +
+        '<ellipse cx="242" cy="186" rx="10" ry="5" fill="#f43f5e" opacity="0.26"/>' +
+        beardOverlay +
+        '<path d="M 186,204 Q 200,216 214,204" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>' +
+        hairBase
       );
     }
 
-    // Chest Emblem
-    if (lod !== 'micro') {
-      parts.push(renderChestEmblem(spec, uid, true));
-    }
-
-    // Neck + Ears + Head from founder.svg
-    parts.push('<rect x="-18" y="34" width="36" height="42" rx="12" fill="' + escapeXml(skin) + '" stroke="#0a0a0f" stroke-width="7"/>');
-    parts.push('<circle cx="-58" cy="-4" r="14" fill="' + escapeXml(skin) + '" stroke="#0a0a0f" stroke-width="7"/>');
-    parts.push('<circle cx="58" cy="-4" r="14" fill="' + escapeXml(skin) + '" stroke="#0a0a0f" stroke-width="7"/>');
-    parts.push('<rect x="-56" y="-74" width="112" height="122" rx="52" fill="' + escapeXml(skin) + '" stroke="#0a0a0f" stroke-width="8"/>');
-
-    // Subtle cheek blush + warm expression from founder.svg / woman5.svg
-    parts.push('<ellipse cx="-32" cy="8" rx="10" ry="5" fill="#f43f5e" opacity="0.28"/>');
-    parts.push('<ellipse cx="32" cy="8" rx="10" ry="5" fill="#f43f5e" opacity="0.28"/>');
-    parts.push('<path d="M -16,20 Q 0,32 16,20" fill="none" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>');
-
-    // Eyes
-    var eyes = spec.eyes;
-    if (eyes === 'happy') {
-      parts.push(
-        '<path d="M -34,-12 Q -22,-24 -10,-12" fill="none" stroke="#0a0a0f" stroke-width="5.5" stroke-linecap="round"/>' +
-        '<path d="M 10,-12 Q 22,-24 34,-12" fill="none" stroke="#0a0a0f" stroke-width="5.5" stroke-linecap="round"/>'
-      );
-    } else if (eyes === 'wink') {
-      parts.push(
-        '<path d="M -32,-16 L -14,-10 L -32,-4" fill="none" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<circle cx="22" cy="-12" r="7.5" fill="#0a0a0f"/><circle cx="20" cy="-15" r="2.5" fill="#ffffff"/>'
-      );
-    } else {
-      parts.push(
-        '<circle cx="-22" cy="-12" r="7.5" fill="#0a0a0f"/><circle cx="-24" cy="-15" r="2.5" fill="#ffffff"/>' +
-        '<circle cx="22" cy="-12" r="7.5" fill="#0a0a0f"/><circle cx="20" cy="-15" r="2.5" fill="#ffffff"/>' +
-        '<path d="M -34,-26 Q -22,-32 -10,-26" fill="none" stroke="#0a0a0f" stroke-width="4.5" stroke-linecap="round"/>' +
-        '<path d="M 10,-26 Q 22,-32 34,-26" fill="none" stroke="#0a0a0f" stroke-width="4.5" stroke-linecap="round"/>'
-      );
-    }
-
-    if (eyes === 'glasses' || eyes === 'sunglasses') {
-      var fillGlass = eyes === 'sunglasses' ? '#0f172a' : 'rgba(56,189,248,0.18)';
-      parts.push(
-        '<circle cx="-22" cy="-12" r="18" fill="' + fillGlass + '" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
-        '<circle cx="22" cy="-12" r="18" fill="' + fillGlass + '" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
-        '<line x1="-4" y1="-12" x2="4" y2="-12" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>'
-      );
-    }
-
-    // Hair & Headwear from founder.svg / ops.svg
-    var hw = spec.headwear;
-    if (hw === 'none' || hw === 'headset') {
-      // Swept-back executive/operator hair from founder.svg
-      parts.push(
-        '<path d="M -58,-28 C -64,-82 -24,-96 12,-92 C 48,-88 64,-68 58,-24 C 46,-54 18,-64 -18,-58 C -42,-54 -52,-42 -58,-28 Z" fill="#1e1b4b" stroke="#0a0a0f" stroke-width="7" stroke-linejoin="round"/>'
-      );
-      if (hw === 'headset') {
-        parts.push(
-          '<path d="M -64,-8 C -68,-88 68,-88 64,-8" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="8"/>' +
-          '<rect x="-74" y="-22" width="18" height="36" rx="8" fill="' + escapeXml(p.primary) + '" stroke="#0a0a0f" stroke-width="6"/>' +
-          '<rect x="56" y="-22" width="18" height="36" rx="8" fill="' + escapeXml(p.primary) + '" stroke="#0a0a0f" stroke-width="6"/>' +
-          '<path d="M 62,8 Q 42,32 14,28" fill="none" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>' +
-          '<circle cx="12" cy="28" r="5" fill="' + escapeXml(p.accent) + '"/>'
+    if (kind === 'creature') {
+      var sp = spec.species || 'fox';
+      var cParts = [];
+      if (sp === 'bear') {
+        cParts.push(
+          '<circle cx="132" cy="96" r="28" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>' +
+          '<circle cx="132" cy="96" r="14" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<circle cx="268" cy="96" r="28" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>' +
+          '<circle cx="268" cy="96" r="14" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<rect x="112" y="94" width="176" height="136" rx="56" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>'
+        );
+      } else if (sp === 'bull') {
+        cParts.push(
+          '<path d="M 134,116 C 68,108 52,48 96,22 C 92,58 112,86 146,96 Z" fill="#fef08a" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
+          '<path d="M 266,116 C 332,108 348,48 304,22 C 308,58 288,86 254,96 Z" fill="#fef08a" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
+          '<rect x="118" y="94" width="164" height="136" rx="44" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>'
+        );
+      } else if (sp === 'dragon') {
+        cParts.push(
+          '<path d="M 158,96 C 134,44 92,24 80,12 C 110,56 124,84 138,108 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+          '<path d="M 242,96 C 266,44 308,24 320,12 C 290,56 276,84 262,108 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+          '<polygon points="200,66 186,96 214,96" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+          '<path d="M 122,96 L 200,82 L 278,96 L 286,204 L 200,234 L 114,204 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>'
+        );
+      } else if (sp === 'owl') {
+        cParts.push(
+          '<ellipse cx="200" cy="162" rx="86" ry="68" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>' +
+          '<polygon points="150,112 96,56 130,122 176,104" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+          '<polygon points="250,112 304,56 270,122 224,104" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>'
+        );
+      } else if (sp === 'kraken') {
+        cParts.push(
+          '<path d="M 120,174 C 96,82 146,44 200,44 C 254,44 304,82 280,174 C 272,208 250,222 200,222 C 150,222 128,208 120,174 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10"/>' +
+          '<path d="M 156,204 C 144,238 126,250 140,268" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+          '<path d="M 156,204 C 144,238 126,250 140,268" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+          '<path d="M 184,210 C 178,246 168,262 182,276" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+          '<path d="M 184,210 C 178,246 168,262 182,276" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="6" stroke-linecap="round"/>' +
+          '<path d="M 216,210 C 222,246 232,262 218,276" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+          '<path d="M 216,210 C 222,246 232,262 218,276" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="6" stroke-linecap="round"/>' +
+          '<path d="M 244,204 C 256,238 274,250 260,268" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+          '<path d="M 244,204 C 256,238 274,250 260,268" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+          '<path d="M 244,204 C 256,238 274,250 260,268" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>'
+        );
+      } else if (sp === 'wolf') {
+        cParts.push(
+          '<polygon points="130,118 112,24 176,94" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+          '<polygon points="136,110 122,48 166,96" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<polygon points="270,118 288,24 224,94" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+          '<polygon points="264,110 278,48 234,96" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<path d="M 122,146 L 86,156 L 114,178 L 84,196 L 132,216 L 200,228 L 268,216 L 316,196 L 286,178 L 314,156 L 278,146 L 264,94 L 136,94 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>'
+        );
+      } else {
+        cParts.push(
+          '<polygon points="124,122 96,26 178,94" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+          '<polygon points="132,112 110,48 164,96" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<polygon points="276,122 304,26 222,94" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+          '<polygon points="268,112 290,48 236,96" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+          '<path d="M 118,154 L 88,148 L 108,172 L 86,188 L 126,210 L 274,210 L 314,188 L 292,172 L 312,148 L 282,154 C 278,104 248,90 200,90 C 152,90 122,104 118,154 Z" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>'
         );
       }
-    } else if (hw === 'crown') {
-      parts.push(
-        '<polygon points="-48,-68 -36,-112 -14,-86 0,-120 14,-86 36,-112 48,-68" fill="#fbbf24" stroke="#0a0a0f" stroke-width="7" stroke-linejoin="round"/>'
+
+      // Visor screen on creature
+      cParts.push(
+        '<rect x="132" y="132" width="136" height="58" rx="18" fill="#081b2e" stroke="#000000" stroke-width="8"/>' +
+        '<rect x="138" y="138" width="124" height="46" rx="13" fill="#051220" stroke="' + escapeXml(p.secondary) + '" stroke-width="3"/>'
       );
-    } else if (hw === 'beanie') {
-      parts.push(
-        '<path d="M -58,-42 C -56,-102 56,-102 58,-42 Z" fill="' + escapeXml(p.primary) + '" stroke="#0a0a0f" stroke-width="7"/>' +
-        '<rect x="-62" y="-54" width="124" height="20" rx="9" fill="' + escapeXml(p.accent) + '" stroke="#0a0a0f" stroke-width="6"/>'
-      );
-    } else if (hw === 'cap') {
-      parts.push(
-        '<path d="M -58,-44 C -56,-100 56,-100 58,-44 Z" fill="' + escapeXml(p.primary) + '" stroke="#0a0a0f" stroke-width="7"/>' +
-        '<path d="M -10,-52 L 88,-44 C 88,-32 32,-28 -10,-38 Z" fill="' + escapeXml(p.accent) + '" stroke="#0a0a0f" stroke-width="6"/>'
-      );
-    } else {
-      parts.push(
-        '<path d="M -58,-28 C -64,-82 -24,-96 12,-92 C 48,-88 64,-68 58,-24 Z" fill="' + escapeXml(p.secondary) + '" stroke="#0a0a0f" stroke-width="7"/>'
-      );
+
+      // Species snout/beak/muzzle below visor (around y=200)
+      if (sp === 'owl') {
+        cParts.push('<polygon points="182,184 218,184 200,218" fill="#fbbf24" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>');
+      } else if (sp === 'bull') {
+        cParts.push(
+          '<circle cx="200" cy="218" r="14" fill="none" stroke="#fbbf24" stroke-width="7"/>' +
+          '<rect x="164" y="186" width="72" height="28" rx="12" fill="#0b1528" stroke="#000000" stroke-width="6"/>' +
+          '<circle cx="182" cy="200" r="5" fill="' + escapeXml(p.accent) + '"/><circle cx="218" cy="200" r="5" fill="' + escapeXml(p.accent) + '"/>'
+        );
+      } else if (sp === 'bear') {
+        cParts.push(
+          '<ellipse cx="200" cy="202" rx="32" ry="18" fill="#e2e8f0" stroke="#000000" stroke-width="6"/>' +
+          '<ellipse cx="200" cy="196" rx="12" ry="8" fill="#0f172a"/>'
+        );
+      } else if (sp === 'dragon' || sp === 'wolf') {
+        cParts.push(
+          '<polygon points="170,186 230,186 220,214 180,214" fill="#0b1528" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+          '<polygon points="182,210 188,222 194,210" fill="#ffffff" stroke="#000000" stroke-width="2"/>' +
+          '<polygon points="206,210 212,222 218,210" fill="#ffffff" stroke="#000000" stroke-width="2"/>'
+        );
+      } else if (sp !== 'kraken') {
+        cParts.push(
+          '<ellipse cx="200" cy="200" rx="24" ry="13" fill="#0b1528" stroke="#000000" stroke-width="5"/>' +
+          '<polygon points="192,193 208,193 200,201" fill="' + escapeXml(p.accent) + '"/>'
+        );
+      }
+      return cParts.join('');
     }
 
-    parts.push('</g>');
-    return parts.join('');
+    // Autonomous Agent Mecha Head Chassis (400x400 coordinates from 8041)
+    return (
+      '<line x1="200" y1="96" x2="200" y2="52" stroke="#000000" stroke-width="11" stroke-linecap="round"/>' +
+      '<circle cx="200" cy="42" r="16" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8"/>' +
+      '<circle cx="195" cy="37" r="4.5" fill="#ffffff" opacity="0.9"/>' +
+      '<rect x="92" y="138" width="24" height="44" rx="10" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8.5"/>' +
+      '<rect x="284" y="138" width="24" height="44" rx="10" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8.5"/>' +
+      '<rect x="108" y="94" width="184" height="136" rx="28" fill="url(#' + uid + '-chassisGrad)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
+      '<path d="M 164,94 L 236,94 L 236,130 L 164,130 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+      '<rect x="128" y="132" width="144" height="70" rx="20" fill="#081b2e" stroke="#000000" stroke-width="8.5"/>' +
+      '<rect x="135" y="139" width="130" height="56" rx="14" fill="#051220" stroke="' + escapeXml(p.secondary) + '" stroke-width="3.5"/>'
+    );
   }
 
-  function renderCreatureBust(spec, uid, lod) {
+  function renderEyesLayer(spec) {
     var p = spec.palette;
-    var parts = [];
-    // Map `spec.body` to 7 distinct Creature / Animal / Mascot species!
-    // cyber_armor -> Dragon / Wyrm
-    // robot_chassis -> Dire Wolf / Fenrir
-    // hoodie -> Grizzly Bear / Kodiak
-    // suit -> Night Owl / Raptor
-    // turtleneck -> Kraken / Cthulhu Octo
-    // casual_tee -> Minotaur / Cyber Bull
-    // lab_coat (default) -> Kitsune / Cyber Fox
-    var b = spec.body;
-    var species = b === 'cyber_armor' ? 'dragon'
-      : b === 'robot_chassis' ? 'wolf'
-      : b === 'hoodie' ? 'bear'
-      : b === 'suit' ? 'owl'
-      : b === 'turtleneck' ? 'kraken'
-      : b === 'casual_tee' ? 'bull'
-      : 'fox';
-
-    parts.push('<g transform="translate(250, 244) scale(0.95)">');
-    parts.push('<ellipse cx="0" cy="185" rx="92" ry="18" fill="#000000" opacity="0.55"/>');
-
-    // 1. SPECIES BACKDROP FEATURES (Wings, Tails, Tentacles)
-    if (lod !== 'micro') {
-      if (species === 'dragon') {
-        // Bat/Dragon Wings spread left & right + Spiked Dragon Tail
-        parts.push(
-          '<g stroke="#000000" stroke-width="9" stroke-linejoin="round">' +
-            '<path d="M -42,26 L -158,-48 L -134,8 L -154,48 L -112,52 L -52,78 Z" fill="' + escapeXml(p.secondary) + '"/>' +
-            '<path d="M -48,32 L -136,-26 L -116,16 L -132,42 L -54,68 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
-            '<path d="M 42,26 L 158,-48 L 134,8 L 154,48 L 112,52 L 52,78 Z" fill="' + escapeXml(p.secondary) + '"/>' +
-            '<path d="M 48,32 L 136,-26 L 116,16 L 132,42 L 54,68 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
-          '</g>'
-        );
-      } else if (species === 'owl') {
-        // Feathered Raptor / Owl Wings
-        parts.push(
-          '<g stroke="#000000" stroke-width="9" stroke-linejoin="round">' +
-            '<path d="M -48,28 C -132,8 -152,64 -108,108 C -88,92 -72,96 -52,88 Z" fill="url(#' + uid + '-body)"/>' +
-            '<path d="M 48,28 C 132,8 152,64 108,108 C 88,92 72,96 52,88 Z" fill="url(#' + uid + '-body)"/>' +
-          '</g>'
-        );
-      } else if (species === 'kraken') {
-        // Curling Cthulhu / Kraken Tentacles around torso
-        parts.push(
-          '<g stroke="#000000" stroke-width="9" stroke-linecap="round" fill="none">' +
-            '<path d="M -52,72 C -124,82 -148,18 -108,-18 C -88,-34 -74,-8 -92,12" stroke="' + escapeXml(p.primary) + '" stroke-width="18"/>' +
-            '<path d="M -52,72 C -124,82 -148,18 -108,-18" stroke="#000000" stroke-width="8"/>' +
-            '<path d="M 52,72 C 124,82 148,18 108,-18 C 88,-34 74,-8 92,12" stroke="' + escapeXml(p.primary) + '" stroke-width="18"/>' +
-            '<path d="M 52,72 C 124,82 148,18 108,-18" stroke="#000000" stroke-width="8"/>' +
-            '<circle cx="-116" cy="36" r="5" fill="' + escapeXml(p.accent) + '"/><circle cx="-122" cy="12" r="5" fill="' + escapeXml(p.accent) + '"/>' +
-            '<circle cx="116" cy="36" r="5" fill="' + escapeXml(p.accent) + '"/><circle cx="122" cy="12" r="5" fill="' + escapeXml(p.accent) + '"/>' +
-          '</g>'
-        );
-      } else if (species === 'fox' || species === 'wolf') {
-        // Twin Kitsune / Wolf Tail
-        parts.push(
-          '<g>' +
-            '<path d="M 38,118 C 118,118 156,42 126,-24 C 112,-54 78,-26 84,18 C 88,52 64,84 34,94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
-            '<path d="M 126,-24 C 114,-48 86,-28 88,2 C 102,-4 116,-8 126,-24 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
-          '</g>'
-        );
-      }
-    }
-
-    // 2. CREATURE TORSO & RUFF / ARMOR
-    parts.push('<path d="M -58,22 C -74,64 -60,122 0,148 C 60,122 74,64 58,22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>');
-    if (species === 'wolf' || species === 'bear' || species === 'bull') {
-      // Jagged Neck Mane / Fur Ruff
-      parts.push('<polygon points="-58,22 -36,46 -18,26 0,52 18,26 36,46 58,22" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>');
-    } else if (species === 'dragon') {
-      // Dragon Chest Belly Scales
-      parts.push('<path d="M -26,28 L 26,28 L 20,132 L 0,144 L -20,132 Z" fill="' + escapeXml(p.accent) + '" opacity="0.35" stroke="#000000" stroke-width="5"/>');
-    }
-
-    if (lod !== 'micro') {
-      parts.push(renderChestEmblem(spec, uid, false));
-    }
-
-    // 3. SPECIES HEAD, EARS, HORNS, SNOUT / BEAK / TENTACLES
-    if (species === 'bear') {
-      // BIG ROUND BEAR EARS + BROAD GRIZZLY HEAD + WIDE MUZZLE
-      parts.push(
-        '<circle cx="-72" cy="-86" r="30" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
-        '<circle cx="-72" cy="-86" r="15" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<circle cx="72" cy="-86" r="30" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
-        '<circle cx="72" cy="-86" r="15" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<rect x="-92" y="-88" width="184" height="122" rx="58" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>'
-      );
-    } else if (species === 'bull') {
-      // MASSIVE CURVED MINOTAUR / BULL HORNS + HEAVY BROW HEAD
-      parts.push(
-        '<path d="M -68,-64 C -138,-72 -154,-138 -108,-168 C -112,-128 -92,-98 -56,-88 Z" fill="#fef08a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
-        '<path d="M 68,-64 C 138,-72 154,-138 108,-168 C 112,-128 92,-98 56,-88 Z" fill="#fef08a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
-        '<ellipse cx="-88" cy="-34" rx="22" ry="12" transform="rotate(-15 -88 -34)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
-        '<ellipse cx="88" cy="-34" rx="22" ry="12" transform="rotate(15 88 -34)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
-        '<rect x="-84" y="-92" width="168" height="124" rx="44" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>'
-      );
-    } else if (species === 'dragon') {
-      // SWEPT-BACK RIDGED DRAGON HORNS + FIN EARS + ANGULAR WYRM HEAD
-      parts.push(
-        '<path d="M -42,-88 C -68,-146 -112,-168 -124,-182 C -92,-132 -78,-102 -64,-76 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
-        '<path d="M 42,-88 C 68,-146 112,-168 124,-182 C 92,-132 78,-102 64,-76 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
-        '<polygon points="0,-122 -14,-92 14,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7"/>' +
-        '<polygon points="-78,-52 -118,-68 -96,-28 -114,-8 -76,-12" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
-        '<polygon points="78,-52 118,-68 96,-28 114,-8 76,-12" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
-        '<path d="M -78,-86 L 0,-102 L 78,-86 L 86,8 L 0,34 L -86,8 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
-      );
-    } else if (species === 'owl') {
-      // OWL / RAPTOR FEATHERED PLUME CRESTS + ROUND AVIAN HEAD
-      parts.push(
-        '<ellipse cx="0" cy="-34" rx="88" ry="64" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
-        '<polygon points="-52,-76 -108,-136 -72,-68 -24,-84" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
-        '<polygon points="52,-76 108,-136 72,-68 24,-84" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>'
-      );
-    } else if (species === 'kraken') {
-      // BULBOUS CTHULHU / KRAKEN CEPHALOPOD DOME + MOUTH TENTACLES
-      parts.push(
-        '<path d="M -82,-22 C -106,-118 -56,-156 0,-156 C 56,-156 106,-118 82,-22 C 74,12 52,24 0,24 C -52,24 -74,12 -82,-22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
-        '<circle cx="-48" cy="-108" r="10" fill="' + escapeXml(p.accent) + '" opacity="0.65"/>' +
-        '<circle cx="48" cy="-108" r="10" fill="' + escapeXml(p.accent) + '" opacity="0.65"/>' +
-        '<circle cx="0" cy="-126" r="14" fill="' + escapeXml(p.accent) + '" opacity="0.5"/>' +
-        // 4 Face Tentacles hanging from lower face
-        '<path d="M -46,8 C -58,42 -78,54 -64,72" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
-        '<path d="M -46,8 C -58,42 -78,54 -64,72" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round"/>' +
-        '<path d="M -16,14 C -22,52 -34,68 -18,82" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
-        '<path d="M -16,14 C -22,52 -34,68 -18,82" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="7" stroke-linecap="round"/>' +
-        '<path d="M 16,14 C 22,52 34,68 18,82" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
-        '<path d="M 16,14 C 22,52 34,68 18,82" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="7" stroke-linecap="round"/>' +
-        '<path d="M 46,8 C 58,42 78,54 64,72" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
-        '<path d="M 46,8 C 58,42 78,54 64,72" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round"/>'
-      );
-    } else if (species === 'wolf') {
-      // ANGULAR DIRE WOLF HEAD + SHARP UPWARD EARS + JAGGED CHEEK FUR
-      parts.push(
-        '<polygon points="-72,-68 -88,-168 -24,-94" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
-        '<polygon points="-66,-76 -78,-144 -34,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
-        '<polygon points="72,-68 88,-168 24,-94" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
-        '<polygon points="66,-76 78,-144 34,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
-        '<path d="M -78,-42 L -116,-32 L -88,-10 L -118,8 L -68,24 L 0,32 L 68,24 L 118,8 L 88,-10 L 116,-32 L 78,-42 L 64,-94 L -64,-94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
-      );
-    } else {
-      // KITSUNE / CYBER FOX
-      parts.push(
-        '<polygon points="-78,-62 -106,-164 -22,-92" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
-        '<polygon points="-70,-72 -92,-142 -36,-90" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<polygon points="78,-62 106,-164 22,-92" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
-        '<polygon points="70,-72 92,-142 36,-90" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
-        '<path d="M -82,-32 L -114,-38 L -92,-14 L -116,2 L -74,18 L 74,18 L 116,2 L 92,-14 L 114,-38 L 82,-32 C 78,-82 48,-98 0,-98 C -48,-98 -78,-82 -82,-32 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
-      );
-    }
-
-    // 4. EYES / VISOR MASK
-    parts.push('<rect x="-64" y="-56" width="128" height="48" rx="18" fill="#04151f" stroke="#000000" stroke-width="7.5"/>');
     var eyes = spec.eyes;
+
+    if (eyes === 'cyber_optic') {
+      return (
+        '<circle cx="168" cy="167" r="13" fill="' + escapeXml(p.secondary) + '"/>' +
+        '<circle cx="164" cy="163" r="4.5" fill="#ffffff"/>' +
+        '<circle cx="232" cy="167" r="16" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4.5"/>' +
+        '<circle cx="232" cy="167" r="7" fill="' + escapeXml(p.accent) + '"/>' +
+        '<line x1="210" y1="167" x2="254" y2="167" stroke="' + escapeXml(p.accent) + '" stroke-width="2.5"/>' +
+        '<line x1="232" y1="145" x2="232" y2="189" stroke="' + escapeXml(p.accent) + '" stroke-width="2.5"/>'
+      );
+    }
+    if (eyes === 'terminal_glow') {
+      return (
+        '<text x="166" y="178" fill="' + escapeXml(p.secondary) + '" font-family="monospace" font-size="34" font-weight="900" text-anchor="middle">&lt;</text>' +
+        '<text x="234" y="178" fill="' + escapeXml(p.secondary) + '" font-family="monospace" font-size="34" font-weight="900" text-anchor="middle">&gt;</text>'
+      );
+    }
     if (eyes === 'laser') {
-      parts.push(
-        '<rect x="-52" y="-38" width="104" height="14" rx="7" fill="#ef4444" filter="url(#' + uid + '-glow)"/>' +
-        '<rect x="-44" y="-34" width="88" height="6" rx="3" fill="#ffffff"/>'
-      );
-    } else if (eyes === 'happy') {
-      parts.push(
-        '<path d="M -44,-26 Q -30,-44 -16,-26" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>' +
-        '<path d="M 16,-26 Q 30,-44 44,-26" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>'
-      );
-    } else if (eyes === 'focused') {
-      parts.push(
-        '<polygon points="-48,-38 -14,-26 -20,-16 -48,-26" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<polygon points="48,-38 14,-26 20,-16 48,-26" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
-      );
-    } else if (species === 'owl') {
-      // Huge Binocular Owl Eyes
-      parts.push(
-        '<circle cx="-30" cy="-32" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
-        '<circle cx="30" cy="-32" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
-        '<circle cx="-30" cy="-32" r="7" fill="#04151f"/><circle cx="30" cy="-32" r="7" fill="#04151f"/>' +
-        '<circle cx="-34" cy="-36" r="4" fill="#ffffff"/><circle cx="26" cy="-36" r="4" fill="#ffffff"/>'
-      );
-    } else {
-      parts.push(
-        '<ellipse cx="-30" cy="-32" rx="14" ry="11" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<ellipse cx="30" cy="-32" rx="14" ry="11" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<ellipse cx="-30" cy="-32" rx="3.5" ry="8" fill="#04151f"/>' +
-        '<ellipse cx="30" cy="-32" rx="3.5" ry="8" fill="#04151f"/>' +
-        '<circle cx="-34" cy="-35" r="3" fill="#ffffff"/><circle cx="26" cy="-35" r="3" fill="#ffffff"/>'
+      return (
+        '<ellipse cx="168" cy="167" rx="18" ry="9" fill="#ef4444"/>' +
+        '<ellipse cx="232" cy="167" rx="18" ry="9" fill="#ef4444"/>' +
+        '<ellipse cx="168" cy="167" rx="10" ry="4.5" fill="#fef08a"/>' +
+        '<ellipse cx="232" cy="167" rx="10" ry="4.5" fill="#fef08a"/>' +
+        '<line x1="70" y1="162" x2="168" y2="167" stroke="#ef4444" stroke-width="6" stroke-opacity="0.85" stroke-linecap="round"/>' +
+        '<line x1="232" y1="167" x2="330" y2="162" stroke="#ef4444" stroke-width="6" stroke-opacity="0.85" stroke-linecap="round"/>'
       );
     }
-
-    // 5. SPECIES-SPECIFIC SNOUT / BEAK / MUZZLE / BULL RING
-    if (species === 'owl') {
-      // Sharp Curved Golden Avian Beak
-      parts.push(
-        '<polygon points="-20,-10 20,-10 0,24" fill="#fbbf24" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
-        '<line x1="0" y1="-10" x2="0" y2="16" stroke="#000000" stroke-width="4"/>'
-      );
-    } else if (species === 'bull') {
-      // Broad Bull Snout + Nostrils + Golden Nose Ring
-      parts.push(
-        '<circle cx="0" cy="22" r="16" fill="none" stroke="#fbbf24" stroke-width="8"/>' +
-        '<rect x="-38" y="-10" width="76" height="32" rx="14" fill="#0b1528" stroke="#000000" stroke-width="7"/>' +
-        '<circle cx="-18" cy="4" r="6" fill="' + escapeXml(p.accent) + '"/>' +
-        '<circle cx="18" cy="4" r="6" fill="' + escapeXml(p.accent) + '"/>'
-      );
-    } else if (species === 'bear') {
-      // Wide Rounded Grizzly Muzzle + Big Oval Nose
-      parts.push(
-        '<ellipse cx="0" cy="6" rx="36" ry="22" fill="#e2e8f0" stroke="#000000" stroke-width="7"/>' +
-        '<ellipse cx="0" cy="-2" rx="14" ry="9" fill="#0f172a"/>' +
-        '<path d="M 0,7 L 0,16 M -14,16 Q 0,24 14,16" fill="none" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round"/>'
-      );
-    } else if (species === 'dragon' || species === 'wolf') {
-      // Armored / Lupine Snout with Nostrils & Sharp Fangs
-      parts.push(
-        '<polygon points="-32,-8 32,-8 22,22 -22,22" fill="#0b1528" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
-        '<circle cx="-12" cy="2" r="4" fill="' + escapeXml(p.accent) + '"/><circle cx="12" cy="2" r="4" fill="' + escapeXml(p.accent) + '"/>' +
-        '<polygon points="-18,16 -12,28 -6,16" fill="#ffffff" stroke="#000000" stroke-width="2.5"/>' +
-        '<polygon points="6,16 12,28 18,16" fill="#ffffff" stroke="#000000" stroke-width="2.5"/>'
-      );
-    } else if (species === 'kraken') {
-      // Glowing Kraken Core Mouth Organ
-      parts.push(
-        '<circle cx="0" cy="4" r="12" fill="#04151f" stroke="#000000" stroke-width="5"/>' +
-        '<circle cx="0" cy="4" r="5" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
-      );
-    } else {
-      // Kitsune Fox Muzzle
-      parts.push(
-        '<ellipse cx="0" cy="4" rx="26" ry="15" fill="#0b1528" stroke="#000000" stroke-width="6"/>' +
-        '<polygon points="-9,-4 9,-4 0,4" fill="' + escapeXml(p.accent) + '"/>' +
-        '<path d="M -12,9 Q -6,16 0,9 Q 6,16 12,9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>'
+    if (eyes === 'sunglasses') {
+      return (
+        '<polygon points="134,152 194,152 188,184 142,184" fill="#020617" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
+        '<polygon points="206,152 266,152 258,184 212,184" fill="#020617" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
+        '<line x1="194" y1="158" x2="206" y2="158" stroke="' + escapeXml(p.accent) + '" stroke-width="5"/>' +
+        '<line x1="148" y1="160" x2="162" y2="176" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>' +
+        '<line x1="220" y1="160" x2="234" y2="176" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>'
       );
     }
+    if (eyes === 'glasses') {
+      return (
+        '<circle cx="168" cy="167" r="19" fill="#0a0d17" fill-opacity="0.4" stroke="' + escapeXml(p.secondary) + '" stroke-width="5"/>' +
+        '<circle cx="232" cy="167" r="19" fill="#0a0d17" fill-opacity="0.4" stroke="' + escapeXml(p.secondary) + '" stroke-width="5"/>' +
+        '<line x1="187" y1="167" x2="213" y2="167" stroke="' + escapeXml(p.secondary) + '" stroke-width="5"/>' +
+        '<circle cx="168" cy="167" r="8" fill="#ffffff"/>' +
+        '<circle cx="232" cy="167" r="8" fill="#ffffff"/>'
+      );
+    }
+    if (eyes === 'hud_visor') {
+      return (
+        '<rect x="136" y="148" width="128" height="34" rx="10" fill="' + escapeXml(p.secondary) + '" fill-opacity="0.35" stroke="' + escapeXml(p.accent) + '" stroke-width="4"/>' +
+        '<line x1="148" y1="165" x2="252" y2="165" stroke="#ffffff" stroke-width="3" stroke-dasharray="10 6"/>'
+      );
+    }
+    if (eyes === 'evil_slits') {
+      return (
+        '<polygon points="146,154 186,166 178,176 144,166" fill="#ef4444"/>' +
+        '<polygon points="254,154 214,166 222,176 256,166" fill="#ef4444"/>' +
+        '<circle cx="168" cy="166" r="3.5" fill="#fef08a"/><circle cx="232" cy="166" r="3.5" fill="#fef08a"/>'
+      );
+    }
+    if (eyes === 'cursor_arrows') {
+      return (
+        '<polygon points="156,152 180,164 168,168 174,180 166,184 160,172 152,178" fill="' + escapeXml(p.accent) + '"/>' +
+        '<polygon points="220,152 244,164 232,168 238,180 230,184 224,172 216,178" fill="' + escapeXml(p.accent) + '"/>'
+      );
+    }
+    if (eyes === 'happy') {
+      return (
+        '<path d="M 152,172 Q 168,150 184,172" fill="none" stroke="' + escapeXml(p.secondary) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<path d="M 216,172 Q 232,150 248,172" fill="none" stroke="' + escapeXml(p.secondary) + '" stroke-width="7" stroke-linecap="round"/>'
+      );
+    }
+    if (eyes === 'wink') {
+      return (
+        '<path d="M 152,167 L 184,167" stroke="' + escapeXml(p.secondary) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<circle cx="232" cy="167" r="12" fill="' + escapeXml(p.secondary) + '"/>' +
+        '<circle cx="228" cy="163" r="4" fill="#ffffff"/>'
+      );
+    }
+    if (eyes === 'focused') {
+      return (
+        '<line x1="148" y1="150" x2="186" y2="158" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<line x1="252" y1="150" x2="214" y2="158" stroke="' + escapeXml(p.accent) + '" stroke-width="6" stroke-linecap="round"/>' +
+        '<circle cx="168" cy="170" r="11" fill="' + escapeXml(p.secondary) + '"/>' +
+        '<circle cx="232" cy="170" r="11" fill="' + escapeXml(p.secondary) + '"/>' +
+        '<circle cx="165" cy="167" r="3.5" fill="#ffffff"/>' +
+        '<circle cx="229" cy="167" r="3.5" fill="#ffffff"/>'
+      );
+    }
+    return (
+      '<circle cx="168" cy="167" r="12" fill="' + escapeXml(p.secondary) + '"/>' +
+      '<circle cx="232" cy="167" r="12" fill="' + escapeXml(p.secondary) + '"/>' +
+      '<circle cx="164" cy="163" r="4" fill="#ffffff"/>' +
+      '<circle cx="228" cy="163" r="4" fill="#ffffff"/>'
+    );
+  }
 
-    // 6. HEADWEAR ON CREATURE
+  function renderHeadwearLayer(spec) {
+    var p = spec.palette;
     var hw = spec.headwear;
+    if (!hw || hw === 'none') return '';
+
     if (hw === 'crown') {
-      parts.push(
-        '<polygon points="-44,-92 -32,-136 -12,-108 0,-144 12,-108 32,-136 44,-92" fill="#fbbf24" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>' +
-        '<circle cx="0" cy="-114" r="6" fill="#ef4444" stroke="#000000" stroke-width="3"/>'
-      );
-    } else if (hw === 'halo') {
-      parts.push(
-        '<ellipse cx="0" cy="-152" rx="58" ry="14" fill="none" stroke="#000000" stroke-width="10"/>' +
-        '<ellipse cx="0" cy="-152" rx="58" ry="14" fill="none" stroke="#fde047" stroke-width="5.5" filter="url(#' + uid + '-glow)"/>'
-      );
-    } else if (hw === 'cyber_helmet') {
-      parts.push(
-        '<path d="M -78,-74 Q 0,-88 78,-74 L 78,-56 Q 0,-70 -78,-56 Z" fill="#6d28d9" stroke="#000000" stroke-width="6.5"/>' +
-        '<rect x="-26" y="-80" width="52" height="18" rx="4" fill="#cbd5e1" stroke="#000000" stroke-width="4.5"/>'
+      return (
+        '<polygon points="122,98 134,42 168,74 200,30 232,74 266,42 278,98" fill="#fbbf24" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<circle cx="200" cy="66" r="8" fill="#ef4444" stroke="#000000" stroke-width="3"/>' +
+        '<circle cx="154" cy="76" r="6" fill="#38bdf8" stroke="#000000" stroke-width="3"/>' +
+        '<circle cx="246" cy="76" r="6" fill="#38bdf8" stroke="#000000" stroke-width="3"/>'
       );
     }
-
-    parts.push('</g>');
-    return parts.join('');
+    if (hw === 'halo') {
+      return (
+        '<ellipse cx="200" cy="48" rx="78" ry="16" fill="none" stroke="#000000" stroke-width="13"/>' +
+        '<ellipse cx="200" cy="48" rx="78" ry="16" fill="none" stroke="#38bdf8" stroke-width="7"/>' +
+        '<ellipse cx="200" cy="48" rx="78" ry="16" fill="none" stroke="#e0f2fe" stroke-width="2.5"/>'
+      );
+    }
+    if (hw === 'cyber_visor') {
+      return (
+        '<path d="M 102,142 Q 200,122 298,142 L 290,186 Q 200,168 110,186 Z" fill="' + escapeXml(p.secondary) + '" fill-opacity="0.45" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<line x1="126" y1="156" x2="274" y2="156" stroke="#ffffff" stroke-opacity="0.85" stroke-width="4" stroke-linecap="round"/>'
+      );
+    }
+    if (hw === 'cyber_helmet') {
+      return (
+        '<path d="M 106,122 C 106,48 294,48 294,122 L 278,96 L 200,80 L 122,96 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<polygon points="188,36 212,36 206,92 194,92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>'
+      );
+    }
+    if (hw === 'ninja_headband') {
+      return (
+        '<path d="M 284,96 C 324,80 356,104 378,84 C 360,118 326,112 288,114 Z" fill="#7c3aed" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+        '<path d="M 106,102 Q 200,88 294,102 L 294,122 Q 200,108 106,122 Z" fill="#6d28d9" stroke="#000000" stroke-width="7"/>' +
+        '<rect x="170" y="96" width="60" height="20" rx="5" fill="#cbd5e1" stroke="#000000" stroke-width="5"/>' +
+        '<line x1="184" y1="106" x2="216" y2="106" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>'
+      );
+    }
+    if (hw === 'cyber_horns') {
+      return (
+        '<path d="M 142,96 C 118,52 96,38 86,24 C 108,58 118,78 126,102 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<path d="M 258,96 C 282,52 304,38 314,24 C 292,58 282,78 274,102 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>'
+      );
+    }
+    if (hw === 'browser_header') {
+      return (
+        '<rect x="108" y="72" width="184" height="30" rx="10" fill="#1e293b" stroke="#000000" stroke-width="7"/>' +
+        '<circle cx="128" cy="87" r="5" fill="#ef4444"/><circle cx="144" cy="87" r="5" fill="#f59e0b"/><circle cx="160" cy="87" r="5" fill="#10b981"/>' +
+        '<rect x="176" y="81" width="98" height="12" rx="6" fill="#090d16"/>'
+      );
+    }
+    if (hw === 'headset') {
+      return (
+        '<path d="M 104,160 C 104,56 296,56 296,160" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>' +
+        '<path d="M 104,160 C 104,56 296,56 296,160" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<rect x="84" y="136" width="26" height="54" rx="12" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="7"/>' +
+        '<rect x="290" y="136" width="26" height="54" rx="12" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="7"/>' +
+        '<path d="M 98,184 Q 130,222 184,214" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M 98,184 Q 130,222 184,214" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4.5" stroke-linecap="round"/>'
+      );
+    }
+    if (hw === 'fedora') {
+      return (
+        '<ellipse cx="200" cy="94" rx="112" ry="18" fill="#1e293b" stroke="#000000" stroke-width="8"/>' +
+        '<path d="M 132,94 C 140,40 260,40 268,94 Z" fill="#334155" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<rect x="136" y="78" width="128" height="12" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>'
+      );
+    }
+    if (hw === 'cap') {
+      return (
+        '<path d="M 114,98 C 114,44 286,44 286,98 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<path d="M 188,84 L 324,98 L 310,112 L 182,98 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>'
+      );
+    }
+    if (hw === 'beanie') {
+      return (
+        '<path d="M 116,104 C 116,42 284,42 284,104 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8"/>' +
+        '<rect x="110" y="84" width="180" height="24" rx="10" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="7"/>' +
+        '<circle cx="200" cy="40" r="14" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="6"/>'
+      );
+    }
+    if (hw === 'beret') {
+      return (
+        '<path d="M 112,98 C 104,46 254,32 298,78 C 280,98 142,98 112,98 Z" fill="' + escapeXml(p.primary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<circle cx="164" cy="76" r="9" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>'
+      );
+    }
+    return '';
   }
 
   function renderCornerBadgeAndSparkles(spec, uid, lod) {
-    if (lod === 'micro') return '';
+    if (lod === 'micro') return { sparkles: '', badge: '' };
     var p = spec.palette;
-    var parts = [];
+    var sparkles =
+      '<g opacity="0.9">' +
+        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" transform="translate(76,112) scale(1.1)"/>' +
+        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="' + escapeXml(p.secondary) + '" transform="translate(328,88) scale(1.35)"/>' +
+        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="' + escapeXml(p.accent) + '" transform="translate(74,296) scale(0.85)"/>' +
+      '</g>';
 
-    // Authentic 4-point comic sparkles from coding_agent.svg / lila_agent.svg
-    parts.push(
-      '<g id="' + uid + '-sparkles">' +
-        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(108,138) scale(0.9)"/>' +
-        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="' + escapeXml(p.accent) + '" opacity="0.9" transform="translate(392,112) scale(1.15)"/>' +
-        '<path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75" transform="translate(402,318) scale(0.75)"/>' +
-      '</g>'
-    );
-
-    if (lod === 'full') {
-      // Authentic Comic Nameplate Pill Banner at bottom (y=436) from coding_agent.svg
-      var bannerLabel = spec.displayName
-        ? String(spec.displayName).toUpperCase()
-        : (ROLE_BY_HEADWEAR[spec.headwear] || 'JIMESH') + ' // ' + (ROLE_BY_BADGE[spec.accessoryBadge] || 'AGENT');
-      bannerLabel = bannerLabel.slice(0, 28);
-      parts.push(
-        '<rect x="75" y="436" width="350" height="31" rx="15.5" fill="#0b111c" opacity="0.9" stroke="' + escapeXml(p.accent) + '" stroke-width="2.5" filter="url(#' + uid + '-glow)"/>' +
-        '<text x="250" y="456" fill="' + escapeXml(p.accent) + '" font-family="system-ui, -apple-system, sans-serif" font-size="15.5" font-weight="800" text-anchor="middle" letter-spacing="1.4">' +
-          escapeXml(bannerLabel) +
-        '</text>'
-      );
+    var badge = '';
+    if (spec.accessoryBadge && spec.accessoryBadge !== 'none') {
+      var badgeGlyph = '<polygon points="326,294 334,316 356,324 334,332 326,354 318,332 296,324 318,316" fill="' + escapeXml(p.accent) + '"/>';
+      if (spec.accessoryBadge === 'security_lock') {
+        badgeGlyph =
+          '<rect x="308" y="318" width="36" height="28" rx="6" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="4"/>' +
+          '<path d="M 314,318 V 306 A 12,12 0 0,1 338,306 V 318" fill="none" stroke="' + escapeXml(p.secondary) + '" stroke-width="6"/>';
+      } else if (spec.accessoryBadge === 'code_brackets') {
+        badgeGlyph = '<text x="326" y="335" fill="' + escapeXml(p.secondary) + '" font-family="monospace" font-size="32" font-weight="900" text-anchor="middle">&lt;/&gt;</text>';
+      } else if (spec.accessoryBadge === 'devops_gear') {
+        badgeGlyph =
+          '<circle cx="326" cy="324" r="18" fill="none" stroke="' + escapeXml(p.secondary) + '" stroke-width="9" stroke-dasharray="9 6"/>' +
+          '<circle cx="326" cy="324" r="8" fill="' + escapeXml(p.accent) + '"/>';
+      } else if (spec.accessoryBadge === 'crm_shield') {
+        badgeGlyph = '<path d="M 326,296 L 350,306 V 324 C 350,340 338,350 326,356 C 314,350 302,340 302,324 V 306 Z" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="4"/>';
+      } else if (spec.accessoryBadge === 'marketing_megaphone') {
+        badgeGlyph = '<polygon points="302,324 338,304 338,344" fill="' + escapeXml(p.accent) + '"/><circle cx="346" cy="324" r="6" fill="' + escapeXml(p.secondary) + '"/>';
+      } else if (spec.accessoryBadge === 'nango_sync_badge' || spec.accessoryBadge === 'composio_connector') {
+        badgeGlyph = '<circle cx="316" cy="324" r="12" fill="none" stroke="' + escapeXml(p.secondary) + '" stroke-width="6"/><circle cx="336" cy="324" r="12" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6"/>';
+      }
+      badge =
+        '<g>' +
+          '<circle cx="326" cy="324" r="44" fill="#070b14" stroke="#000000" stroke-width="8"/>' +
+          '<circle cx="326" cy="324" r="40" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="4"/>' +
+          badgeGlyph +
+        '</g>';
     }
 
-    return parts.join('');
+    return { sparkles: sparkles, badge: badge };
   }
 
   // ---------------------------------------------------------------------------
@@ -1821,64 +1908,73 @@
     var numericSize = typeof opts.size === 'number' && opts.size > 0 ? opts.size : 0;
     var lod = opts.lod || (numericSize > 0 && numericSize < 36 ? 'micro' : numericSize > 0 && numericSize < 96 ? 'compact' : 'full');
     var fluid = opts.fluid !== false;
-    var uid = 'pfp-' + fnv1aHash(spec.seed + '-' + spec.headwear + '-' + spec.eyes + '-' + spec.chest).toString(36);
+    var uid = 'pfp-' + fnv1aHash(
+      spec.seed + '-' + spec.entityKind + '-' + (spec.species || '') + '-' +
+      spec.background + '-' + spec.body + '-' + spec.chest + '-' +
+      spec.eyes + '-' + spec.headwear + '-' + spec.accessoryBadge
+    ).toString(36);
     var p = spec.palette;
 
     var sizeAttrs = fluid && !opts.fixedPx
       ? 'width="100%" height="100%" style="display:block;width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:1/1;"'
       : 'width="' + (numericSize || 128) + '" height="' + (numericSize || 128) + '" style="display:block;aspect-ratio:1/1;"';
 
-    var bustContent = spec.entityKind === 'human'
-      ? renderHumanBust(spec, uid, lod)
-      : spec.entityKind === 'creature'
-        ? renderCreatureBust(spec, uid, lod)
-        : renderAgentBust(spec, uid, lod);
-
     var shape = opts.shape || 'circle';
     var clipShapeSvg = shape === 'square'
       ? '<rect x="0" y="0" width="400" height="400" rx="0"/>'
       : shape === 'rounded'
         ? '<rect x="0" y="0" width="400" height="400" rx="64"/>'
-        : '<circle cx="200" cy="200" r="200"/>';
+        : '<circle cx="200" cy="200" r="196"/>';
 
-    var borderOverlaySvg = shape === 'square'
-      ? '<rect x="2" y="2" width="396" height="396" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4" opacity="0.55"/>'
+    var outerRingSvg = shape === 'square'
+      ? '<rect x="5" y="5" width="390" height="390" fill="none" stroke="#000000" stroke-width="10"/><rect x="10" y="10" width="380" height="380" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="5"/>'
       : shape === 'rounded'
-        ? '<rect x="2" y="2" width="396" height="396" rx="62" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4" opacity="0.55"/>'
-        : '<circle cx="200" cy="200" r="196" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="4" opacity="0.55"/>';
+        ? '<rect x="5" y="5" width="390" height="390" rx="64" fill="none" stroke="#000000" stroke-width="10"/><rect x="10" y="10" width="380" height="380" rx="59" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="5"/>'
+        : '<circle cx="200" cy="200" r="194" fill="none" stroke="#000000" stroke-width="10"/><circle cx="200" cy="200" r="188" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="5"/>';
 
-    // Uses the exact `viewBox="0 0 400 400"` and `transform="translate(200,176) scale(1.5) translate(-250,-207)"`
-    // coordinate framing from `public/pfp/coding_agent.svg` and `lila_agent.svg`!
+    var bgSvg = renderBackgroundLayer(spec, uid, lod);
+    var creatureBackSvg = renderCreatureBackdrop(spec, uid, lod);
+    var bodySvg = renderBodyOutfitLayer(spec, uid, lod);
+    var chestSvg = lod !== 'micro' ? renderChestEmblem(spec) : '';
+    var headSvg = renderHeadLayer(spec, uid);
+    var eyesSvg = renderEyesLayer(spec);
+    var headwearSvg = renderHeadwearLayer(spec);
+    var extras = renderCornerBadgeAndSparkles(spec, uid, lod);
+
     return (
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" ' + sizeAttrs +
       ' role="img" aria-label="' + escapeXml(spec.displayName || spec.avatarId || spec.seed) + '" data-pfp-id="' + escapeXml(spec.compactId) + '" data-pfp-lod="' + lod + '">' +
         '<defs>' +
           '<clipPath id="' + uid + '-clip">' + clipShapeSvg + '</clipPath>' +
-          '<radialGradient id="' + uid + '-bg" cx="50%" cy="50%" r="70%">' +
-            '<stop offset="0%" stop-color="' + escapeXml(p.secondary) + '"/>' +
-            '<stop offset="65%" stop-color="' + escapeXml(p.background) + '"/>' +
-            '<stop offset="100%" stop-color="#04070d"/>' +
+          '<radialGradient id="' + uid + '-bgGlow" cx="50%" cy="32%" r="75%">' +
+            '<stop offset="0%" stop-color="' + escapeXml(p.secondary) + '" stop-opacity="0.32"/>' +
+            '<stop offset="60%" stop-color="' + escapeXml(p.primary) + '" stop-opacity="0.14"/>' +
+            '<stop offset="100%" stop-color="' + escapeXml(p.background) + '" stop-opacity="0"/>' +
           '</radialGradient>' +
-          '<linearGradient id="' + uid + '-body" x1="0%" y1="0%" x2="0%" y2="100%">' +
-            '<stop offset="0%" stop-color="' + escapeXml(p.primary) + '"/>' +
-            '<stop offset="100%" stop-color="' + escapeXml(p.secondary) + '"/>' +
+          '<linearGradient id="' + uid + '-chassisGrad" x1="0%" y1="0%" x2="0%" y2="100%">' +
+            '<stop offset="0%" stop-color="' + escapeXml(p.skinOrChassis || p.primary) + '"/>' +
+            '<stop offset="100%" stop-color="' + escapeXml(p.primary) + '"/>' +
           '</linearGradient>' +
-          '<filter id="' + uid + '-glow" x="-20%" y="-20%" width="140%" height="140%">' +
-            '<feGaussianBlur stdDeviation="8" result="blur"/>' +
-            '<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>' +
-          '</filter>' +
-          '<pattern id="' + uid + '-ht" width="13" height="13" patternUnits="userSpaceOnUse">' +
-            '<circle cx="4" cy="4" r="2" fill="' + escapeXml(p.accent) + '" opacity="0.45"/>' +
+          '<linearGradient id="' + uid + '-bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="' + escapeXml(p.primary) + '"/>' +
+            '<stop offset="100%" stop-color="#0f172a"/>' +
+          '</linearGradient>' +
+          '<pattern id="' + uid + '-dots" width="14" height="14" patternUnits="userSpaceOnUse">' +
+            '<circle cx="4" cy="4" r="2.2" fill="' + escapeXml(p.secondary) + '" opacity="0.4"/>' +
           '</pattern>' +
         '</defs>' +
         '<g clip-path="url(#' + uid + '-clip)">' +
-          '<g transform="translate(200,176) scale(1.5) translate(-250,-207)">' +
-            renderBackgroundLayer(spec, uid, lod) +
-            bustContent +
-            renderCornerBadgeAndSparkles(spec, uid, lod) +
-          '</g>' +
-          borderOverlaySvg +
+          bgSvg +
+          extras.sparkles +
+          creatureBackSvg +
+          bodySvg +
+          chestSvg +
+          headSvg +
+          eyesSvg +
+          headwearSvg +
         '</g>' +
+        outerRingSvg +
+        extras.badge +
       '</svg>'
     );
   }
@@ -2344,6 +2440,7 @@
     CHEST_VALUES: CHEST_VALUES,
     BACKGROUND_VALUES: BACKGROUND_VALUES,
     ACCESSORY_VALUES: ACCESSORY_VALUES,
+    CREATURE_SPECIES_VALUES: CREATURE_SPECIES_VALUES,
     PALETTES: PALETTES,
     ALL_PALETTES: ALL_PALETTES,
     PRESET_CATALOG: PRESET_CATALOG,
