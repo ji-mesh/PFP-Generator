@@ -1680,16 +1680,16 @@
     }).join('');
 
     overlay.innerHTML =
-      '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:16px;max-width:620px;width:100%;color:#f8fafc;box-shadow:0 24px 64px rgba(0,0,0,0.7);padding:22px;">' +
+      '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:16px;max-width:620px;width:100%;max-height:92vh;overflow-y:auto;color:#f8fafc;box-shadow:0 24px 64px rgba(0,0,0,0.7);padding:clamp(14px,3vw,22px);">' +
         '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(148,163,184,0.15);padding-bottom:12px;margin-bottom:16px;">' +
-          '<div>' +
+          '<div style="min-width:0;">' +
             '<div style="font-size:16px;font-weight:700;color:#f8fafc;">⬇ Export &amp; Download Avatar (SVG / PNG)</div>' +
-            '<div style="font-size:12px;color:#94a3b8;">ID: <code style="color:#38bdf8;">' + escapeXml(spec.compactId) + '</code></div>' +
+            '<div style="font-size:12px;color:#94a3b8;word-break:break-all;">ID: <code style="color:#38bdf8;">' + escapeXml(spec.compactId) + '</code></div>' +
           '</div>' +
-          '<button type="button" id="pfp-exp-close" style="background:transparent;border:1px solid rgba(148,163,184,0.3);color:#cbd5e1;border-radius:8px;padding:4px 10px;cursor:pointer;">✕</button>' +
+          '<button type="button" id="pfp-exp-close" style="background:transparent;border:1px solid rgba(148,163,184,0.3);color:#cbd5e1;border-radius:8px;padding:4px 10px;cursor:pointer;flex-shrink:0;">✕</button>' +
         '</div>' +
 
-        '<div style="display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:start;">' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;align-items:start;">' +
           '<div style="display:flex;flex-direction:column;align-items:center;gap:10px;background:#090d16;padding:16px;border-radius:12px;border:1px solid rgba(148,163,184,0.15);">' +
             '<div id="pfp-exp-preview" style="width:140px;height:140px;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(#111827 0% 25%, #090d16 0% 50%) 50% / 16px 16px;border-radius:12px;overflow:hidden;"></div>' +
             '<div id="pfp-exp-summary" style="font-size:11px;color:#7dd3fc;font-weight:600;text-align:center;">PNG · 512×512 px</div>' +
