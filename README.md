@@ -2,6 +2,15 @@
 
 Universal, deterministic **6-layer Comic-Bust SVG Avatar Generator**, **Compact String/ID Attribute Codec (`pfp1-...`)**, **Procedural Name Generator**, and **Backend Persistence Server** for Autonomous Agents, Sovereign Experts, and Human Operators.
 
+<img width="1457" height="1073" alt="image" src="https://github.com/user-attachments/assets/10873bbc-b3c6-4145-bc8a-4abfb86c7355" />
+
+> click to create new pfp
+
+
+<img width="1350" height="576" alt="image" src="https://github.com/user-attachments/assets/4dd902b4-e694-4660-847b-be620dc1e1cd" />
+
+> safe your presets
+
 ---
 
 ## Key Features
