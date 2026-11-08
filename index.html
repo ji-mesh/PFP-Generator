@@ -375,10 +375,40 @@
           </div>
 
           <div style="margin-top:14px;">
-            <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">
-              Color Palette Presets
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;">
+                Color Palette Presets (18 Built-in + Custom Palettes)
+              </span>
             </div>
             <div id="palette-buttons" class="btn-row"></div>
+
+            <!-- Custom Palette Builder -->
+            <div style="margin-top:12px;padding:12px;border-radius:10px;background:var(--bg-0);border:1px solid var(--border);">
+              <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">
+                🎨 Custom Color Editor &amp; Palette Creator
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;align-items:end;">
+                <label class="ctrl">Primary
+                  <input type="color" id="col-primary" value="#0ea5e9" style="width:100%;height:34px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;" />
+                </label>
+                <label class="ctrl">Secondary
+                  <input type="color" id="col-secondary" value="#0369a1" style="width:100%;height:34px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;" />
+                </label>
+                <label class="ctrl">Accent / Glow
+                  <input type="color" id="col-accent" value="#7dd3fc" style="width:100%;height:34px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;" />
+                </label>
+                <label class="ctrl">Background
+                  <input type="color" id="col-bg" value="#071926" style="width:100%;height:34px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;" />
+                </label>
+                <label class="ctrl">Skin / Chassis
+                  <input type="color" id="col-skin" value="#0ea5e9" style="width:100%;height:34px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;" />
+                </label>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:10px;align-items:center;">
+                <input type="text" id="inp-palette-name" placeholder="New Palette Name (e.g. Cyber Gold)" style="flex:1;" />
+                <button type="button" class="primary" id="btn-save-palette">➕ Save Custom Palette</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -392,8 +422,8 @@
           </div>
           <div>
             <div class="card-title">
-              <span>Import &amp; Backend Persistence Usage</span>
-              <button type="button" class="primary" id="btn-save-backend" style="padding:3px 10px;font-size:11px;">💾 Save to Backend API</button>
+              <span>Import &amp; Preset Persistence</span>
+              <button type="button" class="primary" id="btn-save-backend" style="padding:3px 10px;font-size:11px;">💾 Save as Preset (Browser + Disk)</button>
             </div>
             <pre id="code-usage-output"></pre>
           </div>
@@ -401,11 +431,14 @@
       </section>
     </div>
 
-    <!-- CURATED PRESETS FROM public/pfp/*.svg -->
+    <!-- CURATED & CUSTOM PRESETS FROM public/pfp/*.svg -->
     <section class="card">
-      <div class="card-title">
-        <span>3. Curated Hand-Crafted Presets (<code>public/pfp/*.svg</code> — Click Any Preset to Load &amp; Customize)</span>
-        <span style="font-size:12px;color:var(--muted);text-transform:none;">61 SVG files included in <code>public/pfp/</code></span>
+      <div class="card-title" style="flex-wrap:wrap;gap:10px;">
+        <span>3. PFP Presets — Built-in &amp; Custom Created Presets (Click Any Preset to Load &amp; Customize)</span>
+        <div style="display:flex;gap:8px;align-items:center;text-transform:none;">
+          <input type="text" id="inp-preset-name" placeholder="Preset Name (e.g. Shadow_Synth)" style="padding:6px 10px;font-size:12px;width:220px;" />
+          <button type="button" class="primary" id="btn-create-preset">➕ Save Current Avatar as Preset</button>
+        </div>
       </div>
       <div id="preset-gallery" class="preset-strip"></div>
     </section>
@@ -447,20 +480,29 @@
       populateSelect(selBackground, PFP.BACKGROUND_VALUES);
       populateSelect(selAccessory, PFP.ACCESSORY_VALUES);
 
+      var colPrimary = document.getElementById('col-primary');
+      var colSecondary = document.getElementById('col-secondary');
+      var colAccent = document.getElementById('col-accent');
+      var colBg = document.getElementById('col-bg');
+      var colSkin = document.getElementById('col-skin');
+
       function renderPaletteButtons() {
-        var pool = PFP.PALETTES[currentSpec.entityKind] || PFP.PALETTES.agent;
+        var customPals = PFP.getCustomPalettes ? PFP.getCustomPalettes() : [];
+        var allBuiltIn = PFP.ALL_PALETTES || PFP.PALETTES.agent;
+        var combined = customPals.concat(allBuiltIn);
         var container = document.getElementById('palette-buttons');
-        container.innerHTML = pool.map(function (pal, idx) {
+        container.innerHTML = combined.map(function (pal, idx) {
+          var badge = pal.isCustom ? ' <span style="color:#38bdf8;font-size:10px;">★</span>' : '';
           return '<button type="button" data-pal-idx="' + idx + '" style="display:flex;align-items:center;gap:6px;">' +
             '<span style="width:12px;height:12px;border-radius:999px;background:' + pal.primary + ';border:2px solid ' + pal.accent + ';display:inline-block;"></span>' +
-            pal.name +
+            pal.name + badge +
           '</button>';
         }).join('');
 
         Array.prototype.forEach.call(container.querySelectorAll('button'), function (btn) {
           btn.addEventListener('click', function () {
             var idx = Number(btn.getAttribute('data-pal-idx')) || 0;
-            currentSpec.palette = Object.assign({}, pool[idx]);
+            currentSpec.palette = Object.assign({}, combined[idx]);
             syncUiFromSpec();
           });
         });
@@ -476,6 +518,13 @@
         selAccessory.value = currentSpec.accessoryBadge;
         if (currentSpec.displayName) {
           inpCallsign.value = currentSpec.displayName;
+        }
+        if (currentSpec.palette) {
+          colPrimary.value = currentSpec.palette.primary || '#0ea5e9';
+          colSecondary.value = currentSpec.palette.secondary || '#0369a1';
+          colAccent.value = currentSpec.palette.accent || '#7dd3fc';
+          colBg.value = currentSpec.palette.background || '#071926';
+          colSkin.value = currentSpec.palette.skinOrChassis || '#0ea5e9';
         }
 
         currentSpec.compactId = PFP.encodePfpId(currentSpec, currentSpec.displayName);
@@ -598,53 +647,131 @@
         });
       });
 
-      document.getElementById('btn-save-backend').addEventListener('click', function () {
-        var targetId = (currentSpec.displayName || currentSpec.seed || 'agent').replace(/[^a-zA-Z0-9_-]/g, '_');
-        fetch('/api/v1/pfp/' + encodeURIComponent(targetId), {
+      // Live Custom Color Picker bindings
+      [
+        [colPrimary, 'primary'],
+        [colSecondary, 'secondary'],
+        [colAccent, 'accent'],
+        [colBg, 'background'],
+        [colSkin, 'skinOrChassis']
+      ].forEach(function (pair) {
+        pair[0].addEventListener('input', function () {
+          currentSpec.palette = Object.assign({}, currentSpec.palette, {
+            id: 'custom_live',
+            name: 'Custom',
+            primary: colPrimary.value,
+            secondary: colSecondary.value,
+            accent: colAccent.value,
+            background: colBg.value,
+            skinOrChassis: colSkin.value
+          });
+          syncUiFromSpec();
+        });
+      });
+
+      document.getElementById('btn-save-palette').addEventListener('click', function () {
+        var nameInput = document.getElementById('inp-palette-name');
+        var palName = (nameInput.value || '').trim() || ('Custom ' + Math.floor(Math.random() * 900 + 100));
+        var saved = PFP.saveCustomPalette({
+          name: palName,
+          primary: colPrimary.value,
+          secondary: colSecondary.value,
+          accent: colAccent.value,
+          background: colBg.value,
+          skinOrChassis: colSkin.value
+        });
+        currentSpec.palette = Object.assign({}, saved);
+        nameInput.value = '';
+        renderPaletteButtons();
+        syncUiFromSpec();
+        showToast('Saved Custom Palette: ' + saved.name);
+      });
+
+      function saveCurrentAsPreset(customTitle) {
+        var title = (customTitle || document.getElementById('inp-preset-name').value || currentSpec.displayName || currentSpec.seed || 'Custom_Agent').trim();
+        var rec = PFP.saveCustomPreset(title, currentSpec);
+        document.getElementById('inp-preset-name').value = '';
+        renderPresetGallery();
+
+        // Also persist to backend disk store & public/pfp/custom_<id>.svg if server is running
+        fetch('/api/v1/pfp/' + encodeURIComponent(rec.presetId), {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pfp_spec: currentSpec, displayName: currentSpec.displayName })
+          body: JSON.stringify({ pfp_spec: currentSpec, displayName: rec.title })
         })
           .then(function (r) { return r.json(); })
           .then(function (res) {
             if (res && res.ok) {
-              showToast('Saved to Backend! URL: ' + res.record.svgUrl);
+              showToast('Saved Preset "' + rec.title + '" to Gallery + Disk (' + (res.record.staticSvgFile || res.record.svgUrl) + ')');
             } else {
-              showToast('Backend error: ' + (res && res.error ? res.error : 'Unknown'));
+              showToast('Saved Preset "' + rec.title + '" to Preset Gallery!');
             }
           })
           .catch(function () {
-            showToast('Run `node backend/server.js` to enable live backend persistence.');
+            showToast('Saved Preset "' + rec.title + '" to Preset Gallery (Browser Storage)!');
           });
+      }
+
+      document.getElementById('btn-save-backend').addEventListener('click', function () {
+        saveCurrentAsPreset(currentSpec.displayName || currentSpec.seed);
       });
 
-      // Populate Curated Preset Gallery
-      var gallery = document.getElementById('preset-gallery');
-      Object.keys(PFP.PRESET_CATALOG).forEach(function (presetKey) {
-        var item = PFP.PRESET_CATALOG[presetKey];
-        var card = document.createElement('div');
-        card.className = 'preset-card';
-        card.innerHTML =
-          '<div class="preset-svg">' + PFP.renderPfpSvg(presetKey, { fluid: true, lod: 'compact' }) + '</div>' +
-          '<span>' + presetKey.replace(/_/g, ' ') + '</span>' +
-          '<button type="button" class="preset-dl-btn" style="padding:3px 8px;font-size:10px;width:100%;margin-top:2px;">⬇ SVG / PNG</button>';
-        card.addEventListener('click', function (ev) {
-          if (ev.target && ev.target.classList && ev.target.classList.contains('preset-dl-btn')) {
-            ev.stopPropagation();
-            var presetSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
-            PFP.openExportModal(presetSpec, { defaultFormat: 'png', defaultSize: 512 });
-            return;
-          }
-          currentSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
-          inpSeed.value = presetKey;
-          inpCallsign.value = item.title;
-          renderPaletteButtons();
-          syncUiFromSpec();
-          showToast('Loaded preset: ' + presetKey);
+      document.getElementById('btn-create-preset').addEventListener('click', function () {
+        saveCurrentAsPreset(document.getElementById('inp-preset-name').value);
+      });
+
+      // Populate Curated + Custom Preset Gallery
+      function renderPresetGallery() {
+        var gallery = document.getElementById('preset-gallery');
+        gallery.innerHTML = '';
+        var catalog = PFP.getAllPresets ? PFP.getAllPresets() : PFP.PRESET_CATALOG;
+        var keys = Object.keys(catalog);
+        // Show custom presets first
+        keys.sort(function (a, b) {
+          var ca = catalog[a].isCustom ? 0 : 1;
+          var cb = catalog[b].isCustom ? 0 : 1;
+          return ca - cb;
         });
-        gallery.appendChild(card);
-      });
 
+        keys.forEach(function (presetKey) {
+          var item = catalog[presetKey];
+          var card = document.createElement('div');
+          card.className = 'preset-card';
+          card.style.position = 'relative';
+          var customBadge = item.isCustom
+            ? '<button type="button" class="preset-del-btn" title="Delete Custom Preset" style="position:absolute;top:4px;right:4px;padding:1px 5px;font-size:10px;background:#7f1d1d;border:none;color:#fecaca;border-radius:4px;">✕</button>'
+            : '';
+          card.innerHTML =
+            customBadge +
+            '<div class="preset-svg">' + PFP.renderPfpSvg(presetKey, { fluid: true, lod: 'compact' }) + '</div>' +
+            '<span>' + (item.isCustom ? '★ ' : '') + presetKey.replace(/^custom_/, '').replace(/_/g, ' ') + '</span>' +
+            '<button type="button" class="preset-dl-btn" style="padding:3px 8px;font-size:10px;width:100%;margin-top:2px;">⬇ SVG / PNG</button>';
+          card.addEventListener('click', function (ev) {
+            if (ev.target && ev.target.classList && ev.target.classList.contains('preset-del-btn')) {
+              ev.stopPropagation();
+              PFP.deleteCustomPreset(presetKey);
+              renderPresetGallery();
+              showToast('Deleted custom preset: ' + presetKey);
+              return;
+            }
+            if (ev.target && ev.target.classList && ev.target.classList.contains('preset-dl-btn')) {
+              ev.stopPropagation();
+              var presetSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
+              PFP.openExportModal(presetSpec, { defaultFormat: 'png', defaultSize: 512 });
+              return;
+            }
+            currentSpec = PFP.resolvePfpSpec(presetKey, item.entityKind);
+            inpSeed.value = currentSpec.compactId || presetKey;
+            inpCallsign.value = item.title;
+            renderPaletteButtons();
+            syncUiFromSpec();
+            showToast('Loaded preset: ' + presetKey);
+          });
+          gallery.appendChild(card);
+        });
+      }
+
+      renderPresetGallery();
       renderPaletteButtons();
       syncUiFromSpec();
     })();

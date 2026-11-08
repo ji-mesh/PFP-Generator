@@ -53,32 +53,82 @@
   var ENTITY_CODE_TO_KIND = { ag: 'agent', ex: 'expert', hu: 'human' };
   var ENTITY_KIND_TO_CODE = { agent: 'ag', expert: 'ex', human: 'hu' };
 
+  var ALL_PALETTES = [
+    { id: 'coding_cyan', name: 'Coding Cyan', primary: '#0ea5e9', secondary: '#0369a1', accent: '#7dd3fc', background: '#071926', skinOrChassis: '#0ea5e9' },
+    { id: 'lila_toxic', name: 'Lila Toxic', primary: '#9333ea', secondary: '#581c87', accent: '#a3e635', background: '#170926', skinOrChassis: '#9333ea' },
+    { id: 'ninja_stealth', name: 'Ninja Stealth', primary: '#334155', secondary: '#0f172a', accent: '#c084fc', background: '#0d0b18', skinOrChassis: '#1e293b' },
+    { id: 'orch_violet', name: 'Orchestrator Violet', primary: '#8b5cf6', secondary: '#4c1d95', accent: '#e9d5ff', background: '#110926', skinOrChassis: '#7c3aed' },
+    { id: 'red_adversary', name: 'Red Team Crimson', primary: '#ef4444', secondary: '#991b1b', accent: '#fca5a5', background: '#210709', skinOrChassis: '#dc2626' },
+    { id: 'figma_emerald', name: 'Design Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#041a12', skinOrChassis: '#10b981' },
+    { id: 'voice_amber', name: 'Voice Amber', primary: '#f59e0b', secondary: '#b45309', accent: '#fef08a', background: '#241204', skinOrChassis: '#f59e0b' },
+    { id: 'happy_pink', name: 'Joy Magenta', primary: '#ec4899', secondary: '#9d174d', accent: '#fbcfe8', background: '#26081c', skinOrChassis: '#ec4899' },
+    { id: 'exp_sovereign', name: 'Sovereign Gold', primary: '#7c3aed', secondary: '#4c1d95', accent: '#fbbf24', background: '#120924', skinOrChassis: '#8b5cf6' },
+    { id: 'exp_cyber', name: 'SecOps Emerald', primary: '#059669', secondary: '#065f46', accent: '#38bdf8', background: '#041a14', skinOrChassis: '#10b981' },
+    { id: 'exp_crimson', name: 'Adversary Ruby', primary: '#e11d48', secondary: '#881337', accent: '#fde047', background: '#1f0610', skinOrChassis: '#f43f5e' },
+    { id: 'exp_cobalt', name: 'Architect Cobalt', primary: '#2563eb', secondary: '#1e3a8a', accent: '#67e8f9', background: '#07132b', skinOrChassis: '#3b82f6' },
+    { id: 'hum_founder', name: 'Founder Violet', primary: '#7c3aed', secondary: '#4c1d95', accent: '#c084fc', background: '#160d29', skinOrChassis: '#f3c6a5' },
+    { id: 'hum_ops', name: 'Ops Cyan', primary: '#0284c7', secondary: '#0369a1', accent: '#38bdf8', background: '#081c29', skinOrChassis: '#eab68c' },
+    { id: 'hum_product', name: 'Product Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#071f18', skinOrChassis: '#c68b59' },
+    { id: 'hum_analyst', name: 'Analyst Amber', primary: '#d97706', secondary: '#92400e', accent: '#fcd34d', background: '#211305', skinOrChassis: '#f5d0b5' },
+    { id: 'hum_qa', name: 'QA Rose', primary: '#e11d48', secondary: '#9f1239', accent: '#fda4af', background: '#240812', skinOrChassis: '#8d5524' },
+    { id: 'hum_sales', name: 'Sales Indigo', primary: '#4f46e5', secondary: '#312e81', accent: '#818cf8', background: '#0c0a24', skinOrChassis: '#f1c27d' }
+  ];
+
   var PALETTES = {
-    agent: [
-      { id: 'coding_cyan', name: 'Coding Cyan', primary: '#0ea5e9', secondary: '#0369a1', accent: '#7dd3fc', background: '#071926', skinOrChassis: '#0ea5e9' },
-      { id: 'lila_toxic', name: 'Lila Toxic', primary: '#9333ea', secondary: '#581c87', accent: '#a3e635', background: '#170926', skinOrChassis: '#9333ea' },
-      { id: 'ninja_stealth', name: 'Ninja Stealth', primary: '#334155', secondary: '#0f172a', accent: '#c084fc', background: '#0d0b18', skinOrChassis: '#1e293b' },
-      { id: 'orch_violet', name: 'Orchestrator Violet', primary: '#8b5cf6', secondary: '#4c1d95', accent: '#e9d5ff', background: '#110926', skinOrChassis: '#7c3aed' },
-      { id: 'red_adversary', name: 'Red Team Crimson', primary: '#ef4444', secondary: '#991b1b', accent: '#fca5a5', background: '#210709', skinOrChassis: '#dc2626' },
-      { id: 'figma_emerald', name: 'Design Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#041a12', skinOrChassis: '#10b981' },
-      { id: 'voice_amber', name: 'Voice Amber', primary: '#f59e0b', secondary: '#b45309', accent: '#fef08a', background: '#241204', skinOrChassis: '#f59e0b' },
-      { id: 'happy_pink', name: 'Joy Magenta', primary: '#ec4899', secondary: '#9d174d', accent: '#fbcfe8', background: '#26081c', skinOrChassis: '#ec4899' }
-    ],
-    expert: [
-      { id: 'exp_sovereign', name: 'Sovereign Gold', primary: '#7c3aed', secondary: '#4c1d95', accent: '#fbbf24', background: '#120924', skinOrChassis: '#8b5cf6' },
-      { id: 'exp_cyber', name: 'SecOps Emerald', primary: '#059669', secondary: '#065f46', accent: '#38bdf8', background: '#041a14', skinOrChassis: '#10b981' },
-      { id: 'exp_crimson', name: 'Adversary Ruby', primary: '#e11d48', secondary: '#881337', accent: '#fde047', background: '#1f0610', skinOrChassis: '#f43f5e' },
-      { id: 'exp_cobalt', name: 'Architect Cobalt', primary: '#2563eb', secondary: '#1e3a8a', accent: '#67e8f9', background: '#07132b', skinOrChassis: '#3b82f6' }
-    ],
-    human: [
-      { id: 'hum_founder', name: 'Founder Violet', primary: '#7c3aed', secondary: '#4c1d95', accent: '#c084fc', background: '#160d29', skinOrChassis: '#f3c6a5' },
-      { id: 'hum_ops', name: 'Ops Cyan', primary: '#0284c7', secondary: '#0369a1', accent: '#38bdf8', background: '#081c29', skinOrChassis: '#eab68c' },
-      { id: 'hum_product', name: 'Product Emerald', primary: '#10b981', secondary: '#047857', accent: '#6ee7b7', background: '#071f18', skinOrChassis: '#c68b59' },
-      { id: 'hum_analyst', name: 'Analyst Amber', primary: '#d97706', secondary: '#92400e', accent: '#fcd34d', background: '#211305', skinOrChassis: '#f5d0b5' },
-      { id: 'hum_qa', name: 'QA Rose', primary: '#e11d48', secondary: '#9f1239', accent: '#fda4af', background: '#240812', skinOrChassis: '#8d5524' },
-      { id: 'hum_sales', name: 'Sales Indigo', primary: '#4f46e5', secondary: '#312e81', accent: '#818cf8', background: '#0c0a24', skinOrChassis: '#f1c27d' }
-    ]
+    agent: ALL_PALETTES.slice(0, 12),
+    expert: ALL_PALETTES.slice(0, 12),
+    human: ALL_PALETTES.slice(12).concat(ALL_PALETTES.slice(0, 6)),
+    all: ALL_PALETTES
   };
+
+  var CUSTOM_PALETTES_STORAGE_KEY = 'jimesh_pfp_custom_palettes_v1';
+  var CUSTOM_PRESETS_STORAGE_KEY = 'jimesh_pfp_custom_presets_v1';
+  var memoryCustomPalettes = [];
+  var memoryCustomPresets = {};
+
+  function getCustomPalettes() {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        var raw = localStorage.getItem(CUSTOM_PALETTES_STORAGE_KEY);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) return parsed;
+        }
+      } catch (_e) {}
+    }
+    return memoryCustomPalettes.slice();
+  }
+
+  function saveCustomPalette(paletteObj) {
+    if (!paletteObj || !paletteObj.primary) return null;
+    var list = getCustomPalettes();
+    var entry = {
+      id: paletteObj.id || ('custom_pal_' + Date.now().toString(36)),
+      name: String(paletteObj.name || 'Custom Palette').trim(),
+      primary: paletteObj.primary || '#0ea5e9',
+      secondary: paletteObj.secondary || '#0369a1',
+      accent: paletteObj.accent || '#7dd3fc',
+      background: paletteObj.background || '#071926',
+      skinOrChassis: paletteObj.skinOrChassis || '#0ea5e9',
+      isCustom: true
+    };
+    list = list.filter(function (p) { return p.id !== entry.id && p.name !== entry.name; });
+    list.unshift(entry);
+    memoryCustomPalettes = list;
+    if (typeof localStorage !== 'undefined') {
+      try { localStorage.setItem(CUSTOM_PALETTES_STORAGE_KEY, JSON.stringify(list)); } catch (_e) {}
+    }
+    return entry;
+  }
+
+  function deleteCustomPalette(id) {
+    var list = getCustomPalettes().filter(function (p) { return p.id !== id; });
+    memoryCustomPalettes = list;
+    if (typeof localStorage !== 'undefined') {
+      try { localStorage.setItem(CUSTOM_PALETTES_STORAGE_KEY, JSON.stringify(list)); } catch (_e) {}
+    }
+    return list;
+  }
 
   /**
    * Curated Preset Registry mapping directly to `public/pfp/<preset>.svg`
@@ -266,8 +316,184 @@
       headwear: 'beanie',
       accessoryBadge: 'security_lock',
       palette: PALETTES.human[4]
+    },
+    fin_agent: {
+      presetId: 'fin_agent',
+      svgFile: '/pfp/fin_agent.svg',
+      entityKind: 'agent',
+      title: 'FIN AGENT // LEDGER CORE',
+      background: 'geometric',
+      body: 'suit',
+      chest: 'tie',
+      eyes: 'focused',
+      headwear: 'crown',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[8]
+    },
+    green_agent: {
+      presetId: 'green_agent',
+      svgFile: '/pfp/green_agent.svg',
+      entityKind: 'agent',
+      title: 'GREEN AGENT // HEALTH MONITOR',
+      background: 'cyber_grid',
+      body: 'robot_chassis',
+      chest: 'reactor_core',
+      eyes: 'cyber_optic',
+      headwear: 'none',
+      accessoryBadge: 'devops_gear',
+      palette: ALL_PALETTES[5]
+    },
+    orange_agent: {
+      presetId: 'orange_agent',
+      svgFile: '/pfp/orange_agent.svg',
+      entityKind: 'agent',
+      title: 'ORANGE AGENT // PIPELINE OPS',
+      background: 'solid_mesh',
+      body: 'cyber_armor',
+      chest: 'harness',
+      eyes: 'terminal_glow',
+      headwear: 'cap',
+      accessoryBadge: 'composio_connector',
+      palette: ALL_PALETTES[6]
+    },
+    blue_agent: {
+      presetId: 'blue_agent',
+      svgFile: '/pfp/blue_agent.svg',
+      entityKind: 'agent',
+      title: 'BLUE TEAM // DEFENDER',
+      background: 'deep_space',
+      body: 'cyber_armor',
+      chest: 'mesh_emblem',
+      eyes: 'cyber_optic',
+      headwear: 'cyber_helmet',
+      accessoryBadge: 'security_lock',
+      palette: ALL_PALETTES[11]
+    },
+    bad_agent: {
+      presetId: 'bad_agent',
+      svgFile: '/pfp/bad_agent.svg',
+      entityKind: 'agent',
+      title: 'ROGUE AGENT // CHAOS SIM',
+      background: 'matrix_rain',
+      body: 'cyber_armor',
+      chest: 'reactor_core',
+      eyes: 'laser',
+      headwear: 'cyber_visor',
+      accessoryBadge: 'security_lock',
+      palette: ALL_PALETTES[4]
+    },
+    sales1: {
+      presetId: 'sales1',
+      svgFile: '/pfp/sales1.svg',
+      entityKind: 'human',
+      title: 'ACCOUNT EXEC // ENTERPRISE',
+      background: 'mesh_gradient',
+      body: 'suit',
+      chest: 'tie',
+      eyes: 'happy',
+      headwear: 'none',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[17]
+    },
+    support_female: {
+      presetId: 'support_female',
+      svgFile: '/pfp/support_female.svg',
+      entityKind: 'human',
+      title: 'SUPPORT LEAD // HELPDESK',
+      background: 'pastel_dots',
+      body: 'turtleneck',
+      chest: 'necklace',
+      eyes: 'happy',
+      headwear: 'headset',
+      accessoryBadge: 'marketing_megaphone',
+      palette: ALL_PALETTES[14]
+    },
+    customer_success: {
+      presetId: 'customer_success',
+      svgFile: '/pfp/customer_success.svg',
+      entityKind: 'human',
+      title: 'CUSTOMER SUCCESS // ONBOARDING',
+      background: 'solid_mesh',
+      body: 'casual_tee',
+      chest: 'mesh_emblem',
+      eyes: 'wink',
+      headwear: 'beret',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[12]
     }
   };
+
+  function getCustomPresets() {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        var raw = localStorage.getItem(CUSTOM_PRESETS_STORAGE_KEY);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object') return parsed;
+        }
+      } catch (_e) {}
+    }
+    return Object.assign({}, memoryCustomPresets);
+  }
+
+  function saveCustomPreset(nameOrId, specInput) {
+    var rawTitle = String(nameOrId || (specInput && specInput.displayName) || 'Custom Preset').trim();
+    var presetId = 'custom_' + rawTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 28);
+    if (presetId === 'custom_') presetId = 'custom_' + Date.now().toString(36);
+
+    var spec = (specInput && typeof specInput === 'object' && specInput.headwear)
+      ? Object.assign({}, specInput)
+      : resolvePfpSpec(rawTitle, 'agent');
+    spec.displayName = rawTitle;
+    spec.compactId = encodePfpId(spec, rawTitle);
+
+    var record = {
+      presetId: presetId,
+      title: rawTitle.toUpperCase(),
+      entityKind: spec.entityKind || 'agent',
+      background: spec.background,
+      body: spec.body,
+      chest: spec.chest,
+      eyes: spec.eyes,
+      headwear: spec.headwear,
+      accessoryBadge: spec.accessoryBadge,
+      palette: Object.assign({}, spec.palette),
+      compactId: spec.compactId,
+      isCustom: true,
+      createdAt: new Date().toISOString()
+    };
+
+    var map = getCustomPresets();
+    map[presetId] = record;
+    memoryCustomPresets = map;
+    PRESET_CATALOG[presetId] = record;
+
+    if (typeof localStorage !== 'undefined') {
+      try { localStorage.setItem(CUSTOM_PRESETS_STORAGE_KEY, JSON.stringify(map)); } catch (_e) {}
+    }
+    return record;
+  }
+
+  function deleteCustomPreset(presetId) {
+    var map = getCustomPresets();
+    delete map[presetId];
+    delete memoryCustomPresets[presetId];
+    if (PRESET_CATALOG[presetId] && PRESET_CATALOG[presetId].isCustom) {
+      delete PRESET_CATALOG[presetId];
+    }
+    if (typeof localStorage !== 'undefined') {
+      try { localStorage.setItem(CUSTOM_PRESETS_STORAGE_KEY, JSON.stringify(map)); } catch (_e) {}
+    }
+    return map;
+  }
+
+  function getAllPresets() {
+    var custom = getCustomPresets();
+    Object.keys(custom).forEach(function (k) {
+      PRESET_CATALOG[k] = custom[k];
+    });
+    return PRESET_CATALOG;
+  }
 
   // ---------------------------------------------------------------------------
   // DETERMINISTIC PRNG (FNV-1a + Mulberry32)
@@ -1758,7 +1984,16 @@
     BACKGROUND_VALUES: BACKGROUND_VALUES,
     ACCESSORY_VALUES: ACCESSORY_VALUES,
     PALETTES: PALETTES,
+    ALL_PALETTES: ALL_PALETTES,
     PRESET_CATALOG: PRESET_CATALOG,
+
+    getCustomPalettes: getCustomPalettes,
+    saveCustomPalette: saveCustomPalette,
+    deleteCustomPalette: deleteCustomPalette,
+    getCustomPresets: getCustomPresets,
+    saveCustomPreset: saveCustomPreset,
+    deleteCustomPreset: deleteCustomPreset,
+    getAllPresets: getAllPresets,
 
     fnv1aHash: fnv1aHash,
     createMulberry32: createMulberry32,

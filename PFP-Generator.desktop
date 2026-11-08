@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JiMesh PFP Generator Studio
+Comment=Start PFP Generator Backend Server and Open Interactive SVG/PNG Studio
+Exec=/bin/bash -c 'cd "$(dirname "%k")" && ./start.sh'
+Icon=applications-graphics
+Terminal=false
+Categories=Graphics;Development;

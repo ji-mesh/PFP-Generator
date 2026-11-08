@@ -225,6 +225,16 @@ function createPfpRouter(options) {
         }
         resolved.compactId = PFP.encodePfpId(resolved, resolved.displayName);
 
+        const safeSlug = targetId.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 40) || 'custom';
+        const svgFileName = safeSlug.startsWith('custom_') ? (safeSlug + '.svg') : ('custom_' + safeSlug + '.svg');
+        const svgDiskPath = path.join(PUBLIC_PFP_DIR, svgFileName);
+        const renderedSvg = PFP.renderPfpSvg(resolved, { size: 400, fixedPx: true, lod: 'full' });
+        try {
+          if (fs.existsSync(PUBLIC_PFP_DIR)) {
+            fs.writeFileSync(svgDiskPath, renderedSvg, 'utf8');
+          }
+        } catch (_writeErr) {}
+
         const store = readStore(dataFile);
         const record = {
           id: targetId,
@@ -232,6 +242,7 @@ function createPfpRouter(options) {
           displayName: resolved.displayName || null,
           entityKind: resolved.entityKind,
           svgUrl: '/api/v1/pfp/' + encodeURIComponent(resolved.compactId) + '.svg',
+          staticSvgFile: '/pfp/' + svgFileName,
           spec: resolved,
           updatedAt: new Date().toISOString()
         };
