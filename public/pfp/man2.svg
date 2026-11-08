@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="man2 portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(2.1) translate(-210,-192)">
+  <defs>
+    <linearGradient id="dev_cubeTop" gradientUnits="userSpaceOnUse" x1="-120" y1="-140" x2="120" y2="0">
+      <stop offset="0%" stop-color="#67e8f9"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="dev_cubeLeft" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="0" y2="140">
+      <stop offset="0%" stop-color="#e879f9"/><stop offset="45%" stop-color="#c084fc"/><stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="dev_cubeRight" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="122" y2="140">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="dev_extrude" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="122" y2="70">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="dev_screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="dev_glow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.28"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="ht-dev" width="13" height="13" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#22d3ee" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Comic Halftone Patches -->
+  <g opacity="0.45">
+    <circle cx="332" cy="122" r="78" fill="url(#ht-dev)"/>
+    <circle cx="92" cy="302" r="54" fill="url(#ht-dev)"/>
+  </g>
+
+  <g id="human-engineer" transform="translate(210, 212)">
+    <!-- Kontakt-Schatten -->
+    <ellipse cx="0" cy="170" rx="80" ry="13" fill="#000000" opacity="0.32"/>
+
+    <!-- Sanfter Tablet-Glow -->
+    <circle cx="0" cy="114" r="54" fill="#22d3ee" opacity="0.10"/>
+
+    <!-- Hoodie-Torso -->
+    <path d="M -66,150 C -76,106 -50,72 -28,64 L 28,64 C 50,72 76,106 66,150 Z" fill="#111827" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M -20,66 C -12,80 12,80 20,66 Z" fill="#1f2937" stroke="#000000" stroke-width="5"/>
+    <line x1="-11" y1="76" x2="-11" y2="98" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="11" y1="76" x2="11" y2="98" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="-11" cy="101" r="2.5" fill="#22d3ee"/>
+    <circle cx="11" cy="101" r="2.5" fill="#22d3ee"/>
+
+    <!-- JiMesh Cube auf dem Shirt -->
+    <g transform="translate(0, 114) scale(0.115)">
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.3) translate(0, 4)"/>
+      <g transform="translate(18,20)"><polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#dev_extrude)"/></g>
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#dev_cubeTop)"/>
+      <polygon points="-122,-70 0,0 0,140 -122,70" fill="url(#dev_cubeLeft)"/>
+      <polygon points="0,0 122,-70 122,70 0,140" fill="url(#dev_cubeRight)"/>
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Ärmel führen zum Tablet -->
+    <path d="M -60,84 C -68,100 -62,110 -46,114" fill="none" stroke="#111827" stroke-width="16" stroke-linecap="round"/>
+    <path d="M 60,84 C 68,100 62,110 46,114" fill="none" stroke="#111827" stroke-width="16" stroke-linecap="round"/>
+
+    <!-- Hals -->
+    <rect x="-13" y="28" width="26" height="40" rx="8" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+
+    <!-- Kopf -->
+    <rect x="-44" y="-54" width="88" height="96" rx="30" fill="#fcd9ae" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    <circle cx="-44" cy="-8" r="10" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+    <circle cx="44" cy="-8" r="10" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+
+    <!-- Zottelige Dev-Haare -->
+    <path d="M -46,-18 C -50,-60 50,-60 46,-18 C 40,-34 30,-44 18,-40 C 8,-52 -8,-52 -18,-40 C -30,-44 -40,-34 -46,-18 Z" fill="#0f172a" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -30,-44 C -18,-50 12,-50 26,-40" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Comic-Gesicht -->
+    <path d="M -24,-22 Q -17,-26 -10,-22" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 10,-22 Q 17,-26 24,-22" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="-17" cy="-9" rx="5.5" ry="6.5" fill="#ffffff"/>
+    <ellipse cx="17" cy="-9" rx="5.5" ry="6.5" fill="#ffffff"/>
+    <circle cx="-16.5" cy="-8" r="3.2" fill="#000000"/>
+    <circle cx="17.5" cy="-8" r="3.2" fill="#000000"/>
+    <circle cx="-18.5" cy="-11" r="1.5" fill="#ffffff"/>
+    <circle cx="15.5" cy="-11" r="1.5" fill="#ffffff"/>
+    <ellipse cx="-31" cy="4" rx="6" ry="3.5" fill="#f9a8d4" opacity="0.8"/>
+    <ellipse cx="31" cy="4" rx="6" ry="3.5" fill="#f9a8d4" opacity="0.8"/>
+    <path d="M -9,15 Q 0,23 9,15 Q 0,18 -9,15 Z" fill="#7f1d1d" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Dev-Brille (leicht getönt, Rahmen) -->
+    <rect x="-30" y="-16" width="26" height="15" rx="6" fill="#7dd3fc" fill-opacity="0.25" stroke="#000000" stroke-width="5"/>
+    <rect x="4" y="-16" width="26" height="15" rx="6" fill="#7dd3fc" fill-opacity="0.25" stroke="#000000" stroke-width="5"/>
+    <line x1="-4" y1="-10" x2="4" y2="-10" stroke="#000000" stroke-width="5"/>
+    <line x1="-30" y1="-10" x2="-42" y2="-8" stroke="#000000" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="30" y1="-10" x2="42" y2="-8" stroke="#000000" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-26" y1="-12" x2="-16" y2="-12" stroke="#a5f3fc" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Cyan Headset -->
+    <path d="M -46,-12 C -52,-66 52,-66 46,-12" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    <rect x="-56" y="-20" width="14" height="26" rx="6" fill="#22d3ee" stroke="#000000" stroke-width="6"/>
+    <rect x="42" y="-20" width="14" height="26" rx="6" fill="#22d3ee" stroke="#000000" stroke-width="6"/>
+
+    <!-- Tablet in den Händen -->
+    <g id="dev-tablet" transform="translate(0, 112) rotate(-3)">
+      <rect x="-36" y="-28" width="72" height="56" rx="9" fill="#0f172a" stroke="#000000" stroke-width="6.5" stroke-linejoin="round"/>
+      <rect x="-29" y="-21" width="58" height="42" rx="5" fill="url(#dev_screen)"/>
+      <rect x="-29" y="-21" width="58" height="11" rx="5" fill="#0b1526"/>
+      <circle cx="-23" cy="-15.5" r="1.8" fill="#ef4444"/>
+      <circle cx="-17" cy="-15.5" r="1.8" fill="#f59e0b"/>
+      <circle cx="-11" cy="-15.5" r="1.8" fill="#10b981"/>
+      <g transform="translate(0, 8) scale(0.075)">
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.3) translate(0, 4)"/>
+        <g transform="translate(18,20)"><polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#dev_extrude)"/></g>
+        <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#dev_cubeTop)"/>
+        <polygon points="-122,-70 0,0 0,140 -122,70" fill="url(#dev_cubeLeft)"/>
+        <polygon points="0,0 122,-70 122,70 0,140" fill="url(#dev_cubeRight)"/>
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15" stroke-linejoin="round"/>
+      </g>
+      <rect x="18" y="12" width="8" height="3" rx="1.5" fill="#22d3ee" opacity="0.85"/>
+      <rect x="18" y="17" width="6" height="3" rx="1.5" fill="#334155"/>
+    </g>
+
+    <!-- Hände an den Tablet-Rändern -->
+    <circle cx="-38" cy="116" r="9" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+    <circle cx="38" cy="116" r="9" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+    <ellipse cx="-30" cy="108" rx="4" ry="6" fill="#fcd9ae" stroke="#000000" stroke-width="4"/>
+    <ellipse cx="30" cy="108" rx="4" ry="6" fill="#fcd9ae" stroke="#000000" stroke-width="4"/>
+  </g>
+
+  <!-- Comic Sparkles -->
+  <g id="comic-sparkles">
+    <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.9" transform="translate(86,120) scale(0.8)"/>
+    <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#22d3ee" opacity="0.9" transform="translate(338,88) scale(1.0)"/>
+    <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#22d3ee" opacity="0.7" transform="translate(342,296) scale(0.65)"/>
+    <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.55" transform="translate(80,300) scale(0.55)"/>
+  </g>
+</g></g>
+</svg>

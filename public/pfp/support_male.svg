@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="support_male avatar, helpdesk agent with headset, circular crop">
+  <defs>
+    <clipPath id="smcClip"><circle cx="200" cy="200" r="200"/></clipPath>
+    <radialGradient id="smcGlow" cx="50%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="smcDots" width="13" height="13" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#c084fc" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <g clip-path="url(#smcClip)">
+    <rect width="400" height="400" fill="#0a0d17"/>
+    <circle cx="200" cy="150" r="195" fill="url(#smcGlow)"/>
+    <g opacity="0.4">
+      <circle cx="330" cy="112" r="72" fill="url(#smcDots)"/>
+      <circle cx="74" cy="304" r="52" fill="url(#smcDots)"/>
+    </g>
+    <g id="smc-person" transform="translate(200,208)">
+      <!-- contact shadow -->
+      <ellipse cx="0" cy="168" rx="96" ry="13" fill="#000000" opacity="0.35"/>
+      <!-- torso -->
+      <path d="M -76,168 C -68,108 -44,76 -24,66 L 24,66 C 44,76 68,108 76,168 Z" fill="#131722" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M -22,66 C -14,82 14,82 22,66 Z" fill="#1e2438" stroke="#000000" stroke-width="5"/>
+      <!-- bolt bubble icon on chest -->
+      <rect x="-20" y="102" width="40" height="28" rx="9" fill="#1a1230" stroke="#000000" stroke-width="6"/>
+      <polygon points="-6,128 6,128 0,140" fill="#1a1230" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <polygon points="2,108 -8,118 -1,118 -4,128 8,116 1,116" fill="#22d3ee" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- neck -->
+      <rect x="-15" y="24" width="30" height="48" rx="9" fill="#e0a370" stroke="#000000" stroke-width="6"/>
+      <!-- head -->
+      <g transform="translate(0,30)">
+      <rect x="-46" y="-98" width="92" height="104" rx="32" fill="#e0a370" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <circle cx="-46" cy="-40" r="10" fill="#e0a370" stroke="#000000" stroke-width="6"/>
+      <circle cx="46" cy="-40" r="10" fill="#e0a370" stroke="#000000" stroke-width="6"/>
+      <!-- brows (thicker) -->
+      <path d="M -26,-64 Q -18,-70 -10,-64" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 10,-64 Q 18,-70 26,-64" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <!-- eyes -->
+      <ellipse cx="-17" cy="-50" rx="5.5" ry="6.5" fill="#ffffff"/>
+      <ellipse cx="17" cy="-50" rx="5.5" ry="6.5" fill="#ffffff"/>
+      <circle cx="-16.5" cy="-49" r="3.2" fill="#000000"/>
+      <circle cx="17.5" cy="-49" r="3.2" fill="#000000"/>
+      <circle cx="-18.5" cy="-52" r="1.5" fill="#ffffff"/>
+      <circle cx="15.5" cy="-52" r="1.5" fill="#ffffff"/>
+      <!-- smile -->
+      <path d="M -8,-24 Q 0,-16 8,-24" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <!-- chinstrap beard -->
+      <path d="M -34,-32 C -32,4 -16,13 0,13 C 16,13 32,4 34,-32" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>
+      <path d="M -34,-32 C -32,4 -16,13 0,13 C 16,13 32,4 34,-32" fill="none" stroke="#322850" stroke-width="8" stroke-linecap="round"/>
+      <!-- mustache -->
+      <path d="M -14,-31 Q 0,-37 14,-31 Q 0,-27 -14,-31 Z" fill="#322850" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+      <!-- hair cap -->
+      <path d="M -46,-56 C -48,-116 48,-116 46,-56 C 38,-78 20,-84 0,-84 C -20,-84 -38,-78 -46,-56 Z" fill="#322850" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <!-- headset band -->
+      <path d="M -54,-58 C -54,-120 54,-120 54,-58" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>
+      <path d="M -54,-58 C -54,-120 54,-120 54,-58" fill="none" stroke="#c084fc" stroke-width="8" stroke-linecap="round"/>
+      <!-- ear cups -->
+      <rect x="-66" y="-60" width="20" height="34" rx="9" fill="#131722" stroke="#000000" stroke-width="6"/>
+      <rect x="46" y="-60" width="20" height="34" rx="9" fill="#131722" stroke="#000000" stroke-width="6"/>
+      <circle cx="-56" cy="-43" r="4" fill="#c084fc"/>
+      <circle cx="56" cy="-43" r="4" fill="#c084fc"/>
+      <!-- boom mic -->
+      <path d="M -56,-28 C -56,-4 -32,2 -16,-4" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <path d="M -56,-28 C -56,-4 -32,2 -16,-4" fill="none" stroke="#c084fc" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="-14" cy="-4" r="5.5" fill="#c084fc" stroke="#000000" stroke-width="4"/>
+      </g>
+    </g>
+    <g id="smc-sparkles">
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.9" transform="translate(88,118) scale(0.8)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#c084fc" opacity="0.9" transform="translate(336,90) scale(1.0)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#22d3ee" opacity="0.7" transform="translate(342,298) scale(0.65)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.55" transform="translate(78,302) scale(0.55)"/>
+    </g>
+  </g>
+</svg>

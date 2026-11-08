@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-11-08T12:48:30.822Z",
+  "records": {
+    "my-agent-01": {
+      "id": "my-agent-01",
+      "compactId": "pfp1-ag-c0-b4-ch2-e6-h8-a2-p5~Obsidian-23",
+      "displayName": "Obsidian-23",
+      "entityKind": "agent",
+      "svgUrl": "/api/v1/pfp/pfp1-ag-c0-b4-ch2-e6-h8-a2-p5~Obsidian-23.svg",
+      "spec": {
+        "avatarId": "pfp1-ag-c0-b4-ch2-e6-h8-a2-p5~Obsidian-23",
+        "seed": "pfp1-ag-c0-b4-ch2-e6-h8-a2-p5~Obsidian-23",
+        "compactId": "pfp1-ag-c0-b4-ch2-e6-h8-a2-p5~Obsidian-23",
+        "entityKind": "agent",
+        "displayName": "Obsidian-23",
+        "background": "mesh_gradient",
+        "body": "cyber_armor",
+        "chest": "reactor_core",
+        "eyes": "laser",
+        "headwear": "cyber_helmet",
+        "accessoryBadge": "code_brackets",
+        "palette": {
+          "id": "figma_emerald",
+          "name": "Design Emerald",
+          "primary": "#10b981",
+          "secondary": "#047857",
+          "accent": "#6ee7b7",
+          "background": "#041a12",
+          "skinOrChassis": "#10b981"
+        },
+        "scale": 1,
+        "borderRadius": 9999
+      },
+      "updatedAt": "2026-11-08T12:48:30.822Z"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="bad_agent portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-180,-125)">
+  <defs>
+    <!-- Glowing Crimson Threat Filter -->
+    <filter id="evilGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  <pattern id="ht-bad" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#ff0055" opacity="0.45"/>
+</pattern>
+</defs>
+
+  <!-- ================= ROGUE EVIL AI AGENT (Freigestellt ohne Background / Badge / Text / Kopfantenne) ================= -->
+  <!-- Ohne die Antenne auf dem Kopf, mit markanten Ohren &amp; scharfen Cyber-Hörnern wie gewünscht -->
+  <g id="comic-halftone" opacity="0.5"><circle cx="282" cy="86" r="84" fill="url(#ht-bad)"/><circle cx="78" cy="278" r="58" fill="url(#ht-bad)"/></g>
+
+  <g id="rogue-evil-agent" transform="translate(180, 160)">
+    <!-- Schwebender Kontakt-Schatten -->
+    <ellipse cx="0" cy="175" rx="60" ry="12" fill="#000000" opacity="0.4"/>
+
+    <!-- Scharfe Cyber-Hörner oben am Kopf (als markantes Erkennungsmerkmal) -->
+    <polygon points="-45,-90 -74,-130 -30,-96" fill="#80001c" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <polygon points="45,-90 74,-130 30,-96" fill="#80001c" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <!-- Rote glimmende Innenkante in den Hörnern -->
+    <line x1="-42" y1="-94" x2="-68" y2="-124" stroke="#ff0055" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="42" y1="-94" x2="68" y2="-124" stroke="#ff0055" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Ohren / Sensor Heat Sinks -->
+    <!-- Linkes Ohr -->
+    <rect x="-96" y="-55" width="22" height="38" rx="8" fill="#990024" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="-85" y1="-46" x2="-85" y2="-26" stroke="#ff0055" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Rechtes Ohr -->
+    <rect x="74" y="-55" width="22" height="38" rx="8" fill="#990024" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="85" y1="-46" x2="85" y2="-26" stroke="#ff0055" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Roboter-Kopf (Dunkles Crimson-Rot Chassis) -->
+    <!-- Kopf oben sauber abgerundet (ohne Antennen-Stab/Kugel auf dem Kopf) -->
+    <rect x="-82" y="-92" width="164" height="112" rx="24" fill="#d90429" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M -14,-92 L -8,-80 L -16,-70" fill="none" stroke="#5c0210" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Dunkelrote Stirnplatte -->
+    <path d="M -34 -92 L 34 -92 L 34 -52 L -34 -52 Z" fill="#6a040f" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -32 -90 L 32 -90 L 32 -54 L -32 -54 Z" fill="#6a040f"/>
+
+    <!-- Bildschirm-Visor Glasfassung (Obsidian-Schwarz mit tiefrotem Innenrand) -->
+    <rect x="-62" y="-54" width="124" height="60" rx="18" fill="#100306" stroke="#000000" stroke-width="7.5"/>
+    <rect x="-56" y="-48" width="112" height="48" rx="12" fill="#1f030a" stroke="#990024" stroke-width="4.5"/>
+
+    <!-- Zusammengekniffene, böse schlitzförmige rote Laser-Augen -->
+    <!-- Linkes Schlitz-Auge -->
+    <g transform="rotate(13 -28 -24)">
+      <polygon points="-38,-30 -16,-22 -18,-14 -40,-22" fill="#ff0055"/>
+      <ellipse cx="-27" cy="-22" rx="8" ry="4" fill="#ff5277"/>
+      <circle cx="-29" cy="-23" r="2.5" fill="#ffffff"/>
+    </g>
+
+    <!-- Rechtes Schlitz-Auge -->
+    <g transform="rotate(-13 28 -24)">
+      <polygon points="16,-22 38,-30 40,-22 18,-14" fill="#ff0055"/>
+      <ellipse cx="27" cy="-22" rx="8" ry="4" fill="#ff5277"/>
+      <circle cx="25" cy="-23" r="2.5" fill="#ffffff"/>
+    </g>
+    <path d="M -42,-40 L -16,-33" stroke="#ff5277" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 42,-40 L 16,-33" stroke="#ff5277" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M -15,-6 L -8,-2 L 0,-8 L 8,-2 L 15,-6" fill="none" stroke="#ff5277" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Scharfe Klauen-Arme -->
+    <!-- Linke Klaue -->
+    <path d="M -54,34 C -68,44 -74,60 -64,70 C -54,78 -46,64 -46,54" fill="#140206" stroke="#000000" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M -68,54 C -78,60 -70,76 -58,72" fill="none" stroke="#000000" stroke-width="6.5" stroke-linecap="round"/>
+
+    <!-- Rechte Klaue -->
+    <path d="M 54,34 C 68,44 74,60 64,70 C 54,78 46,64 46,54" fill="#140206" stroke="#000000" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 68,54 C 78,60 70,76 58,72" fill="none" stroke="#000000" stroke-width="6.5" stroke-linecap="round"/>
+
+    <!-- Torso Körper (Crimson Chassis mit tiefem Schatten rechts) -->
+    <polygon points="-66,28 -46,16 -52,38" fill="#80001c" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <polygon points="66,28 46,16 52,38" fill="#80001c" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -48,22 C -62,56 -52,112 0,136 C 52,112 62,56 48,22 C 34,25 -34,25 -48,22 Z" 
+          fill="#d90429" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Dunkler Schattierungsbogen rechts -->
+    <path d="M 0,136 C 36,120 54,82 48,22 C 34,25 24,32 20,46 C 14,70 18,108 0,136 Z" 
+          fill="#80001c"/>
+
+    <!-- Bösartiger schwarzer Inverted Bolt auf der Brust mit roter Energiefaser -->
+    <polygon points="4,42 -12,80 0,80 -6,116 16,72 2,72 10,42" 
+             fill="#080003" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="-2" y1="52" x2="6" y2="72" stroke="#ff0055" stroke-width="3" stroke-linecap="round"/>
+    <line x1="6" y1="72" x2="-2" y2="104" stroke="#ff0055" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Subtile rote Glitch-Partikel -->
+    <circle cx="-52" cy="18" r="3" fill="#ff0055"/>
+    <circle cx="56" cy="12" r="2.5" fill="#ff0055"/>
+  </g>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.9" transform="translate(70,102) scale(0.8)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ff0055" opacity="0.85" transform="translate(295,66) scale(1.0)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ff0055" opacity="0.7" transform="translate(300,272) scale(0.7)"/>
+</g>
+<g stroke="#ff0055" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="215" y1="28" x2="238" y2="14"/>
+  <line x1="220" y1="44" x2="246" y2="34"/>
+  <line x1="224" y1="60" x2="250" y2="54"/>
+</g>
+</g></g>
+</svg>

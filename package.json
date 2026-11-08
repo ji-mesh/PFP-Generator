@@ -1,0 +1,54 @@
+{
+  "name": "@jimesh/pfp-generator",
+  "version": "1.2.0",
+  "description": "Universal Responsive Comic-Bust SVG Avatar Generator, Compact ID Attribute Codec (pfp1-...), and Procedural Name Generator for Agents, Experts, and Operators.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ji-mesh/PFP-Generator.git"
+  },
+  "homepage": "https://github.com/ji-mesh/PFP-Generator",
+  "main": "./dist/pfp-generator.js",
+  "module": "./dist/pfp-generator.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/pfp-generator.mjs",
+      "require": "./dist/pfp-generator.js",
+      "default": "./dist/pfp-generator.js"
+    },
+    "./schemas": "./schemas/pfp-ontology.ts",
+    "./schemas/json": "./schemas/pfp-ontology.schema.json",
+    "./backend": "./backend/server.js"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "schemas/",
+    "backend/",
+    "public/pfp/",
+    "index.html",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node backend/server.js",
+    "preview": "node backend/server.js",
+    "test": "node scripts/test.mjs"
+  },
+  "keywords": [
+    "svg",
+    "avatar",
+    "pfp",
+    "generator",
+    "agent-avatar",
+    "deterministic",
+    "mulberry32",
+    "responsive-svg",
+    "jimesh"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="happy_agent portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-190,-155)">
+  <defs>
+    <linearGradient id="cubeTop_ag" gradientUnits="userSpaceOnUse" x1="-120" y1="-140" x2="120" y2="0">
+      <stop offset="0%" stop-color="#67e8f9"/><stop offset="1%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft_ag" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="0" y2="140">
+      <stop offset="0%" stop-color="#0ea5e9"/><stop offset="1" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="cubeRight_ag" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="122" y2="140">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="1" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="extrudeGrad_ag" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="122" y2="70">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="visorGrad_ag" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#04121e"/><stop offset="100%" stop-color="#0b243b"/>
+    </linearGradient>
+  <pattern id="ht-happy" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#00d2ff" opacity="0.45"/>
+</pattern>
+</defs>
+
+  <g id="comic-halftone" opacity="0.5"><circle cx="292" cy="100" r="88" fill="url(#ht-happy)"/><circle cx="88" cy="308" r="62" fill="url(#ht-happy)"/></g>
+
+  <g id="companion-agent" transform="translate(190, 190)">
+    <!-- Schwebender Kontakt-Schatten -->
+    <ellipse cx="0" cy="175" rx="64" ry="12" fill="#000000" opacity="0.32"/>
+    <path d="M -104,-64 C -108,-70 -114,-66 -110,-60 L -104,-54 L -98,-60 C -94,-66 -100,-70 -104,-64 Z" fill="#f472b6" stroke="#000000" stroke-width="3"/>
+    <path d="M 108,-46 C 104,-52 98,-48 102,-42 L 108,-36 L 114,-42 C 118,-48 112,-52 108,-46 Z" fill="#f472b6" stroke="#000000" stroke-width="3"/>
+
+    <!-- Duale Signal-Antennen (Links &amp; Rechts angewinkelt wie Signal-Beacons) -->
+    <line x1="-36" y1="-82" x2="-62" y2="-120" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="-66" cy="-126" r="14" fill="#00d2ff" stroke="#000000" stroke-width="6.5"/>
+    <circle cx="-70" cy="-130" r="4" fill="#ffffff" opacity="0.85"/>
+
+    <line x1="36" y1="-82" x2="62" y2="-120" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="66" cy="-126" r="14" fill="#00d2ff" stroke="#000000" stroke-width="6.5"/>
+    <circle cx="62" cy="-130" r="4" fill="#ffffff" opacity="0.85"/>
+
+    <!-- Seitliche Sensor-Ohren -->
+    <rect x="-98" y="-52" width="20" height="34" rx="8" fill="#00d2ff" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <line x1="-88" y1="-42" x2="-88" y2="-28" stroke="#0369a1" stroke-width="3.5" stroke-linecap="round"/>
+
+    <rect x="78" y="-52" width="20" height="34" rx="8" fill="#00d2ff" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <line x1="88" y1="-42" x2="88" y2="-28" stroke="#0369a1" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Roboter-Kopf (Obsidian High-Tech Chassis mit Hex-Ecken) -->
+    <rect x="-82" y="-90" width="164" height="116" rx="38" fill="#0f172a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Zentraler Stirn-Kamm (Neon Cyan) -->
+    <path d="M -26 -90 L 26 -90 L 22 -52 L -22 -52 Z" fill="#00d2ff" stroke="#000000" stroke-width="6.5" stroke-linejoin="round"/>
+
+    <!-- Vergrößerter Visor Display Rahmen (Gibt Mund und Augen viel vertikalen Freiraum) -->
+    <rect x="-64" y="-52" width="128" height="66" rx="20" fill="url(#visorGrad_ag)" stroke="#000000" stroke-width="7"/>
+    <rect x="-58" y="-46" width="116" height="54" rx="14" fill="#06121f" stroke="#00d2ff" stroke-width="3.5"/>
+
+    <!-- Expressive Roboter-Augen: Sitzen ergonomisch im oberen Visordrittel (y = -27) -->
+    <ellipse cx="-26" cy="-27" rx="13" ry="11" fill="#67e8f9"/>
+    <circle cx="-28" cy="-30" r="3.5" fill="#ffffff"/>
+    <circle cx="-22" cy="-23" r="2" fill="#ffffff" opacity="0.8"/>
+
+    <ellipse cx="26" cy="-27" rx="13" ry="11" fill="#67e8f9"/>
+    <circle cx="24" cy="-30" r="3.5" fill="#ffffff"/>
+    <circle cx="30" cy="-23" r="2" fill="#ffffff" opacity="0.8"/>
+    <circle cx="33" cy="-17" r="1.8" fill="#ffffff" opacity="0.85"/>
+    <path d="M -40,-40 Q -28,-47 -16,-41" fill="none" stroke="#67e8f9" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 16,-41 Q 28,-47 40,-40" fill="none" stroke="#67e8f9" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Optimierter LED-Mund: Sitzt harmonisch mittig zwischen Augen und Visorrand (y = -7 bis -10), viel Abstand zum unteren Rahmen! -->
+    <path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#04121e" stroke="#38bdf8" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M -5,-7.5 L 5,-7.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Repulsor Greifer (Schwebende Cyber-Pods) -->
+    <ellipse cx="-64" cy="56" rx="14" ry="18" fill="#1e293b" stroke="#000000" stroke-width="7"/>
+    <circle cx="-64" cy="56" r="5" fill="#00d2ff"/>
+
+    <ellipse cx="64" cy="56" rx="14" ry="18" fill="#1e293b" stroke="#000000" stroke-width="7"/>
+    <circle cx="64" cy="56" r="5" fill="#00d2ff"/>
+
+    <!-- Torso Körper -->
+    <path d="M -48,24 C -62,56 -52,112 0,136 C 52,112 62,56 48,24 C 34,27 -34,27 -48,24 Z" 
+          fill="#0f172a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- 3D-Schattierung rechts -->
+    <path d="M 0,136 C 36,120 54,82 48,24 C 34,27 24,34 20,48 C 14,72 18,108 0,136 Z" 
+          fill="#090d16"/>
+
+    <!-- Kantenlicht links -->
+    <path d="M -38,38 C -46,60 -42,92 -20,116" fill="none" stroke="#00d2ff" stroke-width="4.5" stroke-linecap="round" opacity="0.75"/>
+
+    <!-- Authentischer JiMesh Cyber Cube auf der Brust -->
+    <g id="chest-cube-ag" transform="translate(0, 80) scale(0.16)">
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.28) translate(0, 4)"/>
+      <g transform="translate(18,20)"><polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#extrudeGrad_ag)"/></g>
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#cubeTop_ag)"/>
+      <polygon points="-122,-70 0,0 0,140 -122,70" fill="url(#cubeLeft_ag)"/>
+      <polygon points="0,0 122,-70 122,70 0,140" fill="url(#cubeRight_ag)"/>
+      <path d="M 0,0 L 122,-70 M 0,0 L -122,-70" fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round"/>
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15" stroke-linejoin="round"/>
+    </g>
+  </g>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(82,116) scale(0.8)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#00d2ff" opacity="0.9" transform="translate(308,68) scale(1.05)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#00d2ff" opacity="0.75" transform="translate(315,300) scale(0.7)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.7" transform="translate(78,304) scale(0.55)"/>
+</g>
+<g stroke="#00d2ff" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="225" y1="38" x2="248" y2="22"/>
+  <line x1="232" y1="54" x2="258" y2="42"/>
+  <line x1="236" y1="70" x2="262" y2="62"/>
+</g>
+</g></g>
+</svg>

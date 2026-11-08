@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="secops team badge, circular crop">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#7f1d1d"/>
+    </radialGradient>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="10"/>
+    <g fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M200 118 L272 146 V212 C272 258 240 288 200 302 C160 288 128 258 128 212 V146 Z" fill="#fecaca" stroke="#000000"/>
+    <polyline points="168,204 192,228 238,178"/></g>
+  </g>
+</svg>

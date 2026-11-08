@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="support_female avatar, helpdesk agent with headset, circular crop">
+  <defs>
+    <clipPath id="sfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+    <radialGradient id="sfpGlow" cx="50%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="sfpDots" width="13" height="13" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#00d2ff" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <g clip-path="url(#sfpClip)">
+    <rect width="400" height="400" fill="#0a0d17"/>
+    <circle cx="200" cy="150" r="195" fill="url(#sfpGlow)"/>
+    <g opacity="0.4">
+      <circle cx="330" cy="112" r="72" fill="url(#sfpDots)"/>
+      <circle cx="74" cy="304" r="52" fill="url(#sfpDots)"/>
+    </g>
+    <g id="sfp-person" transform="translate(200,208)">
+      <!-- contact shadow -->
+      <ellipse cx="0" cy="168" rx="96" ry="13" fill="#000000" opacity="0.35"/>
+      <!-- long hair back panels -->
+      <path d="M -10,-66 C -58,-54 -66,10 -52,90 C -48,106 -34,108 -30,94 C -42,24 -34,-34 6,-54 Z" fill="#3a2b5e" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M 12,-62 C 54,-48 60,14 48,88 C 44,102 32,104 28,90 C 38,22 32,-32 4,-50 Z" fill="#3a2b5e" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <!-- torso -->
+      <path d="M -76,168 C -68,108 -44,76 -24,66 L 24,66 C 44,76 68,108 76,168 Z" fill="#131722" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M -22,66 C -14,82 14,82 22,66 Z" fill="#1e2a3f" stroke="#000000" stroke-width="5"/>
+      <!-- chat bubble icon on chest -->
+      <rect x="-22" y="102" width="44" height="30" rx="10" fill="#0e2233" stroke="#000000" stroke-width="6"/>
+      <polygon points="-6,130 6,130 0,142" fill="#0e2233" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="-10" cy="117" r="3.5" fill="#00d2ff"/>
+      <circle cx="0" cy="117" r="3.5" fill="#c084fc"/>
+      <circle cx="10" cy="117" r="3.5" fill="#00d2ff"/>
+      <!-- neck -->
+      <rect x="-15" y="24" width="30" height="48" rx="9" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+      <!-- head -->
+      <g transform="translate(0,30)">
+      <rect x="-46" y="-98" width="92" height="104" rx="32" fill="#fcd9ae" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <circle cx="-46" cy="-40" r="10" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+      <circle cx="46" cy="-40" r="10" fill="#fcd9ae" stroke="#000000" stroke-width="6"/>
+      <!-- brows -->
+      <path d="M -26,-64 Q -18,-69 -10,-64" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 10,-64 Q 18,-69 26,-64" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <!-- eyes -->
+      <ellipse cx="-17" cy="-50" rx="5.5" ry="6.5" fill="#ffffff"/>
+      <ellipse cx="17" cy="-50" rx="5.5" ry="6.5" fill="#ffffff"/>
+      <circle cx="-16.5" cy="-49" r="3.2" fill="#000000"/>
+      <circle cx="17.5" cy="-49" r="3.2" fill="#000000"/>
+      <circle cx="-18.5" cy="-52" r="1.5" fill="#ffffff"/>
+      <circle cx="15.5" cy="-52" r="1.5" fill="#ffffff"/>
+      <!-- blush -->
+      <ellipse cx="-31" cy="-36" rx="6.5" ry="4" fill="#f9a8d4" opacity="0.85"/>
+      <ellipse cx="31" cy="-36" rx="6.5" ry="4" fill="#f9a8d4" opacity="0.85"/>
+      <!-- smile -->
+      <path d="M -8,-26 Q 0,-17 8,-26" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <!-- fringe with cyan streak -->
+      <path d="M -46,-56 C -48,-116 48,-116 46,-56 C 38,-78 20,-84 0,-84 C -20,-84 -38,-78 -46,-56 Z" fill="#3a2b5e" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M -30,-62 C -12,-72 14,-72 30,-62" fill="none" stroke="#00d2ff" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      <!-- headset band -->
+      <path d="M -54,-58 C -54,-120 54,-120 54,-58" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>
+      <path d="M -54,-58 C -54,-120 54,-120 54,-58" fill="none" stroke="#00d2ff" stroke-width="8" stroke-linecap="round"/>
+      <!-- ear cups -->
+      <rect x="-66" y="-60" width="20" height="34" rx="9" fill="#131722" stroke="#000000" stroke-width="6"/>
+      <rect x="46" y="-60" width="20" height="34" rx="9" fill="#131722" stroke="#000000" stroke-width="6"/>
+      <circle cx="-56" cy="-43" r="4" fill="#00d2ff"/>
+      <circle cx="56" cy="-43" r="4" fill="#00d2ff"/>
+      <!-- boom mic -->
+      <path d="M 56,-28 C 56,-4 32,2 16,-4" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <path d="M 56,-28 C 56,-4 32,2 16,-4" fill="none" stroke="#00d2ff" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="14" cy="-4" r="5.5" fill="#00d2ff" stroke="#000000" stroke-width="4"/>
+      </g>
+    </g>
+    <g id="sfp-sparkles">
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.9" transform="translate(88,118) scale(0.8)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#00d2ff" opacity="0.9" transform="translate(336,90) scale(1.0)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#c084fc" opacity="0.7" transform="translate(342,298) scale(0.65)"/>
+      <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.55" transform="translate(78,302) scale(0.55)"/>
+    </g>
+  </g>
+</svg>

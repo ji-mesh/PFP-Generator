@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="content-queue channel badge, circular crop">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#9a3412"/>
+    </radialGradient>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="10"/>
+    <text x="200" y="200" text-anchor="middle" dominant-baseline="central" font-family="ui-sans-serif,system-ui,sans-serif" font-size="220" font-weight="800" fill="#ffffff" stroke="rgba(0,0,0,0.35)" stroke-width="6" paint-order="stroke">C</text>
+  </g>
+</svg>

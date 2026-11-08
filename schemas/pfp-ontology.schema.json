@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ji-mesh/PFP-Generator/schemas/pfp-ontology.schema.json",
+  "title": "JiMesh PFP Avatar Specification Schema",
+  "description": "Single Source of Truth JSON Schema for @jimesh/pfp-generator and @jimesh/schemas pfp-ontology.ts",
+  "type": "object",
+  "required": [
+    "avatarId",
+    "seed",
+    "entityKind",
+    "headwear",
+    "eyes",
+    "body",
+    "chest",
+    "background",
+    "palette",
+    "accessoryBadge"
+  ],
+  "properties": {
+    "avatarId": { "type": "string", "minLength": 1 },
+    "seed": { "type": "string", "minLength": 1 },
+    "compactId": {
+      "type": "string",
+      "description": "Compact URL-safe PFP attribute string (e.g. pfp1-ag-c0-b4-ch6-e2-h5-a6-p0~CyberNinja) that deterministically encodes all traits without needing JSON storage."
+    },
+    "entityKind": {
+      "type": "string",
+      "enum": ["agent", "expert", "human"]
+    },
+    "headwear": {
+      "type": "string",
+      "enum": [
+        "none",
+        "cap",
+        "fedora",
+        "headset",
+        "beanie",
+        "crown",
+        "halo",
+        "cyber_visor",
+        "cyber_helmet",
+        "beret"
+      ]
+    },
+    "eyes": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "focused",
+        "cyber_optic",
+        "happy",
+        "glasses",
+        "sunglasses",
+        "laser",
+        "wink",
+        "terminal_glow"
+      ]
+    },
+    "body": {
+      "type": "string",
+      "enum": [
+        "hoodie",
+        "suit",
+        "robot_chassis",
+        "casual_tee",
+        "cyber_armor",
+        "lab_coat",
+        "turtleneck"
+      ]
+    },
+    "chest": {
+      "type": "string",
+      "enum": [
+        "none",
+        "tie",
+        "reactor_core",
+        "necklace",
+        "pocket",
+        "harness",
+        "mesh_emblem"
+      ]
+    },
+    "background": {
+      "type": "string",
+      "enum": [
+        "mesh_gradient",
+        "cyber_grid",
+        "pastel_dots",
+        "geometric",
+        "matrix_rain",
+        "deep_space",
+        "solid_mesh"
+      ]
+    },
+    "accessoryBadge": {
+      "type": "string",
+      "enum": [
+        "none",
+        "crm_shield",
+        "code_brackets",
+        "marketing_megaphone",
+        "devops_gear",
+        "security_lock",
+        "ai_spark",
+        "nango_sync_badge",
+        "composio_connector"
+      ]
+    },
+    "palette": {
+      "type": "object",
+      "required": ["primary", "secondary", "accent", "background", "skinOrChassis"],
+      "properties": {
+        "primary": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+        "secondary": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+        "accent": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+        "background": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+        "skinOrChassis": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" }
+      }
+    }
+  }
+}

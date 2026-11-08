@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="fin_agent portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-250,-207)">
+  <defs>
+    <radialGradient id="f-bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#362208"/><stop offset="60%" stop-color="#1f1303"/><stop offset="100%" stop-color="#0a0601"/>
+    </radialGradient>
+    <linearGradient id="f-gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="f-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  <pattern id="ht-fin" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#fbbf24" opacity="0.45"/>
+</pattern>
+</defs>
+  <rect width="500" height="500" rx="40" fill="url(#f-bg)" stroke="#d97706" stroke-width="2"/>
+  <circle cx="250" cy="230" r="160" fill="#fbbf24" opacity="0.15" filter="url(#f-glow)"/>
+
+  <g id="comic-halftone" opacity="0.5"><circle cx="384" cy="136" r="112" fill="url(#ht-fin)"/><circle cx="96" cy="334" r="76" fill="url(#ht-fin)"/></g>
+
+  <g transform="translate(250, 240) scale(0.95)">
+    <ellipse cx="0" cy="185" rx="90" ry="18" fill="#000000" opacity="0.55"/>
+    
+    <!-- Vault Key Antenna -->
+    <line x1="0" y1="-85" x2="0" y2="-135" stroke="#000000" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="0" cy="-150" r="22" fill="#fbbf24" stroke="#000000" stroke-width="8" filter="url(#f-glow)"/>
+    <rect x="-4" y="-140" width="8" height="15" fill="#000000"/>
+
+    <!-- Head &amp; Ears -->
+    <rect x="-96" y="-55" width="24" height="42" rx="10" fill="#b45309" stroke="#000000" stroke-width="8.5"/>
+    <rect x="72" y="-55" width="24" height="42" rx="10" fill="#b45309" stroke="#000000" stroke-width="8.5"/>
+    <polygon points="-86,-58 -52,-95 52,-95 86,-58 86,-8 52,25 -52,25 -86,-8" fill="url(#f-gold)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>
+
+    <!-- Vault Code Display Eyes -->
+    <rect x="-65" y="-55" width="130" height="62" rx="18" fill="#1f1104" stroke="#000000" stroke-width="8"/>
+    <circle cx="-28" cy="-24" r="12" fill="#fef08a" filter="url(#f-glow)"/><circle cx="28" cy="-24" r="12" fill="#fef08a" filter="url(#f-glow)"/>
+    <circle cx="-32" cy="-28" r="4" fill="#ffffff" opacity="0.95"/><circle cx="-24" cy="-20" r="2" fill="#ffffff" opacity="0.8"/><circle cx="24" cy="-28" r="4" fill="#ffffff" opacity="0.95"/><circle cx="32" cy="-20" r="2" fill="#ffffff" opacity="0.8"/>
+    <path d="M -42,-41 Q -29,-48 -16,-42" fill="none" stroke="#fef08a" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 16,-42 Q 29,-48 42,-41" fill="none" stroke="#fef08a" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#1f1104" stroke="#fde047" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M -5,-7.5 L 5,-7.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+    <text x="0" y="-18" fill="#fbbf24" font-family="monospace" font-size="16" font-weight="900" text-anchor="middle">FIN</text>
+
+    <!-- Torso with Gold Dollar Coin / Vault Emblem -->
+    <path d="M -52,22 C -66,58 -56,118 0,144 C 56,118 66,58 52,22 Z" fill="url(#f-gold)" stroke="#000000" stroke-width="11"/>
+    <circle cx="0" cy="80" r="37" fill="none" stroke="#1a0c02" stroke-width="5"/>
+    <line x1="0" y1="41" x2="0" y2="48" stroke="#1a0c02" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="112" x2="0" y2="119" stroke="#1a0c02" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-37" y1="80" x2="-30" y2="80" stroke="#1a0c02" stroke-width="4" stroke-linecap="round"/>
+    <line x1="30" y1="80" x2="37" y2="80" stroke="#1a0c02" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="80" r="26" fill="#1a0c02" stroke="#000000" stroke-width="4"/>
+    <text x="0" y="91" fill="#fef08a" font-family="system-ui, sans-serif" font-size="32" font-weight="900" text-anchor="middle" filter="url(#f-glow)">$</text>
+  </g>
+  <rect x="75" y="436" width="351" height="31" rx="15.5" fill="#0b111c" opacity="0.88" stroke="#fbbf24" stroke-width="2.5" filter="url(#f-glow)"/>
+  <text x="250" y="455" fill="#fde68a" font-family="system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle" letter-spacing="1.5">FINOPS AGENT // CLOUD SPEND</text>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(118,148) scale(0.9)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#fbbf24" opacity="0.9" transform="translate(392,112) scale(1.15)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#fbbf24" opacity="0.75" transform="translate(402,318) scale(0.75)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.7" transform="translate(103,332) scale(0.6)"/>
+</g>
+<g stroke="#fbbf24" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="292" y1="70" x2="316" y2="52"/>
+  <line x1="300" y1="86" x2="326" y2="72"/>
+  <line x1="304" y1="104" x2="330" y2="94"/>
+</g>
+</g></g>
+</svg>

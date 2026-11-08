@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="max portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+    <linearGradient id="max_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1030"/><stop offset="100%" stop-color="#0d0a1a"/>
+    </linearGradient>
+    <linearGradient id="max_beanie" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="max_skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5c6a0"/><stop offset="100%" stop-color="#e0a878"/>
+    </linearGradient>
+    <linearGradient id="max_shirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/><stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <!-- Background -->
+    <rect width="400" height="400" fill="url(#max_bg)"/>
+    <!-- Subtle pattern dots -->
+    <g opacity="0.15">
+      <circle cx="80" cy="120" r="3" fill="#f97316"/>
+      <circle cx="320" cy="100" r="2.5" fill="#f97316"/>
+      <circle cx="100" cy="300" r="2" fill="#f97316"/>
+      <circle cx="340" cy="280" r="3" fill="#f97316"/>
+      <circle cx="200" cy="80" r="2" fill="#f97316"/>
+      <circle cx="60" cy="200" r="2.5" fill="#f97316"/>
+      <circle cx="350" cy="200" r="2" fill="#f97316"/>
+    </g>
+    <!-- Neck -->
+    <rect x="170" y="260" width="60" height="60" rx="8" fill="url(#max_skin)"/>
+    <!-- Shirt / shoulders -->
+    <path d="M 100 340 Q 120 290 200 280 Q 280 290 300 340 L 310 400 L 90 400 Z" fill="url(#max_shirt)"/>
+    <!-- Shirt collar accent -->
+    <path d="M 170 285 Q 200 300 230 285" fill="none" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+    <!-- Head -->
+    <ellipse cx="200" cy="200" rx="78" ry="85" fill="url(#max_skin)"/>
+    <!-- Beanie -->
+    <path d="M 122 195 Q 122 115 200 108 Q 278 115 278 195 L 278 200 Q 200 210 122 200 Z" fill="url(#max_beanie)"/>
+    <!-- Beanie fold band -->
+    <rect x="120" y="178" width="160" height="28" rx="8" fill="#ea580c"/>
+    <rect x="120" y="182" width="160" height="8" rx="4" fill="#f97316" opacity="0.6"/>
+    <!-- Beanie pom -->
+    <circle cx="200" cy="105" r="18" fill="#fb923c"/>
+    <circle cx="200" cy="105" r="10" fill="#fdba74"/>
+    <!-- Eyebrows -->
+    <path d="M 155 188 Q 170 182 185 186" fill="none" stroke="#78350f" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 215 186 Q 230 182 245 188" fill="none" stroke="#78350f" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Sunglasses -->
+    <g>
+      <!-- Bridge -->
+      <rect x="188" y="198" width="24" height="5" rx="2" fill="#1e293b"/>
+      <!-- Left lens -->
+      <rect x="142" y="192" width="50" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="3"/>
+      <!-- Right lens -->
+      <rect x="208" y="192" width="50" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="3"/>
+      <!-- Lens shine -->
+      <path d="M 152 200 L 165 200 L 155 218 L 145 218 Z" fill="white" opacity="0.15"/>
+      <path d="M 218 200 L 231 200 L 221 218 L 211 218 Z" fill="white" opacity="0.15"/>
+      <!-- Temple arms -->
+      <line x1="142" y1="205" x2="122" y2="202" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+      <line x1="258" y1="205" x2="278" y2="202" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <!-- Nose -->
+    <path d="M 198 228 Q 196 242 204 242" fill="none" stroke="#d4a070" stroke-width="3" stroke-linecap="round"/>
+    <!-- Smirk -->
+    <path d="M 178 262 Q 200 275 228 260" fill="none" stroke="#c4855a" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Stubble hint -->
+    <ellipse cx="200" cy="268" rx="42" ry="14" fill="#c4956a" opacity="0.2"/>
+    <!-- Ear left -->
+    <ellipse cx="122" cy="210" rx="12" ry="18" fill="url(#max_skin)"/>
+    <!-- Ear right -->
+    <ellipse cx="278" cy="210" rx="12" ry="18" fill="url(#max_skin)"/>
+  </g>
+</svg>

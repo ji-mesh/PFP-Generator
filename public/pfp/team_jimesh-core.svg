@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="jimesh core team badge, circular crop">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="10"/>
+    <g fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="200,118 268,156 268,232 200,270 132,232 132,156" fill="#fcd34d" stroke="#000000"/>
+    <polyline points="132,156 200,194 268,156"/><line x1="200" y1="194" x2="200" y2="270"/></g>
+  </g>
+</svg>

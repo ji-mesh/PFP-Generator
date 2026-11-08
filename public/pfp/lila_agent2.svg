@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="lila_agent2 portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-180,-150)">
+  <defs>
+    <!-- Brand Violet Cube Gradients -->
+    <linearGradient id="cubeTop_bv" gradientUnits="userSpaceOnUse" x1="-120" y1="-140" x2="120" y2="0">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="1%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft_bv" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="0" y2="140">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="1%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="cubeRight_bv" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="122" y2="140">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="1%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="extrudeGrad_bv" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="122" y2="70">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="1%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="rimFade_bv" gradientUnits="userSpaceOnUse" x1="-108" y1="-52" x2="26" y2="-86">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheenTop_bv" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  <pattern id="ht-lila2" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#a855f7" opacity="0.45"/>
+</pattern>
+</defs>
+
+  <g id="comic-halftone" opacity="0.5"><circle cx="284" cy="96" r="88" fill="url(#ht-lila2)"/><circle cx="80" cy="304" r="62" fill="url(#ht-lila2)"/></g>
+
+  <g id="good-agent-brand-violet" transform="translate(180, 185)">
+    <!-- Schwebender Kontakt-Schatten -->
+    <ellipse cx="0" cy="175" rx="60" ry="12" fill="#000000" opacity="0.35"/>
+
+    <!-- Antenne auf Kopf mit rundem Signal-Beacon (Cyan/Violet Akzent) -->
+    <line x1="0" y1="-85" x2="0" y2="-125" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+    <polygon points="0,-154 15.6,-145 15.6,-127 0,-118 -15.6,-127 -15.6,-145" fill="#a855f7" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <circle cx="-5" cy="-141" r="5" fill="#ffffff" opacity="0.85"/>
+
+    <!-- Ohren / Sensor Dials -->
+    <polygon points="-96,-46 -85,-52 -74,-46 -74,-26 -85,-20 -96,-26" fill="#a855f7" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="-85" y1="-46" x2="-85" y2="-26" stroke="#6b21a8" stroke-width="4" stroke-linecap="round"/>
+
+    <polygon points="96,-46 85,-52 74,-46 74,-26 85,-20 96,-26" fill="#a855f7" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="85" y1="-46" x2="85" y2="-26" stroke="#6b21a8" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Roboter-Kopf (Obsidian Deep Slate Blue-Violet) -->
+    <rect x="-82" y="-92" width="164" height="112" rx="22" fill="#1e1b4b" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Stirnstreifen (Vibrant Purple) -->
+    <path d="M -34 -92 L 34 -92 L 34 -52 L -34 -52 Z" fill="#8b5cf6" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -32 -90 L 32 -90 L 32 -54 L -32 -54 Z" fill="#8b5cf6"/>
+
+    <!-- Bildschirm-Visor Glasfassung -->
+    <rect x="-62" y="-54" width="124" height="60" rx="18" fill="#09090b" stroke="#000000" stroke-width="7.5"/>
+    <rect x="-56" y="-48" width="112" height="48" rx="12" fill="#18181b" stroke="#8b5cf6" stroke-width="4.5"/>
+
+    <!-- Freundliche leuchtende Roboteraugen (Cyan Glow) -->
+    <circle cx="-28" cy="-24" r="11" fill="#22d3ee"/>
+    <circle cx="-31" cy="-27" r="3.5" fill="#ffffff"/>
+
+    <circle cx="28" cy="-24" r="11" fill="#22d3ee"/>
+    <circle cx="25" cy="-27" r="3.5" fill="#ffffff"/>
+    <circle cx="21" cy="-21" r="1.8" fill="#ffffff" opacity="0.85"/>
+    <path d="M -40,-40 Q -28,-47 -16,-41" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 16,-41 Q 28,-47 40,-40" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#1e0538" stroke="#a855f7" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M -5,-7.5 L 5,-7.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Arme / Greifer -->
+    <path d="M -54,34 C -64,44 -68,60 -60,68 C -52,76 -46,64 -46,54" fill="#0f172a" stroke="#000000" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M -66,54 C -72,60 -66,74 -56,70" fill="none" stroke="#000000" stroke-width="6.5" stroke-linecap="round"/>
+
+    <path d="M 54,34 C 64,44 68,60 60,68 C 52,76 46,64 46,54" fill="#0f172a" stroke="#000000" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 66,54 C 72,60 66,74 56,70" fill="none" stroke="#000000" stroke-width="6.5" stroke-linecap="round"/>
+
+    <!-- Torso Körper (Deep Violet mit dunklem Schatten) -->
+    <path d="M -48,22 C -62,56 -52,112 0,136 C 52,112 62,56 48,22 C 34,25 -34,25 -48,22 Z" 
+          fill="#1e1b4b" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Violette 3D-Seitenschattierung rechts -->
+    <path d="M 0,136 C 36,120 54,82 48,22 C 34,25 24,32 20,46 C 14,70 18,108 0,136 Z" 
+          fill="#312e81"/>
+
+    <!-- Weißer Lichtreflex links am Torso -->
+    <path d="M -38,36 C -46,58 -42,92 -20,116" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- ================= PROPORTIONAL VERKLEINERTER AUTHENTISCHER JIMESH CUBE (Scale 0.17 statt 0.24) ================= -->
+    <g id="chest-jimesh-cube-bv" transform="translate(0, 80) scale(0.175)">
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.28) translate(0, 4)"/>
+
+      <g transform="translate(18,20)">
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#extrudeGrad_bv)"/>
+      </g>
+      <g transform="translate(28,46)" opacity="0.75">
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#08040f"/>
+      </g>
+
+      <!-- Drei isometrische Hauptflächen -->
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#cubeTop_bv)"/>
+      <polygon points="-122,-70 0,0 0,140 -122,70" fill="url(#cubeLeft_bv)"/>
+      <polygon points="0,0 122,-70 122,70 0,140" fill="url(#cubeRight_bv)"/>
+
+      <path d="M 0,0 L 122,-70 M 0,0 L -122,-70" fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round"/>
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15" stroke-linejoin="round"/>
+
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#sheenTop_bv)"/>
+      <path d="M -108,-52 C -76,-80 -30,-95 12,-88" fill="none" stroke="url(#rimFade_bv)" stroke-width="10" stroke-linecap="round"/>
+
+      <!-- Tiefen-Punkte -->
+      <g fill="#ffffff" opacity="0.8">
+        <circle cx="-24" cy="-96" r="5"/><circle cx="4" cy="-90" r="4.5"/><circle cx="32" cy="-84" r="4"/>
+        <circle cx="-10" cy="-110" r="4"/><circle cx="18" cy="-104" r="3.5"/><circle cx="46" cy="-98" r="3.2"/>
+      </g>
+    </g>
+  </g>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(72,112) scale(0.8)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#a855f7" opacity="0.9" transform="translate(298,64) scale(1.05)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#a855f7" opacity="0.75" transform="translate(305,296) scale(0.7)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.7" transform="translate(68,300) scale(0.55)"/>
+</g>
+<g stroke="#a855f7" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="215" y1="34" x2="238" y2="18"/>
+  <line x1="222" y1="50" x2="248" y2="38"/>
+  <line x1="226" y1="66" x2="252" y2="58"/>
+</g>
+</g></g>
+</svg>

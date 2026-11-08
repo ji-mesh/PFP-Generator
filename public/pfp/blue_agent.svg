@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="blue_agent portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-180,-150)">
+  <defs>
+    <!-- Ice Theme Cube Gradients -->
+    <linearGradient id="cubeTop_ice" gradientUnits="userSpaceOnUse" x1="-120" y1="-140" x2="120" y2="0">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="1%" stop-color="#93c5fd"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft_ice" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="0" y2="140">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="1%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cubeRight_ice" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="122" y2="140">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="1%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="extrudeGrad_ice" gradientUnits="userSpaceOnUse" x1="-122" y1="-70" x2="122" y2="70">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="1%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="rimFade_ice" gradientUnits="userSpaceOnUse" x1="-108" y1="-52" x2="26" y2="-86">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  <pattern id="ht-blue" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#38bdf8" opacity="0.45"/>
+</pattern>
+</defs>
+
+  <g id="comic-halftone" opacity="0.5"><circle cx="284" cy="96" r="88" fill="url(#ht-blue)"/><circle cx="80" cy="304" r="62" fill="url(#ht-blue)"/></g>
+
+  <g id="good-agent-ice" transform="translate(180, 185)">
+    <!-- Kontakt-Schatten -->
+    <ellipse cx="0" cy="175" rx="60" ry="12" fill="#000000" opacity="0.3"/>
+
+    <!-- Antenne auf Kopf mit Signal-Beacon -->
+    <line x1="0" y1="-85" x2="0" y2="-125" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="0" cy="-136" r="18" fill="#38bdf8" stroke="#000000" stroke-width="7.5"/>
+    <circle cx="-5" cy="-141" r="5" fill="#ffffff" opacity="0.85"/>
+    <g stroke="#e0f2fe" stroke-width="2.5" stroke-linecap="round">
+      <line x1="0" y1="-152" x2="0" y2="-120"/>
+      <line x1="-13" y1="-144" x2="13" y2="-128"/>
+      <line x1="-13" y1="-128" x2="13" y2="-144"/>
+    </g>
+
+    <!-- Ohren / Sensor Dials -->
+    <rect x="-96" y="-55" width="22" height="38" rx="10" fill="#38bdf8" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="-85" y1="-46" x2="-85" y2="-26" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+
+    <rect x="74" y="-55" width="22" height="38" rx="10" fill="#38bdf8" stroke="#000000" stroke-width="7.5" stroke-linejoin="round"/>
+    <line x1="85" y1="-46" x2="85" y2="-26" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Roboter-Kopf (Ice Cyan Chassis) -->
+    <rect x="-82" y="-92" width="164" height="112" rx="46" fill="#0284c7" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Eisblauer Stirnstreifen -->
+    <path d="M -34 -92 L 34 -92 L 34 -52 L -34 -52 Z" fill="#38bdf8" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -32 -90 L 32 -90 L 32 -54 L -32 -54 Z" fill="#38bdf8"/>
+
+    <!-- Bildschirm-Visor Glasfassung -->
+    <rect x="-62" y="-54" width="124" height="60" rx="18" fill="#082f49" stroke="#000000" stroke-width="7.5"/>
+    <rect x="-56" y="-48" width="112" height="48" rx="12" fill="#0c4a6e" stroke="#38bdf8" stroke-width="4.5"/>
+
+    <!-- Freundliche leuchtende Roboteraugen (Polar Ice Weiß/Cyan) -->
+    <circle cx="-28" cy="-24" r="11" fill="#e0f2fe"/>
+    <circle cx="-31" cy="-27" r="3.5" fill="#ffffff"/>
+
+    <circle cx="28" cy="-24" r="11" fill="#e0f2fe"/>
+    <circle cx="25" cy="-27" r="3.5" fill="#ffffff"/>
+    <circle cx="21" cy="-21" r="1.8" fill="#ffffff" opacity="0.85"/>
+    <path d="M -40,-40 Q -28,-47 -16,-41" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 16,-41 Q 28,-47 40,-40" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M -13,-9 Q 0,3 13,-9 Q 0,-4 -13,-9 Z" fill="#062033" stroke="#38bdf8" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M -5,-7.5 L 5,-7.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Arme / Greifer -->
+    <ellipse cx="-70" cy="58" rx="13" ry="17" fill="#075985" stroke="#000000" stroke-width="7.5"/>
+    <circle cx="-70" cy="58" r="4.5" fill="#e0f2fe"/>
+
+    <ellipse cx="70" cy="58" rx="13" ry="17" fill="#075985" stroke="#000000" stroke-width="7.5"/>
+    <circle cx="70" cy="58" r="4.5" fill="#e0f2fe"/>
+
+    <!-- Torso Körper -->
+    <path d="M -48,22 C -62,56 -52,112 0,136 C 52,112 62,56 48,22 C 34,25 -34,25 -48,22 Z" 
+          fill="#0284c7" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Dunkelblaue Seitenschattierung rechts -->
+    <path d="M 0,136 C 36,120 54,82 48,22 C 34,25 24,32 20,46 C 14,70 18,108 0,136 Z" 
+          fill="#0369a1"/>
+
+    <!-- Lichtreflex links -->
+    <path d="M -38,36 C -46,58 -42,92 -20,116" fill="none" stroke="#bae6fd" stroke-width="4.5" stroke-linecap="round" opacity="0.75"/>
+
+    <!-- ================= PROPORTIONAL VERKLEINERTER ICE CUBE AUF DER BRUST ================= -->
+    <g id="chest-jimesh-cube-ice" transform="translate(0, 80) scale(0.175)">
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#000000" transform="scale(1.28) translate(0, 4)"/>
+
+      <g transform="translate(18,20)">
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#extrudeGrad_ice)"/>
+      </g>
+      <g transform="translate(28,46)" opacity="0.75">
+        <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="#08040f"/>
+      </g>
+
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="url(#cubeTop_ice)"/>
+      <polygon points="-122,-70 0,0 0,140 -122,70" fill="url(#cubeLeft_ice)"/>
+      <polygon points="0,0 122,-70 122,70 0,140" fill="url(#cubeRight_ice)"/>
+
+      <path d="M 0,0 L 122,-70 M 0,0 L -122,-70" fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round"/>
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15" stroke-linejoin="round"/>
+
+      <path d="M -108,-52 C -76,-80 -30,-95 12,-88" fill="none" stroke="url(#rimFade_ice)" stroke-width="10" stroke-linecap="round"/>
+
+      <g fill="#ffffff" opacity="0.85">
+        <circle cx="-24" cy="-96" r="5"/><circle cx="4" cy="-90" r="4.5"/><circle cx="32" cy="-84" r="4"/>
+        <circle cx="-10" cy="-110" r="4"/><circle cx="18" cy="-104" r="3.5"/><circle cx="46" cy="-98" r="3.2"/>
+      </g>
+    </g>
+  </g>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(72,112) scale(0.8)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#38bdf8" opacity="0.9" transform="translate(298,64) scale(1.05)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#38bdf8" opacity="0.75" transform="translate(305,296) scale(0.7)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.7" transform="translate(68,300) scale(0.55)"/>
+</g>
+<g stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="215" y1="34" x2="238" y2="18"/>
+  <line x1="222" y1="50" x2="248" y2="38"/>
+  <line x1="226" y1="66" x2="252" y2="58"/>
+</g>
+</g></g>
+</svg>

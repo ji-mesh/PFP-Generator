@@ -1,0 +1,11 @@
+{
+  "kind": "pfp-pack-curated-subset",
+  "sourcePack": "ji-mesh/jimeshIO/adds DEV-162 PFP pack (canonical: source/jimeshIO/frontend/assets/pfp/)",
+  "algorithm": "index = djb2hash(key) % pool.length (deterministic per sessionId/actorId)",
+  "agents": ["browser_agent.svg", "coding_agent.svg", "blue_agent.svg", "happy_agent.svg", "lila_agent.svg", "ninja_agent.svg", "agent_cards1.svg", "bad_agent.svg"],
+  "humans": ["man2.svg", "man4.svg", "man6.svg", "woman3.svg", "woman4.svg", "founder.svg", "analyst.svg", "ops.svg"],
+  "defaultByKind": {
+    "agent": "browser_agent.svg",
+    "human": "founder.svg"
+  }
+}

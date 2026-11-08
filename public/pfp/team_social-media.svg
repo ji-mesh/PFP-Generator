@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="social media team badge, circular crop">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#e879f9"/><stop offset="100%" stop-color="#701a75"/>
+    </radialGradient>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="10"/>
+    <g fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="152" cy="200" r="24" fill="#f5d0fe" stroke="#000000"/>
+    <circle cx="256" cy="140" r="24" fill="#f5d0fe" stroke="#000000"/>
+    <circle cx="256" cy="260" r="24" fill="#f5d0fe" stroke="#000000"/>
+    <line x1="174" y1="190" x2="234" y2="150"/>
+    <line x1="174" y1="210" x2="234" y2="250"/></g>
+  </g>
+</svg>

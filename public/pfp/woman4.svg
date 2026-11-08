@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="woman4 portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bgGrad)"/>
+    <rect x="170" y="260" width="60" height="60" rx="20" fill="#f0c8a8"/>
+    <ellipse cx="200" cy="360" rx="110" ry="70" fill="#92400e"/>
+    <ellipse cx="200" cy="172" rx="92" ry="102" fill="#1e1b2e"/>
+    <ellipse cx="200" cy="196" rx="71" ry="81" fill="#f0c8a8"/>
+    <path d="M128 168 Q132 110 200 104 Q268 110 272 168 Q262 132 200 126 Q138 132 128 168Z" fill="#1e1b2e"/>
+    <ellipse cx="175" cy="196" rx="9.5" ry="10.5" fill="#1a1a2e"/>
+    <ellipse cx="225" cy="196" rx="9.5" ry="10.5" fill="#1a1a2e"/>
+    <ellipse cx="177" cy="193" rx="3.5" ry="3.5" fill="#fff"/>
+    <ellipse cx="227" cy="193" rx="3.5" ry="3.5" fill="#fff"/>
+    <path d="M161 180 Q175 174 189 180" stroke="#1e1b2e" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M211 180 Q225 174 239 180" stroke="#1e1b2e" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M198 210 Q200 220 202 210" stroke="#d4a078" stroke-width="2" fill="none"/>
+    <path d="M184 236 Q200 249 216 236" stroke="#d4726a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="164" cy="218" rx="12" ry="8" fill="#f9a8d4" opacity="0.5"/>
+    <ellipse cx="236" cy="218" rx="12" ry="8" fill="#f9a8d4" opacity="0.5"/>
+    <circle cx="128" cy="212" r="4" fill="#fbbf24"/>
+    <circle cx="272" cy="212" r="4" fill="#fbbf24"/>
+  </g>
+</svg>

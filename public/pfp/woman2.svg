@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="woman2 portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#pfpClip)">
+    <rect width="400" height="400" fill="url(#bgGrad)"/>
+    <!-- neck -->
+    <rect x="170" y="260" width="60" height="60" rx="20" fill="#f5d0a9"/>
+    <!-- body / shoulders -->
+    <ellipse cx="200" cy="360" rx="110" ry="70" fill="#7c3aed"/>
+    <!-- hair back -->
+    <ellipse cx="200" cy="170" rx="95" ry="105" fill="#2d1b4e"/>
+    <!-- face -->
+    <ellipse cx="200" cy="195" rx="72" ry="82" fill="#f5d0a9"/>
+    <!-- hair fringe -->
+    <path d="M128 165 Q140 110 200 105 Q260 110 272 165 Q255 130 200 125 Q145 130 128 165Z" fill="#2d1b4e"/>
+    <!-- eyes -->
+    <ellipse cx="175" cy="195" rx="10" ry="11" fill="#1a1a2e"/>
+    <ellipse cx="225" cy="195" rx="10" ry="11" fill="#1a1a2e"/>
+    <ellipse cx="177" cy="192" rx="4" ry="4" fill="#fff"/>
+    <ellipse cx="227" cy="192" rx="4" ry="4" fill="#fff"/>
+    <!-- eyebrows -->
+    <path d="M160 178 Q175 172 190 178" stroke="#2d1b4e" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M210 178 Q225 172 240 178" stroke="#2d1b4e" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- nose -->
+    <path d="M198 210 Q200 220 202 210" stroke="#d4a574" stroke-width="2" fill="none"/>
+    <!-- mouth -->
+    <path d="M185 235 Q200 248 215 235" stroke="#d4726a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- blush -->
+    <ellipse cx="165" cy="218" rx="12" ry="8" fill="#f9a8d4" opacity="0.5"/>
+    <ellipse cx="235" cy="218" rx="12" ry="8" fill="#f9a8d4" opacity="0.5"/>
+    <!-- earring -->
+    <circle cx="130" cy="215" r="5" fill="#fbbf24"/>
+    <circle cx="270" cy="215" r="5" fill="#fbbf24"/>
+  </g>
+</svg>

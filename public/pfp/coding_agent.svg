@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="coding_agent portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-250,-207)">
+  <defs>
+    <radialGradient id="code-bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#111f36"/><stop offset="60%" stop-color="#0a1221"/><stop offset="100%" stop-color="#040810"/>
+    </radialGradient>
+    <linearGradient id="code-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="c-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="c-extrude" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  <pattern id="ht-coding" width="13" height="13" patternUnits="userSpaceOnUse">
+  <circle cx="4" cy="4" r="2" fill="#38bdf8" opacity="0.45"/>
+</pattern>
+</defs>
+  <!-- Transparent / Dark Base Tile -->
+  <rect width="500" height="500" rx="40" fill="url(#code-bg)" stroke="#1e3a5f" stroke-width="2"/>
+  <circle cx="250" cy="230" r="160" fill="#0284c7" opacity="0.15" filter="url(#c-glow)"/>
+  
+  <!-- Standalone Coding Agent Character -->
+  <g id="comic-halftone" opacity="0.5"><circle cx="384" cy="136" r="112" fill="url(#ht-coding)"/><circle cx="96" cy="334" r="76" fill="url(#ht-coding)"/></g>
+
+  <g transform="translate(250, 240) scale(0.95)">
+    <!-- Base Contact Shadow -->
+    <ellipse cx="0" cy="185" rx="90" ry="18" fill="#000000" opacity="0.55"/>
+    
+    <!-- Beacon Antenna -->
+    <line x1="0" y1="-85" x2="0" y2="-140" stroke="#000000" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="0" cy="-155" r="24" fill="#38bdf8" stroke="#000000" stroke-width="9" filter="url(#c-glow)"/>
+    <circle cx="-7" cy="-162" r="6" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Head / Chassis -->
+    <rect x="-96" y="-55" width="24" height="42" rx="10" fill="#0284c7" stroke="#000000" stroke-width="8.5"/>
+    <rect x="72" y="-55" width="24" height="42" rx="10" fill="#0284c7" stroke="#000000" stroke-width="8.5"/>
+    <rect x="-86" y="-95" width="172" height="120" rx="14" fill="url(#code-blue)" stroke="#000000" stroke-width="11"/>
+    <circle cx="-74" cy="-83" r="3.5" fill="#081b2e" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="74" cy="-83" r="3.5" fill="#081b2e" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="-74" cy="13" r="3.5" fill="#081b2e" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="74" cy="13" r="3.5" fill="#081b2e" stroke="#38bdf8" stroke-width="1.5"/>
+    <path d="M -36 -95 L 36 -95 L 36 -55 L -36 -55 Z" fill="#38bdf8" stroke="#000000" stroke-width="7.5"/>
+    
+    <!-- Dark Tech Visor with Angle Bracket Eyes -->
+    <rect x="-65" y="-55" width="130" height="62" rx="18" fill="#081b2e" stroke="#000000" stroke-width="8"/>
+    <rect x="-58" y="-48" width="116" height="48" rx="12" fill="#051524" stroke="#38bdf8" stroke-width="3"/>
+    <text x="-28" y="-14" fill="#38bdf8" font-family="monospace" font-size="34" font-weight="900" text-anchor="middle" filter="url(#c-glow)">&lt;</text>
+    <text x="28" y="-14" fill="#38bdf8" font-family="monospace" font-size="34" font-weight="900" text-anchor="middle" filter="url(#c-glow)">&gt;</text>
+
+    <!-- Torso -->
+    <path d="M -52,22 C -66,58 -56,118 0,144 C 56,118 66,58 52,22 Z" fill="url(#code-blue)" stroke="#000000" stroke-width="11"/>
+    <line x1="20" y1="60" x2="44" y2="60" stroke="#081b2e" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="16" y1="78" x2="44" y2="78" stroke="#081b2e" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="20" y1="96" x2="44" y2="96" stroke="#081b2e" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- JiMesh Cyber Cube on Chest -->
+    <g transform="translate(0, 85) scale(0.20)">
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="url(#c-extrude)" transform="translate(18,20)"/>
+      <polygon points="0,-140 122,-70 0,0 -122,-70" fill="#67e8f9"/>
+      <polygon points="-122,-70 0,0 0,140 -122,70" fill="#c084fc"/>
+      <polygon points="0,0 122,-70 122,70 0,140" fill="#0284c7"/>
+      <polygon points="0,-140 122,-70 122,70 0,140 -122,70 -122,-70" fill="none" stroke="#000000" stroke-width="15"/>
+    </g>
+  </g>
+  <rect x="92" y="436" width="317" height="31" rx="15.5" fill="#0b111c" opacity="0.88" stroke="#38bdf8" stroke-width="2.5" filter="url(#c-glow)"/>
+  <text x="250" y="455" fill="#e0f2fe" font-family="system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle" letter-spacing="1.5">CODING AGENT // PR SYNTH</text>
+<g id="comic-sparkles">
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.95" transform="translate(118,148) scale(0.9)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#38bdf8" opacity="0.9" transform="translate(392,112) scale(1.15)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#38bdf8" opacity="0.75" transform="translate(402,318) scale(0.75)"/>
+  <path d="M 0,-12 C 2.2,-4 4,-2.2 12,0 C 4,2.2 2.2,4 0,12 C -2.2,4 -4,2.2 -12,0 C -4,-2.2 -2.2,-4 0,-12 Z" fill="#ffffff" opacity="0.7" transform="translate(103,332) scale(0.6)"/>
+</g>
+<g stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.5">
+  <line x1="292" y1="70" x2="316" y2="52"/>
+  <line x1="300" y1="86" x2="326" y2="72"/>
+  <line x1="304" y1="104" x2="330" y2="94"/>
+</g>
+</g></g>
+</svg>

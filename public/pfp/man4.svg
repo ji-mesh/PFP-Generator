@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="man4 portrait profile picture, circular crop">
+  <defs>
+    <clipPath id="pfpClip"><circle cx="200" cy="200" r="200"/></clipPath>
+  </defs>
+  <g clip-path="url(#pfpClip)"><g transform="translate(200,176) scale(1.5) translate(-250,-160)">
+  <defs>
+    <!-- Glow Filters -->
+    <filter id="hacker-glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="hacker-glow-amber" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="hacker-soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="hatGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242c3d"/>
+      <stop offset="60%" stop-color="#141a26"/>
+      <stop offset="100%" stop-color="#0a0e17"/>
+    </linearGradient>
+
+    <linearGradient id="coatGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2636"/>
+      <stop offset="50%" stop-color="#131924"/>
+      <stop offset="100%" stop-color="#0a0d14"/>
+    </linearGradient>
+
+    <linearGradient id="collarInnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1520"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="45%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="hatBandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Mini Cube for Chest/Collar Emblem -->
+    <linearGradient id="cubeTopHacker" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="cubeLeftHacker" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e879f9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="cubeRightHacker" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Floor Soft Shadow (Transparent Canvas) -->
+  <ellipse cx="250" cy="460" rx="140" ry="20" fill="#000000" opacity="0.45" filter="url(#hacker-soft-shadow)"/>
+
+  <!-- Main Hacker Character Group -->
+  <g id="hacker-human">
+    <!-- Trench Coat Body (Dark Obsidian Armor Coat) -->
+    <!-- Coat Back and Shoulders -->
+    <path d="M 120,440 L 138,300 C 145,260 175,236 210,230 L 250,230 L 290,230 C 325,236 355,260 362,300 L 380,440 C 340,455 160,455 120,440 Z" 
+          fill="url(#coatGrad)" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+
+    <!-- Coat Trim & Outer Contour Lines -->
+    <path d="M 148,320 L 126,440 M 352,320 L 374,440" 
+          stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- High Standing Collar (Back portion behind head) -->
+    <path d="M 180,240 L 160,165 C 160,165 210,185 250,185 C 290,185 340,165 340,165 L 320,240 Z" 
+          fill="url(#collarInnerGrad)" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+
+    <!-- Shadow under Chin & Jawline -->
+    <ellipse cx="250" cy="200" rx="38" ry="32" fill="#070b12"/>
+
+    <!-- Face Silhouette / Masked Lower Face in Shadow -->
+    <path d="M 215,175 C 215,225 285,225 285,175 Z" fill="#0e1522" stroke="#000000" stroke-width="6"/>
+
+    <!-- Glowing Cyber Glasses / Visor Glasses under Hat -->
+    <g transform="translate(0, 5)">
+      <!-- Visor Frame Outer Glow -->
+      <path d="M 205,158 C 218,154 238,154 246,160 L 254,160 C 262,154 282,154 295,158 C 298,172 284,178 268,176 C 255,174 252,168 250,168 C 248,168 245,174 232,176 C 216,178 202,172 205,158 Z" 
+            fill="#05121e" stroke="#000000" stroke-width="5"/>
+      <!-- Glowing HUD Screen Visor Lenses -->
+      <path d="M 209,160 C 220,157 236,157 244,162 C 240,172 228,174 214,171 C 210,168 208,164 209,160 Z" 
+            fill="url(#visorGrad)" filter="url(#hacker-glow-cyan)"/>
+      <path d="M 291,160 C 280,157 264,157 256,162 C 260,172 272,174 286,171 C 290,168 292,164 291,160 Z" 
+            fill="url(#visorGrad)" filter="url(#hacker-glow-cyan)"/>
+      
+      <!-- Digital HUD Code / Scanlines inside Visor -->
+      <line x1="216" y1="165" x2="238" y2="165" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+      <line x1="262" y1="165" x2="284" y2="165" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+      <circle cx="222" cy="169" r="1" fill="#ffffff"/>
+      <circle cx="227" cy="169" r="1" fill="#ffffff"/>
+      <circle cx="273" cy="169" r="1" fill="#ffffff"/>
+      <circle cx="278" cy="169" r="1" fill="#ffffff"/>
+    </g>
+
+    <!-- High Upturned Trench Collar Front Lapels (Scharfe, hohe Stehkragen-Spitzen) -->
+    <!-- Left High Collar Wing -->
+    <path d="M 205,245 L 162,145 C 162,145 195,185 224,208 L 222,258 Z" 
+          fill="url(#coatGrad)" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 166,150 L 204,242" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" filter="url(#hacker-glow-cyan)"/>
+
+    <!-- Right High Collar Wing -->
+    <path d="M 295,245 L 338,145 C 338,145 305,185 276,208 L 278,258 Z" 
+          fill="url(#coatGrad)" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 334,150 L 296,242" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" filter="url(#hacker-glow-cyan)"/>
+
+    <!-- Trench Coat Center Placket & Fasteners -->
+    <path d="M 250,225 L 250,442" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 248,230 L 248,442" stroke="#1e293b" stroke-width="3"/>
+
+    <!-- Cyber Fedora / Hacker Hat -->
+    <!-- Hat Crown -->
+    <path d="M 188,126 C 182,75 220,52 250,56 C 280,52 318,75 312,126 Z" 
+          fill="url(#hatGrad)" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    <!-- Hat Crease Pinch at the Top -->
+    <path d="M 226,72 C 242,84 258,84 274,72" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Neon Cyan Hat Band (Cyber Band with Matrix / Circuit Notch) -->
+    <path d="M 187,126 C 220,136 280,136 313,126 L 310,114 C 280,123 220,123 190,114 Z" 
+          fill="url(#hatBandGrad)" stroke="#000000" stroke-width="4.5" filter="url(#hacker-glow-cyan)"/>
+    <!-- Small Data Token Clip on Hat Band -->
+    <rect x="220" y="117" width="12" height="7" rx="2" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+
+    <!-- Wide Angled Fedora Brim (Casting mystery shadow over eyes) -->
+    <path d="M 125,138 C 160,116 230,126 250,126 C 270,126 340,116 375,138 C 345,152 275,145 250,145 C 225,145 155,152 125,138 Z" 
+          fill="#101622" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    <!-- Brim Bottom Edge Lighting -->
+    <path d="M 136,138 C 175,125 240,132 250,132 C 260,132 325,125 364,138" 
+          fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
+
+    <!-- Hacker Chest Badge / JiMesh Cyber Cube Collar Pin -->
+    <g transform="translate(250, 275) scale(0.38)">
+      <!-- Badge Base Circle -->
+      <circle cx="0" cy="0" r="42" fill="#060d17" stroke="#000000" stroke-width="7"/>
+      <circle cx="0" cy="0" r="38" fill="#0a1526" stroke="#00d2ff" stroke-width="3" filter="url(#hacker-glow-cyan)"/>
+
+      <!-- Isometric Mini JiMesh Cube -->
+      <!-- Amber Extrusion -->
+      <polygon points="0,-24 24,-10 24,14 0,28 -24,14 -24,-10" fill="#f59e0b" transform="translate(4, 5)"/>
+      <!-- Black Base Outline -->
+      <polygon points="0,-24 24,-10 24,14 0,28 -24,14 -24,-10" fill="#000000" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <!-- Faces -->
+      <polygon points="0,-24 24,-10 0,0 -24,-10" fill="url(#cubeTopHacker)"/>
+      <polygon points="-24,-10 0,0 0,28 -24,14" fill="url(#cubeLeftHacker)"/>
+      <polygon points="0,0 24,-10 24,14 0,28" fill="url(#cubeRightHacker)"/>
+      <!-- Internal Seams -->
+      <path d="M 0,0 L 24,-10 M 0,0 L -24,-10 M 0,0 L 0,28" stroke="#000000" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Highlight Sheen -->
+      <path d="M -20,-8 C -14,-16 -4,-20 6,-18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    </g>
+
+    <!-- Trench Coat Lapels & Cyber Traces -->
+    <g opacity="0.85">
+      <!-- Left Lapel Buttons & Cyber Traces -->
+      <circle cx="215" cy="320" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="215" cy="320" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+      <line x1="215" y1="326" x2="215" y2="355" stroke="#00d2ff" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <circle cx="215" cy="365" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="215" cy="365" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+      <line x1="215" y1="371" x2="215" y2="400" stroke="#00d2ff" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <circle cx="215" cy="410" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="215" cy="410" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+
+      <!-- Right Lapel Buttons & Cyber Traces -->
+      <circle cx="285" cy="320" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="285" cy="320" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+      <line x1="285" y1="326" x2="285" y2="355" stroke="#00d2ff" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <circle cx="285" cy="365" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="285" cy="365" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+      <line x1="285" y1="371" x2="285" y2="400" stroke="#00d2ff" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <circle cx="285" cy="410" r="5" fill="#0e1726" stroke="#000000" stroke-width="3"/>
+      <circle cx="285" cy="410" r="2.5" fill="#00d2ff" filter="url(#hacker-glow-cyan)"/>
+    </g>
+
+    <!-- Subdued Cyber Decals on Shoulder Epaulettes -->
+    <path d="M 148,285 L 182,255" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" filter="url(#hacker-glow-cyan)"/>
+    <path d="M 352,285 L 318,255" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" filter="url(#hacker-glow-cyan)"/>
+  </g>
+</g></g>
+</svg>
