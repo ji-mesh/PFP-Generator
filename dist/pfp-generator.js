@@ -427,36 +427,84 @@
       entityKind: 'creature',
       title: 'KITSUNE-09 // CYBER FOX',
       background: 'deep_space',
-      body: 'cyber_armor',
+      body: 'lab_coat',
       chest: 'mesh_emblem',
       eyes: 'cyber_optic',
       headwear: 'halo',
       accessoryBadge: 'ai_spark',
       palette: ALL_PALETTES[6]
     },
-    neko_creature: {
-      presetId: 'neko_creature',
-      entityKind: 'creature',
-      title: 'NEKO-42 // SHADOW CAT',
-      background: 'matrix_rain',
-      body: 'hoodie',
-      chest: 'reactor_core',
-      eyes: 'focused',
-      headwear: 'cyber_helmet',
-      accessoryBadge: 'security_lock',
-      palette: ALL_PALETTES[1]
-    },
     drake_mascot: {
       presetId: 'drake_mascot',
       entityKind: 'creature',
-      title: 'DRAKE-01 // WYRM GUARD',
+      title: 'DRAKE-01 // WYRM DRAGON',
       background: 'geometric',
-      body: 'suit',
-      chest: 'tie',
+      body: 'cyber_armor',
+      chest: 'reactor_core',
       eyes: 'laser',
       headwear: 'crown',
-      accessoryBadge: 'crm_shield',
+      accessoryBadge: 'security_lock',
       palette: ALL_PALETTES[4]
+    },
+    fenrir_wolf: {
+      presetId: 'fenrir_wolf',
+      entityKind: 'creature',
+      title: 'FENRIR-7 // DIRE WOLF',
+      background: 'cyber_grid',
+      body: 'robot_chassis',
+      chest: 'harness',
+      eyes: 'focused',
+      headwear: 'none',
+      accessoryBadge: 'devops_gear',
+      palette: ALL_PALETTES[2]
+    },
+    kodiak_bear: {
+      presetId: 'kodiak_bear',
+      entityKind: 'creature',
+      title: 'KODIAK-88 // IRON GRIZZLY',
+      background: 'solid_mesh',
+      body: 'hoodie',
+      chest: 'mesh_emblem',
+      eyes: 'happy',
+      headwear: 'cap',
+      accessoryBadge: 'crm_shield',
+      palette: ALL_PALETTES[15]
+    },
+    chronos_owl: {
+      presetId: 'chronos_owl',
+      entityKind: 'creature',
+      title: 'ATHENA-12 // NIGHT OWL',
+      background: 'pastel_dots',
+      body: 'suit',
+      chest: 'tie',
+      eyes: 'glasses',
+      headwear: 'beret',
+      accessoryBadge: 'code_brackets',
+      palette: ALL_PALETTES[3]
+    },
+    kraken_octo: {
+      presetId: 'kraken_octo',
+      entityKind: 'creature',
+      title: 'KRAKEN-99 // DEEP CTHULHU',
+      background: 'matrix_rain',
+      body: 'turtleneck',
+      chest: 'necklace',
+      eyes: 'terminal_glow',
+      headwear: 'none',
+      accessoryBadge: 'nango_sync_badge',
+      palette: ALL_PALETTES[5]
+    },
+    minotaur_bull: {
+      presetId: 'minotaur_bull',
+      entityKind: 'creature',
+      title: 'TAURUS-04 // BULL BREAKER',
+      background: 'mesh_gradient',
+      body: 'casual_tee',
+      chest: 'reactor_core',
+      eyes: 'focused',
+      headwear: 'none',
+      accessoryBadge: 'marketing_megaphone',
+      palette: ALL_PALETTES[10]
     }
   };
 
@@ -1471,106 +1519,238 @@
   function renderCreatureBust(spec, uid, lod) {
     var p = spec.palette;
     var parts = [];
+    // Map `spec.body` to 7 distinct Creature / Animal / Mascot species!
+    // cyber_armor -> Dragon / Wyrm
+    // robot_chassis -> Dire Wolf / Fenrir
+    // hoodie -> Grizzly Bear / Kodiak
+    // suit -> Night Owl / Raptor
+    // turtleneck -> Kraken / Cthulhu Octo
+    // casual_tee -> Minotaur / Cyber Bull
+    // lab_coat (default) -> Kitsune / Cyber Fox
+    var b = spec.body;
+    var species = b === 'cyber_armor' ? 'dragon'
+      : b === 'robot_chassis' ? 'wolf'
+      : b === 'hoodie' ? 'bear'
+      : b === 'suit' ? 'owl'
+      : b === 'turtleneck' ? 'kraken'
+      : b === 'casual_tee' ? 'bull'
+      : 'fox';
 
     parts.push('<g transform="translate(250, 244) scale(0.95)">');
-    // Ground hover shadow
     parts.push('<ellipse cx="0" cy="185" rx="92" ry="18" fill="#000000" opacity="0.55"/>');
 
-    // Fluffy Mascot / Kitsune / Wyrm Tail curving up behind the right shoulder
+    // 1. SPECIES BACKDROP FEATURES (Wings, Tails, Tentacles)
     if (lod !== 'micro') {
-      parts.push(
-        '<g>' +
-          '<path d="M 38,118 C 118,118 156,42 126,-24 C 112,-54 78,-26 84,18 C 88,52 64,84 34,94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
-          '<path d="M 126,-24 C 114,-48 86,-28 88,2 C 102,-4 116,-8 126,-24 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round" filter="url(#' + uid + '-glow)"/>' +
-        '</g>'
-      );
+      if (species === 'dragon') {
+        // Bat/Dragon Wings spread left & right + Spiked Dragon Tail
+        parts.push(
+          '<g stroke="#000000" stroke-width="9" stroke-linejoin="round">' +
+            '<path d="M -42,26 L -158,-48 L -134,8 L -154,48 L -112,52 L -52,78 Z" fill="' + escapeXml(p.secondary) + '"/>' +
+            '<path d="M -48,32 L -136,-26 L -116,16 L -132,42 L -54,68 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
+            '<path d="M 42,26 L 158,-48 L 134,8 L 154,48 L 112,52 L 52,78 Z" fill="' + escapeXml(p.secondary) + '"/>' +
+            '<path d="M 48,32 L 136,-26 L 116,16 L 132,42 L 54,68 Z" fill="' + escapeXml(p.accent) + '" opacity="0.75"/>' +
+          '</g>'
+        );
+      } else if (species === 'owl') {
+        // Feathered Raptor / Owl Wings
+        parts.push(
+          '<g stroke="#000000" stroke-width="9" stroke-linejoin="round">' +
+            '<path d="M -48,28 C -132,8 -152,64 -108,108 C -88,92 -72,96 -52,88 Z" fill="url(#' + uid + '-body)"/>' +
+            '<path d="M 48,28 C 132,8 152,64 108,108 C 88,92 72,96 52,88 Z" fill="url(#' + uid + '-body)"/>' +
+          '</g>'
+        );
+      } else if (species === 'kraken') {
+        // Curling Cthulhu / Kraken Tentacles around torso
+        parts.push(
+          '<g stroke="#000000" stroke-width="9" stroke-linecap="round" fill="none">' +
+            '<path d="M -52,72 C -124,82 -148,18 -108,-18 C -88,-34 -74,-8 -92,12" stroke="' + escapeXml(p.primary) + '" stroke-width="18"/>' +
+            '<path d="M -52,72 C -124,82 -148,18 -108,-18" stroke="#000000" stroke-width="8"/>' +
+            '<path d="M 52,72 C 124,82 148,18 108,-18 C 88,-34 74,-8 92,12" stroke="' + escapeXml(p.primary) + '" stroke-width="18"/>' +
+            '<path d="M 52,72 C 124,82 148,18 108,-18" stroke="#000000" stroke-width="8"/>' +
+            '<circle cx="-116" cy="36" r="5" fill="' + escapeXml(p.accent) + '"/><circle cx="-122" cy="12" r="5" fill="' + escapeXml(p.accent) + '"/>' +
+            '<circle cx="116" cy="36" r="5" fill="' + escapeXml(p.accent) + '"/><circle cx="122" cy="12" r="5" fill="' + escapeXml(p.accent) + '"/>' +
+          '</g>'
+        );
+      } else if (species === 'fox' || species === 'wolf') {
+        // Twin Kitsune / Wolf Tail
+        parts.push(
+          '<g>' +
+            '<path d="M 38,118 C 118,118 156,42 126,-24 C 112,-54 78,-26 84,18 C 88,52 64,84 34,94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+            '<path d="M 126,-24 C 114,-48 86,-28 88,2 C 102,-4 116,-8 126,-24 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>' +
+          '</g>'
+        );
+      }
     }
 
-    // Mascot Torso & Paws
-    parts.push('<path d="M -54,22 C -68,62 -56,120 0,146 C 56,120 68,62 54,22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>');
-    // Fluffy chest fur tuft or collar
-    parts.push('<polygon points="-26,22 0,48 26,22 12,58 0,46 -12,58" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>');
+    // 2. CREATURE TORSO & RUFF / ARMOR
+    parts.push('<path d="M -58,22 C -74,64 -60,122 0,148 C 60,122 74,64 58,22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>');
+    if (species === 'wolf' || species === 'bear' || species === 'bull') {
+      // Jagged Neck Mane / Fur Ruff
+      parts.push('<polygon points="-58,22 -36,46 -18,26 0,52 18,26 36,46 58,22" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>');
+    } else if (species === 'dragon') {
+      // Dragon Chest Belly Scales
+      parts.push('<path d="M -26,28 L 26,28 L 20,132 L 0,144 L -20,132 Z" fill="' + escapeXml(p.accent) + '" opacity="0.35" stroke="#000000" stroke-width="5"/>');
+    }
 
     if (lod !== 'micro') {
-      // Raised Mascot Paws with toe beans / claws
-      parts.push(
-        '<g>' +
-          '<ellipse cx="-78" cy="48" rx="22" ry="18" transform="rotate(-20 -78 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
-          '<circle cx="-78" cy="50" r="6" fill="' + escapeXml(p.accent) + '"/>' +
-          '<circle cx="-86" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="-78" cy="37" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="-70" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/>' +
-          '<ellipse cx="78" cy="48" rx="22" ry="18" transform="rotate(20 78 48)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
-          '<circle cx="78" cy="50" r="6" fill="' + escapeXml(p.accent) + '"/>' +
-          '<circle cx="70" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="78" cy="37" r="3" fill="' + escapeXml(p.accent) + '"/><circle cx="86" cy="40" r="3" fill="' + escapeXml(p.accent) + '"/>' +
-        '</g>'
-      );
       parts.push(renderChestEmblem(spec, uid, false));
     }
 
-    // Tall Pointed Fox / Cat / Dragon Mascot Ears
-    parts.push(
-      '<g stroke="#000000" stroke-linejoin="round">' +
-        '<polygon points="-78,-62 -106,-164 -22,-92" fill="url(#' + uid + '-body)" stroke-width="11"/>' +
-        '<polygon points="-70,-72 -92,-142 -36,-90" fill="' + escapeXml(p.accent) + '" stroke-width="6" filter="url(#' + uid + '-glow)"/>' +
-        '<polygon points="78,-62 106,-164 22,-92" fill="url(#' + uid + '-body)" stroke-width="11"/>' +
-        '<polygon points="70,-72 92,-142 36,-90" fill="' + escapeXml(p.accent) + '" stroke-width="6" filter="url(#' + uid + '-glow)"/>' +
-      '</g>'
-    );
-
-    // Cheek Fur Tufts + Creature Head
-    parts.push(
-      '<path d="M -82,-32 L -114,-38 L -92,-14 L -116,2 L -74,18 L 74,18 L 116,2 L 92,-14 L 114,-38 L 82,-32 C 78,-82 48,-98 0,-98 C -48,-98 -78,-82 -82,-32 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
-    );
-
-    // Forehead diamond / crest marking
-    parts.push('<polygon points="0,-88 14,-70 0,-52 -14,-70" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5" filter="url(#' + uid + '-glow)"/>');
-
-    // Dark Visor / Eye Mask + Whiskers
-    parts.push('<rect x="-66" y="-56" width="132" height="54" rx="22" fill="#04151f" stroke="#000000" stroke-width="7.5"/>');
-    parts.push(
-      '<g stroke="' + escapeXml(p.accent) + '" stroke-width="3.5" stroke-linecap="round" opacity="0.85">' +
-        '<line x1="-68" y1="-12" x2="-96" y2="-18"/><line x1="-68" y1="-4" x2="-98" y2="-2"/>' +
-        '<line x1="68" y1="-12" x2="96" y2="-18"/><line x1="68" y1="-4" x2="98" y2="-2"/>' +
-      '</g>'
-    );
-
-    // Eyes inside mask
-    var eyes = spec.eyes;
-    if (eyes === 'laser') {
+    // 3. SPECIES HEAD, EARS, HORNS, SNOUT / BEAK / TENTACLES
+    if (species === 'bear') {
+      // BIG ROUND BEAR EARS + BROAD GRIZZLY HEAD + WIDE MUZZLE
       parts.push(
-        '<rect x="-52" y="-36" width="104" height="14" rx="7" fill="#ef4444" filter="url(#' + uid + '-glow)"/>' +
-        '<rect x="-44" y="-32" width="88" height="6" rx="3" fill="#ffffff"/>'
+        '<circle cx="-72" cy="-86" r="30" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
+        '<circle cx="-72" cy="-86" r="15" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+        '<circle cx="72" cy="-86" r="30" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
+        '<circle cx="72" cy="-86" r="15" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+        '<rect x="-92" y="-88" width="184" height="122" rx="58" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>'
       );
-    } else if (eyes === 'happy') {
+    } else if (species === 'bull') {
+      // MASSIVE CURVED MINOTAUR / BULL HORNS + HEAVY BROW HEAD
       parts.push(
-        '<path d="M -44,-24 Q -30,-42 -16,-24" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>' +
-        '<path d="M 16,-24 Q 30,-42 44,-24" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>'
+        '<path d="M -68,-64 C -138,-72 -154,-138 -108,-168 C -112,-128 -92,-98 -56,-88 Z" fill="#fef08a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<path d="M 68,-64 C 138,-72 154,-138 108,-168 C 112,-128 92,-98 56,-88 Z" fill="#fef08a" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>' +
+        '<ellipse cx="-88" cy="-34" rx="22" ry="12" transform="rotate(-15 -88 -34)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
+        '<ellipse cx="88" cy="-34" rx="22" ry="12" transform="rotate(15 88 -34)" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="8"/>' +
+        '<rect x="-84" y="-92" width="168" height="124" rx="44" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>'
       );
-    } else if (eyes === 'focused') {
+    } else if (species === 'dragon') {
+      // SWEPT-BACK RIDGED DRAGON HORNS + FIN EARS + ANGULAR WYRM HEAD
       parts.push(
-        '<polygon points="-48,-36 -14,-24 -20,-14 -48,-24" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<polygon points="48,-36 14,-24 20,-14 48,-24" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
+        '<path d="M -42,-88 C -68,-146 -112,-168 -124,-182 C -92,-132 -78,-102 -64,-76 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
+        '<path d="M 42,-88 C 68,-146 112,-168 124,-182 C 92,-132 78,-102 64,-76 Z" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>' +
+        '<polygon points="0,-122 -14,-92 14,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="7"/>' +
+        '<polygon points="-78,-52 -118,-68 -96,-28 -114,-8 -76,-12" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<polygon points="78,-52 118,-68 96,-28 114,-8 76,-12" fill="' + escapeXml(p.secondary) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<path d="M -78,-86 L 0,-102 L 78,-86 L 86,8 L 0,34 L -86,8 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
+      );
+    } else if (species === 'owl') {
+      // OWL / RAPTOR FEATHERED PLUME CRESTS + ROUND AVIAN HEAD
+      parts.push(
+        '<ellipse cx="0" cy="-34" rx="88" ry="64" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
+        '<polygon points="-52,-76 -108,-136 -72,-68 -24,-84" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>' +
+        '<polygon points="52,-76 108,-136 72,-68 24,-84" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>'
+      );
+    } else if (species === 'kraken') {
+      // BULBOUS CTHULHU / KRAKEN CEPHALOPOD DOME + MOUTH TENTACLES
+      parts.push(
+        '<path d="M -82,-22 C -106,-118 -56,-156 0,-156 C 56,-156 106,-118 82,-22 C 74,12 52,24 0,24 C -52,24 -74,12 -82,-22 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11"/>' +
+        '<circle cx="-48" cy="-108" r="10" fill="' + escapeXml(p.accent) + '" opacity="0.65"/>' +
+        '<circle cx="48" cy="-108" r="10" fill="' + escapeXml(p.accent) + '" opacity="0.65"/>' +
+        '<circle cx="0" cy="-126" r="14" fill="' + escapeXml(p.accent) + '" opacity="0.5"/>' +
+        // 4 Face Tentacles hanging from lower face
+        '<path d="M -46,8 C -58,42 -78,54 -64,72" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
+        '<path d="M -46,8 C -58,42 -78,54 -64,72" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<path d="M -16,14 C -22,52 -34,68 -18,82" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
+        '<path d="M -16,14 C -22,52 -34,68 -18,82" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<path d="M 16,14 C 22,52 34,68 18,82" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
+        '<path d="M 16,14 C 22,52 34,68 18,82" fill="none" stroke="' + escapeXml(p.primary) + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<path d="M 46,8 C 58,42 78,54 64,72" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round"/>' +
+        '<path d="M 46,8 C 58,42 78,54 64,72" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="7" stroke-linecap="round"/>'
+      );
+    } else if (species === 'wolf') {
+      // ANGULAR DIRE WOLF HEAD + SHARP UPWARD EARS + JAGGED CHEEK FUR
+      parts.push(
+        '<polygon points="-72,-68 -88,-168 -24,-94" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
+        '<polygon points="-66,-76 -78,-144 -34,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+        '<polygon points="72,-68 88,-168 24,-94" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
+        '<polygon points="66,-76 78,-144 34,-92" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+        '<path d="M -78,-42 L -116,-32 L -88,-10 L -118,8 L -68,24 L 0,32 L 68,24 L 118,8 L 88,-10 L 116,-32 L 78,-42 L 64,-94 L -64,-94 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
       );
     } else {
-      // Slit-pupil Cat/Fox/Dragon glowing eyes
+      // KITSUNE / CYBER FOX
       parts.push(
-        '<ellipse cx="-30" cy="-28" rx="14" ry="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<ellipse cx="30" cy="-28" rx="14" ry="12" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
-        '<ellipse cx="-30" cy="-28" rx="3.5" ry="9" fill="#04151f"/>' +
-        '<ellipse cx="30" cy="-28" rx="3.5" ry="9" fill="#04151f"/>' +
-        '<circle cx="-34" cy="-32" r="3.5" fill="#ffffff"/><circle cx="26" cy="-32" r="3.5" fill="#ffffff"/>'
+        '<polygon points="-78,-62 -106,-164 -22,-92" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
+        '<polygon points="-70,-72 -92,-142 -36,-90" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+        '<polygon points="78,-62 106,-164 22,-92" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>' +
+        '<polygon points="70,-72 92,-142 36,-90" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="6"/>' +
+        '<path d="M -82,-32 L -114,-38 L -92,-14 L -116,2 L -74,18 L 74,18 L 116,2 L 92,-14 L 114,-38 L 82,-32 C 78,-82 48,-98 0,-98 C -48,-98 -78,-82 -82,-32 Z" fill="url(#' + uid + '-body)" stroke="#000000" stroke-width="11" stroke-linejoin="round"/>'
       );
     }
 
-    // Animal Muzzle / Snout + Nose + W-Mouth + Little Fangs
-    parts.push(
-      '<ellipse cx="0" cy="4" rx="28" ry="16" fill="#0b1528" stroke="#000000" stroke-width="6"/>' +
-      '<polygon points="-9,-4 9,-4 0,4" fill="' + escapeXml(p.accent) + '"/>' +
-      '<path d="M -12,9 Q -6,16 0,9 Q 6,16 12,9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>' +
-      '<polygon points="-10,11 -7,17 -4,11" fill="#ffffff"/>' +
-      '<polygon points="4,11 7,17 10,11" fill="#ffffff"/>'
-    );
+    // 4. EYES / VISOR MASK
+    parts.push('<rect x="-64" y="-56" width="128" height="48" rx="18" fill="#04151f" stroke="#000000" stroke-width="7.5"/>');
+    var eyes = spec.eyes;
+    if (eyes === 'laser') {
+      parts.push(
+        '<rect x="-52" y="-38" width="104" height="14" rx="7" fill="#ef4444" filter="url(#' + uid + '-glow)"/>' +
+        '<rect x="-44" y="-34" width="88" height="6" rx="3" fill="#ffffff"/>'
+      );
+    } else if (eyes === 'happy') {
+      parts.push(
+        '<path d="M -44,-26 Q -30,-44 -16,-26" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>' +
+        '<path d="M 16,-26 Q 30,-44 44,-26" fill="none" stroke="' + escapeXml(p.accent) + '" stroke-width="6.5" stroke-linecap="round"/>'
+      );
+    } else if (eyes === 'focused') {
+      parts.push(
+        '<polygon points="-48,-38 -14,-26 -20,-16 -48,-26" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<polygon points="48,-38 14,-26 20,-16 48,-26" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
+      );
+    } else if (species === 'owl') {
+      // Huge Binocular Owl Eyes
+      parts.push(
+        '<circle cx="-30" cy="-32" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+        '<circle cx="30" cy="-32" r="18" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="5"/>' +
+        '<circle cx="-30" cy="-32" r="7" fill="#04151f"/><circle cx="30" cy="-32" r="7" fill="#04151f"/>' +
+        '<circle cx="-34" cy="-36" r="4" fill="#ffffff"/><circle cx="26" cy="-36" r="4" fill="#ffffff"/>'
+      );
+    } else {
+      parts.push(
+        '<ellipse cx="-30" cy="-32" rx="14" ry="11" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<ellipse cx="30" cy="-32" rx="14" ry="11" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>' +
+        '<ellipse cx="-30" cy="-32" rx="3.5" ry="8" fill="#04151f"/>' +
+        '<ellipse cx="30" cy="-32" rx="3.5" ry="8" fill="#04151f"/>' +
+        '<circle cx="-34" cy="-35" r="3" fill="#ffffff"/><circle cx="26" cy="-35" r="3" fill="#ffffff"/>'
+      );
+    }
 
-    // Optional Headwear on Creature (Crown, Halo, Ninja Headband, Headset)
+    // 5. SPECIES-SPECIFIC SNOUT / BEAK / MUZZLE / BULL RING
+    if (species === 'owl') {
+      // Sharp Curved Golden Avian Beak
+      parts.push(
+        '<polygon points="-20,-10 20,-10 0,24" fill="#fbbf24" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<line x1="0" y1="-10" x2="0" y2="16" stroke="#000000" stroke-width="4"/>'
+      );
+    } else if (species === 'bull') {
+      // Broad Bull Snout + Nostrils + Golden Nose Ring
+      parts.push(
+        '<circle cx="0" cy="22" r="16" fill="none" stroke="#fbbf24" stroke-width="8"/>' +
+        '<rect x="-38" y="-10" width="76" height="32" rx="14" fill="#0b1528" stroke="#000000" stroke-width="7"/>' +
+        '<circle cx="-18" cy="4" r="6" fill="' + escapeXml(p.accent) + '"/>' +
+        '<circle cx="18" cy="4" r="6" fill="' + escapeXml(p.accent) + '"/>'
+      );
+    } else if (species === 'bear') {
+      // Wide Rounded Grizzly Muzzle + Big Oval Nose
+      parts.push(
+        '<ellipse cx="0" cy="6" rx="36" ry="22" fill="#e2e8f0" stroke="#000000" stroke-width="7"/>' +
+        '<ellipse cx="0" cy="-2" rx="14" ry="9" fill="#0f172a"/>' +
+        '<path d="M 0,7 L 0,16 M -14,16 Q 0,24 14,16" fill="none" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round"/>'
+      );
+    } else if (species === 'dragon' || species === 'wolf') {
+      // Armored / Lupine Snout with Nostrils & Sharp Fangs
+      parts.push(
+        '<polygon points="-32,-8 32,-8 22,22 -22,22" fill="#0b1528" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>' +
+        '<circle cx="-12" cy="2" r="4" fill="' + escapeXml(p.accent) + '"/><circle cx="12" cy="2" r="4" fill="' + escapeXml(p.accent) + '"/>' +
+        '<polygon points="-18,16 -12,28 -6,16" fill="#ffffff" stroke="#000000" stroke-width="2.5"/>' +
+        '<polygon points="6,16 12,28 18,16" fill="#ffffff" stroke="#000000" stroke-width="2.5"/>'
+      );
+    } else if (species === 'kraken') {
+      // Glowing Kraken Core Mouth Organ
+      parts.push(
+        '<circle cx="0" cy="4" r="12" fill="#04151f" stroke="#000000" stroke-width="5"/>' +
+        '<circle cx="0" cy="4" r="5" fill="' + escapeXml(p.accent) + '" filter="url(#' + uid + '-glow)"/>'
+      );
+    } else {
+      // Kitsune Fox Muzzle
+      parts.push(
+        '<ellipse cx="0" cy="4" rx="26" ry="15" fill="#0b1528" stroke="#000000" stroke-width="6"/>' +
+        '<polygon points="-9,-4 9,-4 0,4" fill="' + escapeXml(p.accent) + '"/>' +
+        '<path d="M -12,9 Q -6,16 0,9 Q 6,16 12,9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>'
+      );
+    }
+
+    // 6. HEADWEAR ON CREATURE
     var hw = spec.headwear;
     if (hw === 'crown') {
       parts.push(
@@ -1579,18 +1759,13 @@
       );
     } else if (hw === 'halo') {
       parts.push(
-        '<ellipse cx="0" cy="-148" rx="58" ry="14" fill="none" stroke="#000000" stroke-width="10"/>' +
-        '<ellipse cx="0" cy="-148" rx="58" ry="14" fill="none" stroke="#fde047" stroke-width="5.5" filter="url(#' + uid + '-glow)"/>'
+        '<ellipse cx="0" cy="-152" rx="58" ry="14" fill="none" stroke="#000000" stroke-width="10"/>' +
+        '<ellipse cx="0" cy="-152" rx="58" ry="14" fill="none" stroke="#fde047" stroke-width="5.5" filter="url(#' + uid + '-glow)"/>'
       );
     } else if (hw === 'cyber_helmet') {
       parts.push(
         '<path d="M -78,-74 Q 0,-88 78,-74 L 78,-56 Q 0,-70 -78,-56 Z" fill="#6d28d9" stroke="#000000" stroke-width="6.5"/>' +
         '<rect x="-26" y="-80" width="52" height="18" rx="4" fill="#cbd5e1" stroke="#000000" stroke-width="4.5"/>'
-      );
-    } else if (hw === 'headset') {
-      parts.push(
-        '<path d="M 78,-24 L 38,10 L 16,10" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>' +
-        '<circle cx="14" cy="10" r="6.5" fill="' + escapeXml(p.accent) + '" stroke="#000000" stroke-width="3"/>'
       );
     }
 
